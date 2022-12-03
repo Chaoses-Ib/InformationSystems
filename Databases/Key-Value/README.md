@@ -15,6 +15,7 @@ A **key–value database (key–value store)** is a data storage paradigm design
 - [sled](https://sled.rs/) ([GitHub](https://github.com/spacejam/sled))
 
   数据库体积相对较大。
+  - [kv: An embedded key/value store for Rust](https://github.com/zshipko/rust-kv)
 - [Lucid KV](https://clintnetwork.gitbook.io/lucid/) ([GitHub](https://github.com/lucid-kv/lucid))
 
   Lucid is a high performance, secure and distributed key-value store accessible through an HTTP API, that is built around a modular configuration to enable features on the fly, like persistence, encryption SSE, compression, replication, and more.
