@@ -1,5 +1,7 @@
 # Information Systems
-## Databases
+An **information system (IS)** is a formal, sociotechnical, organizational system designed to collect, process, store, and distribute information.[^wiki]
+
+## Database Management Systems
 - Relational Databases
   - [SQL Injection](Databases/Relational/SQL%20Injection.md)
   - DBMS
@@ -20,3 +22,5 @@
 - [Spatial Analysis](Geographic/Spatial%20Analysis.md)
 - [Map Symbols](Geographic/Map%20Symbols.md)
 - [ArcGIS](Geographic/ArcGIS/README.md)
+
+[^wiki]: [Information system - Wikipedia](https://en.wikipedia.org/wiki/Information_system)
