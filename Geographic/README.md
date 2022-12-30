@@ -84,3 +84,11 @@
 ## Implementations
 - [ArcGIS](ArcGIS/README.md)
 - MapGIS
+
+## Information sources
+<details><summary>Blogs</summary>
+
+- [GIS Geography](https://gisgeography.com/)
+- [麻辣GIS | 麻辣地信网 - 小而美的地理信息系统博客 - 立足GIS 放眼3S](https://malagis.com/)
+- [遥感家园](https://www.rserforum.com/)
+</details>
