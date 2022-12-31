@@ -52,6 +52,10 @@ DEMs[^gisgeography]:
   It is the **most precise global-scale elevation data** now.
 - [OpenDEM](https://www.opendem.info/)
 
+Land cover:
+- [Global Land Cover by National Mapping Organizations (GLCNMO)](https://globalmaps.github.io/glcnmo.html) ([GitHub](https://github.com/globalmaps/gm_lc_v3))
+  - [数据|全球土地利用地被覆盖数据Land Cover (GLCNMO) - Global Version - 学研录](https://mp.weixin.qq.com/s?__biz=MzkxOTIwMTMxMQ==&mid=2247491513&idx=1&sn=f0f92404b610dad7ea46162837e5aab1&chksm=c1a4ecc9f6d365dfd12c326a92abfc7abd0f95f4983d3ea38353ee1c1686f0738181bdb0dbd5&scene=178&cur_album_id=1723894853249318919#rd)
+
 Population:
 - [ORNL LandScan Viewer - Oak Ridge National Laboratory](https://landscan.ornl.gov/)
 
@@ -63,6 +67,13 @@ Population:
 DEMs:
 - [数据分享︱全国30 m分辨率DEM数据（ASTER GDEM V3、SRTM V3和NASA） - 学研录](https://mp.weixin.qq.com/s/tmOc7nMd5NgvTKN2beUBLQ)
 - [中国数字高程图（1KM） - 国家青藏高原科学数据中心](https://data.tpdc.ac.cn/en/data/12e91073-0181-44bf-8308-c50e5bd9a734/)
+
+Land cover:
+- [中国多时期土地利用土地覆被遥感监测数据集（CNLUCC）](https://www.resdc.cn/DOI/DOI.aspx?DOIID=54) (30m)
+  - [GIS大饼 | GaoHR | 中国土地利用遥感监测数据](http://gaohr.win/site/blogs/2019/2019-11-19-china-lulc.html) (GCS_Krasovsky_1940, 1km)
+  - [数据| 中国多时期土地利用数据1980-2015年分享（百度云） - 学研录](https://mp.weixin.qq.com/s?__biz=MzkxOTIwMTMxMQ==&mid=2247494219&idx=1&sn=42e05e7d8e6c301e2300c3c8f4071373&chksm=c1a7193bf6d0902d86e56655368ca77b102f9d7c1e6b5d4845cfe7f7d1413e3a9fca0e3a31d5&scene=178&cur_album_id=1723894853249318919#rd) (1km)
+- 中国年度土地覆盖数据集（CLCD）(30m)
+  - [数据|中国1985~2020逐年30m土地利用数据百度云分享 - 学研录](https://mp.weixin.qq.com/s?__biz=MzkxOTIwMTMxMQ==&mid=2247494198&idx=1&sn=fb80fb54446896abc77e6faca97829cb&chksm=c1a71946f6d090503e900b3e33eeaa944e596c8ee1328177046fe733ae412277c907410a334e&scene=178&cur_album_id=1723894853249318919#rd)
 
 行政区划：
 - [DataV.GeoAtlas 地理小工具系列](https://datav.aliyun.com/portal/school/atlas/area_selector) (GeoJSON, GCS_WGS_1984)
@@ -93,6 +104,7 @@ POI:
   - [lyBigdata/CN_POI_Data](https://github.com/lyBigdata/CN_POI_Data) (2017)
 - [CnOpenData 全国兴趣点（POI）数据](https://www.cnopendata.com/data/m/regional.html/POI.html) (paid)
 - [POILIST - 全国POI信息数据库](http://www.poilist.cn/) (paid)
+- [GIS大饼 | GaoHR | 全国城市兴趣点（POI）数据](http://gaohr.win/site/blogs/2019/2019-12-10-baidu-map-poi-cn.html) (paid)
 
 Population:
 - [数据 | 1990—2020年五套全球和我国人口密度数据集 - 学研录](https://mp.weixin.qq.com/s/sDxVf7hze576CXpfVsqr5g)
