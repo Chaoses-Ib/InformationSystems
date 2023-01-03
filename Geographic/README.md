@@ -83,10 +83,14 @@
 - 金融服务部门：银行、保险
 - 社会经济部门：统计局、信息中心
 
+## Open source
+[OSGeo](https://www.osgeo.org/)
+
 ## Implementations
 - [ArcGIS](ArcGIS/README.md)
 - SuperMap
 - MapGIS
+- [QGIS](https://qgis.org/en/site/) ([GitHub](https://github.com/qgis/QGIS))
 
 ## Information sources
 <details><summary>Blogs</summary>
@@ -96,3 +100,5 @@
 - [麻辣GIS | 麻辣地信网 - 小而美的地理信息系统博客 - 立足GIS 放眼3S](https://malagis.com/)
 - [遥感家园](https://www.rserforum.com/)
 </details>
+
+[Awesome GIS](https://github.com/sshuair/awesome-gis)
