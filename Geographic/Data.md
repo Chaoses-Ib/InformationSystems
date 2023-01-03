@@ -1,4 +1,6 @@
 # Geographic Data
+[【GIS数据】地理信息中常用的数据分类 - 知乎](https://zhuanlan.zhihu.com/p/27802871)
+
 GIS 中主要有以下几种类型的空间数据：
 - 地图数据
 

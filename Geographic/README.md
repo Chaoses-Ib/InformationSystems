@@ -1,4 +1,6 @@
 # Geographic Information Systems
+[人人都在说GIS，究竟什么才是GIS - 知乎](https://zhuanlan.zhihu.com/p/27660261)
+
 ## 什么是 GIS？它具有什么特点？ 
 地理信息系统既是管理和分析空间数据的应用工程**技术**，又是跨越地球科学、信息科学和空间科学的**应用基础学科**。其技术系统由计算机硬件、软件和相关的方法过程所组成，用以支持**空间数据**的采集、管理、处理、建模、分析和显示，以便解决复杂的规划和管理问题。
 
@@ -83,12 +85,14 @@
 
 ## Implementations
 - [ArcGIS](ArcGIS/README.md)
+- SuperMap
 - MapGIS
 
 ## Information sources
 <details><summary>Blogs</summary>
 
 - [GIS Geography](https://gisgeography.com/)
+- [GIS乱弹 - 知乎](https://www.zhihu.com/column/gisluantan)
 - [麻辣GIS | 麻辣地信网 - 小而美的地理信息系统博客 - 立足GIS 放眼3S](https://malagis.com/)
 - [遥感家园](https://www.rserforum.com/)
 </details>
