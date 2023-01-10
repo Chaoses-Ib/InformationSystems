@@ -24,5 +24,6 @@ An **information system (IS)** is a formal, sociotechnical, organizational syste
 - [Spatial Analysis](Geographic/Spatial%20Analysis.md)
 - [Map Symbols](Geographic/Map%20Symbols.md)
 - [ArcGIS](Geographic/ArcGIS/README.md)
+- [地理信息系统与人工智能](Geographic/地理信息系统与人工智能/Paper.pdf)
 
 [^wiki]: [Information system - Wikipedia](https://en.wikipedia.org/wiki/Information_system)
