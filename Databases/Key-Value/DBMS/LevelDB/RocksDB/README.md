@@ -12,6 +12,19 @@ RocksDB 的功能很丰富，可以灵活适应各种不同的应用场景，同
 ## Bindings
 - Rust: [rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb)
 
+## Tools
+[Administration and Data Access Tool · facebook/rocksdb Wiki](https://github.com/facebook/rocksdb/wiki/Administration-and-Data-Access-Tool):
+- ldb
+
+  [RocksDB Administration and Data Access Tool – SHASHANGKA SHEKHAR'S BLOG](https://shashangka.com/2020/06/26/rocksdb-administration-and-data-access-tool/)
+- sst_dump
+
+  [Preset Dictionary Compression | RocksDB](https://rocksdb.org/blog/2021/05/31/dictionary-compression.html)
+
+Rust: [RocksDB Administration and Data Access Tool · Issue #781 · rust-rocksdb/rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb/issues/781)
+
+[RocksDB Trace, Replay, Analyzer, and Workload Generation · facebook/rocksdb Wiki](https://github.com/facebook/rocksdb/wiki/RocksDB-Trace%2C-Replay%2C-Analyzer%2C-and-Workload-Generation)
+
 ## Key space
 RocksDB 对于需要多个 key space 的需求提供了三种方案：
 - Column families
