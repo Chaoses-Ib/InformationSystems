@@ -14,7 +14,7 @@ LMDB 由商业公司 Symas 维护，在 Shopify 的生产系统中有使用。
 ## Bindings
 - Rust: [heed](https://docs.rs/heed) ([GitHub](https://github.com/meilisearch/heed))
 
-    Note that the environment won't be closed by `drop()`, see [Close environment safely](https://github.com/meilisearch/heed/pull/64) for details.
+  Note that the environment won't be closed by `drop()`, see [Close environment safely](https://github.com/meilisearch/heed/pull/64) for details.
 
 ## Database sizes
 [Symas OpenLDAP Knowledge Base - LMDB Database File Sizes and Memory Utilization](https://kb.symas.com/lmdb-database-file-sizes-and-memory-utilization.html)
