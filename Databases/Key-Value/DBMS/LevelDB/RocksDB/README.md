@@ -16,6 +16,8 @@ RocksDB 的功能很丰富，可以灵活适应各种不同的应用场景，同
 
 ## Static sorted tables
 ### Block-based tables
+[Format version](https://github.com/facebook/rocksdb/blob/793a786fa3c16a2be782024446bd3f8bb5162875/include/rocksdb/table.h#L521)
+
 [Index block](https://github.com/facebook/rocksdb/wiki/Index-Block-Format):
 - [Partitioned index/filters](https://rocksdb.org/blog/2017/05/12/partitioned-index-filter.html)
 
@@ -250,6 +252,37 @@ RocksDB 同时支持 on-desk database 和 in-memory database，并且还可以�
 
 [RocksDB Tuning Guide](https://github.com/facebook/rocksdb/wiki/RocksDB-Tuning-Guide)
 
+### Memory usage
+[Memory usage in RocksDB - facebook/rocksdb Wiki](https://github.com/facebook/rocksdb/wiki/Memory-usage-in-RocksDB)
+
+- Block cache
+
+  `rocksdb.block-cache-usage`
+
+  Defaults to 8 MiB.
+
+- Indexes and bloom filters
+
+  `rocksdb.estimate-table-readers-mem`
+  
+- Memtables
+  - `rocksdb.size-all-mem-tables`: approximate size of active, unflushed immutable, and pinned immutable memtables (bytes).
+    - `rocksdb.cur-size-all-mem-tables`: approximate size of active and unflushed immutable memtables (bytes).
+  
+- Blocks pinned by iterators
+  
+  `rocksdb.block-cache-pinned-usage`
+
+- [TransactionDB](https://github.com/facebook/rocksdb/wiki/Transactions#tuning--memory-usage)
+  - `OptimisticTransactionDB` 默认会在打开 DB 时分配一百万个 mutex，并且不连续，会占用约 114 MiB 内存。
+    - 通过 [`OptimisticTransactionDBOptions`](https://github.com/facebook/rocksdb/blob/793a786fa3c16a2be782024446bd3f8bb5162875/include/rocksdb/utilities/optimistic_transaction_db.h#L68) 可以减少数量或改为串行 validate。
+
+      但 C binding 没有暴露 `OptimisticTransactionDBOptions`。
+      - [Expose OptimisticTransactionDBOptions in C API - Issue #11703 - facebook/rocksdb](https://github.com/facebook/rocksdb/issues/11703)
+    - [Improve memory efficiency of many OptimisticTransactionDBs by pdillinger - Pull Request #11439 - facebook/rocksdb](https://github.com/facebook/rocksdb/pull/11439)
+
+[Investigate RocksDB memory consumption and limiting - Issue #3988 - camunda/zeebe](https://github.com/camunda/zeebe/issues/3988)
+
 ## [Concurrency](https://github.com/facebook/rocksdb/wiki/Basic-Operations#concurrency)
 > A database may only be opened by one process at a time. The `rocksdb` implementation acquires a lock from the operating system to prevent misuse. Within a single process, the same `rocksdb::DB` object may be safely shared by multiple concurrent threads. I.e., different threads may write into or fetch iterators or call `Get` on the same database without any external synchronization (the rocksdb implementation will automatically do the required synchronization). However other objects (like Iterator and WriteBatch) may require external synchronization. If two threads share such an object, they must protect access to it using their own locking protocol. More details are available in the public header files.
 
@@ -279,8 +312,14 @@ RocksDB 同时支持 on-desk database 和 in-memory database，并且还可以�
     [Implement `AsColumnFamilyRef` for `Arc<Mutex<BoundColumnFamily<'a>>>` · Issue #803 · rust-rocksdb/rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb/issues/803)
 
   [Options, ReadOptions, WriteOptions missing many settings · Issue #260 · rust-rocksdb/rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb/issues/260)
+  - [Support Write Buffer Manager - Issue #587 - rust-rocksdb/rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb/issues/587)
 
-  [CompactRange and similar APIs from TransactionDB? · Issue #728 · rust-rocksdb/rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb/issues/728)
+  [Support RocksDB transaction. by yiyuanliu - Pull Request #565 - rust-rocksdb/rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb/pull/565)
+  - [CompactRange and similar APIs from TransactionDB? · Issue #728 · rust-rocksdb/rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb/issues/728)
+  
+  [Add operations as traits by acrrd - Pull Request #431 - rust-rocksdb/rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb/pull/431)
+
+  [TxnDB : Transactions via rocksdb\_transaction\_t - Issue #144 - rust-rocksdb/rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb/issues/144)
 
 ## Tools
 [Administration and Data Access Tool · facebook/rocksdb Wiki](https://github.com/facebook/rocksdb/wiki/Administration-and-Data-Access-Tool):
