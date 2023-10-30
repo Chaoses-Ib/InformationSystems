@@ -152,8 +152,30 @@ Options:
 - [Iterator](https://github.com/facebook/rocksdb/wiki/Iterator)
 
   [Iterator Implementation](https://github.com/facebook/rocksdb/wiki/Iterator-Implementation)
-- pin_data
-- fill_cache
+
+- [Asynchronous IO](https://github.com/facebook/rocksdb/wiki/Asynchronous-IO#scan)
+
+  [Asynchronous IO in RocksDB | RocksDB](https://rocksdb.org/blog/2022/10/07/asynchronous-io-in-rocksdb.html)
+
+  On Windows, this seems to provide little or no performance improvement. It may be only supported on Linux at now.
+
+  [Design Discussion of Async Support - Issue #3254 - facebook/rocksdb](https://github.com/facebook/rocksdb/issues/3254)
+
+- [Read-ahead](https://github.com/facebook/rocksdb/wiki/Iterator#read-ahead)
+
+  > RocksDB does automatic readahead and prefetches data on noticing more than 2 IOs for the same table file during iteration. This applies only to the block based table format. The readahead size starts with 8KB and is exponentially increased on each additional sequential IO, up to a max of `BlockBasedTableOptions.max_auto_readahead_size` (default 256 KB). This helps in cutting down the number of IOs needed to complete the range scan.
+
+  > `ReadOptions.readahead_size` provides read-ahead support in RocksDB for very limited use cases. The limitation of this feature is that, if turned on, the constant cost of the iterator will be much higher. So you should only use it if you iterate a very large range of data, and can't work it around using other approaches. A typical use case will be that the storage is remote storage with very long latency, OS page cache is not available and a large amount of data will be scanned.
+
+  > You need to budget your read-ahead memory for them. And the memory used by the read-ahead buffer can't be tracked automatically.
+
+- `fill_cache`
+
+  > Specify whether the “data block”/“index block”/“filter block” read for this iteration should be cached in memory. Callers may wish to set this field to false for bulk scans.
+
+  Setting to `false` provides ~3% speedup.
+
+- `pin_data`
 
 [c++11 - Parallelize rocksdb iterator - Stack Overflow](https://stackoverflow.com/questions/40918751/parallelize-rocksdb-iterator)
 
@@ -227,6 +249,8 @@ Options:
 
 [Titan: A RocksDB Plugin to Reduce Write Amplification | PingCAP](https://www.pingcap.com/blog/titan-storage-engine-design-and-implementation/)
 
+[Behavior after "no space left on device" - auto-recovery not working - Issue #9762 - facebook/rocksdb](https://github.com/facebook/rocksdb/issues/9762)
+
 ## Snapshot
 - [Snapshot](https://github.com/facebook/rocksdb/wiki/Snapshot)
 - [Checkpoints](https://github.com/facebook/rocksdb/wiki/Checkpoints)
@@ -285,6 +309,12 @@ RocksDB 同时支持 on-desk database 和 in-memory database，并且还可以�
 
 ## [Concurrency](https://github.com/facebook/rocksdb/wiki/Basic-Operations#concurrency)
 > A database may only be opened by one process at a time. The `rocksdb` implementation acquires a lock from the operating system to prevent misuse. Within a single process, the same `rocksdb::DB` object may be safely shared by multiple concurrent threads. I.e., different threads may write into or fetch iterators or call `Get` on the same database without any external synchronization (the rocksdb implementation will automatically do the required synchronization). However other objects (like Iterator and WriteBatch) may require external synchronization. If two threads share such an object, they must protect access to it using their own locking protocol. More details are available in the public header files.
+
+[Reducing Lock Contention in RocksDB | RocksDB](https://rocksdb.org/blog/2014/05/14/lock.html)
+> SST tables are immutable after being written and mem tables are lock-free data structures supporting single writer and multiple readers. There is only one single major lock, the DB mutex (DBImpl.mutex_) protecting all the meta operations, including:
+> - Increase or decrease reference counters of mem tables and SST tables
+> - Change and check meta data structures, before and after finishing compactions, flushes and new mem table creations
+> - Coordinating writers
 
 [`iterator.h`](https://github.com/facebook/rocksdb/blob/9a31b8dd2c293d92fb15524a97b63ded003f53c0/include/rocksdb/iterator.h#L14):
 > Multiple threads can invoke const methods on an Iterator without external synchronization, but if any of the threads may call a non-const method, all threads accessing the same Iterator must use external synchronization.
