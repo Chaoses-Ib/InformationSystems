@@ -14,7 +14,7 @@ Whitespace:
 [^zu1k]: [sql注入针对关键字过滤的绕过技巧 - zu1k](https://zu1k.com/posts/security/web-security/bypass-tech-for-sql-injection-keyword-filtering/)
 
 ## DBMS
-- [Access](DBMS/Access/README.md#sql)
+- [Access](../DBMS/Access/README.md#sql)
 
 ## Information sources
 Quick reference:
