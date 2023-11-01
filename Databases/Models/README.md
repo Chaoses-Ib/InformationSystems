@@ -1,9 +1,23 @@
 # Data Models
 [Wikipedia](https://en.wikipedia.org/wiki/Data_model)
 
+A **data model** is an abstract model that organizes elements of data and standardizes how they relate to one another and to the properties of real-world entities.
+
 数据模型是对现实世界数据特征的抽象，是数据库系统的核心和基础。
 
-数据模型可分为两类：概念模型 和 逻辑模型和物理模型。
+A data model instance may be one of three kinds according to ANSI in 1975:
+
+1. Conceptual data model
+   
+   Conceptual data model describes the semantics of a domain, being the scope of the model. For example, it may be a model of the interest area of an organization or industry. This consists of entity classes, representing kinds of things of significance in the domain, and relationship assertions about associations between pairs of entity classes. A conceptual schema specifies the kinds of facts or propositions that can be expressed using the model. In that sense, it defines the allowed expressions in an artificial 'language' with a scope that is limited by the scope of the model.
+
+2. Logical data model
+   
+   Logical data model describes the semantics, as represented by a particular data manipulation technology. This consists of descriptions of tables and columns, object oriented classes, and XML tags, among other things.
+
+3. Physical data model
+   
+   Physical data model describes the physical means by which data are stored. This is concerned with partitions, CPUs, tablespaces, and the like.
 
 ## 数据模型的组成要素
 - 数据结构

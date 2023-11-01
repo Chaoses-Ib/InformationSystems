@@ -3,6 +3,8 @@
 - [Data Models](Databases/Models/README.md)
   - [Conceptual](Databases/Models/Conceptual/README.md)
     - [Entity-relationship Model](Databases/Models/Conceptual/Entity-relationship/README.md)
+    - [Data-flow Diagrams](Databases/Models/Conceptual/Flow/README.md)
+    - [Data Dictionaries](Databases/Models/Conceptual/Dictionaries/README.md)
   - [Logical](Databases/Models/Logical/README.md)
   - [Physical](Databases/Models/Physical/README.md)
 
