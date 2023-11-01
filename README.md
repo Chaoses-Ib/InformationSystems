@@ -20,6 +20,7 @@
   - DBMS
     - [LevelDB](Databases/Key-Value/DBMS/LevelDB/README.md)
       - [RocksDB](Databases/Key-Value/DBMS/LevelDB/RocksDB/README.md)
+        - [RocksDB-Cloud](Databases/Key-Value/DBMS/LevelDB/RocksDB/RocksDB-Cloud.md)
         - [Speedb](Databases/Key-Value/DBMS/LevelDB/RocksDB/Speedb.md)
       - [Peddle](Databases/Key-Value/DBMS/LevelDB/Pebble.md)
     - [Lightning Memory-Mapped Database](Databases/Key-Value/DBMS/LMDB/README.md)
