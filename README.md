@@ -11,8 +11,21 @@
 - [Three-schema Approach](Databases/Three-schema.md)
 
 - [Relational Databases](Databases/Relational/README.md)
+  - [Relational Algebra](Databases/Relational/Algebra/README.md)
+    - [Joins](Databases/Relational/Algebra/Joins.md)
+  - [Normalization](Databases/Relational/Normalization/README.md)
   - [Structured Query Language](Databases/Relational/SQL/README.md)
-    - [Injection](Databases/Relational/SQL/Injection.md)
+    - [Data Types](Databases/Relational/SQL/Types/README.md)
+    - [Null](Databases/Relational/SQL/Null.md)
+    - [Views](Databases/Relational/SQL/Views.md)
+    - [Statements](Databases/Relational/SQL/Statements/README.md)
+      - [SELECT](Databases/Relational/SQL/Statements/SELECT.md)
+    - [Functions](Databases/Relational/SQL/Functions/README.md)
+    - Security
+      - [Access Control](Databases/Relational/SQL/Security/Access/README.md)
+        - [Discretionary Access Control](Databases/Relational/SQL/Security/Access/Discretionary.md)
+      - [Audit](Databases/Relational/SQL/Security/Audit.md)
+      - [Injection](Databases/Relational/SQL/Security/Injection.md)
   - DBMS
     - [Microsoft Access](Databases/Relational/DBMS/Access/README.md)
 
