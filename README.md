@@ -5,6 +5,8 @@
 - [Manual Memory Management](Memory/Manual/README.md)
   - [CS:APP Malloc Lab](Memory/Manual/Malloc%20Lab.md)
 - [Automatic Memory Management](Memory/Automatic/README.md)
+- [Windows](Memory/Windows/README.md)
+  - [Working Sets](Memory/Windows/Working%20Sets.md)
 
 ## [File Systems](Files/README.md)
 - [File Change Monitoring](Files/Monitoring.md)
