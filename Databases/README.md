@@ -1,4 +1,6 @@
 # Databases
+[Wikipedia](https://en.wikipedia.org/wiki/Database)
+
 数据：描述事物的符号记录
 
 数据库：长期储存在计算机内的、有组织的、可共享的大量数据的集合
