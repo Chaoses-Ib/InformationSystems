@@ -9,6 +9,13 @@
   - [Working Sets](Memory/Windows/Working%20Sets.md)
 
 ## [File Systems](Files/README.md)
+- File Systems
+  - [New Technology File System](Files/Systems/NTFS/README.md)
+    - [Clusters](Files/Systems/NTFS/Clusters.md)
+    - [Volumes](Files/Systems/NTFS/Volumes.md)
+    - [File Records](Files/Systems/NTFS/Records.md)
+    - [Change Journals](Files/Systems/NTFS/Change%20Journals.md)
+- [Windows](Files/Windows/README.md)
 - [File Change Monitoring](Files/Monitoring.md)
 
 ## [Database Management Systems](Databases/README.md)
