@@ -5,6 +5,17 @@
 
 [New Technologies File System (NTFS) - libyal/libfsntfs](https://github.com/libyal/libfsntfs/blob/main/documentation/New%20Technologies%20File%20System%20(NTFS).asciidoc#15-usn-change-journal)
 
+[通过读取USN日志监控文件变动 | 记录坑的地方](https://www.qdebug.com/2020/06/02/%E9%80%9A%E8%BF%87%E8%AF%BB%E5%8F%96USN%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7%E6%96%87%E4%BB%B6%E5%8F%98%E5%8A%A8/)
+
+## Renaming
+A rename operation will fire both `USN_REASON_RENAME_OLD_NAME` and `USN_REASON_RENAME_NEW_NAME`.
+
+`USN_REASON_RENAME_OLD_NAME` is necessary to process hard link renaming, but not necessary to process directory renaming. 
+
+> Note that a problem arises where one of the hard-links is moved or renamed. In this case, the journal entries for the rename or move reflect the filename and parent file reference number of the affected link. The problem arises if you ask for only the summary "on-close" records. In such a case, you won't ever see the `USN_REASON_RENAME_OLD_NAME` record...because that USN entry never gets an associated `REASON_CLOSE` associated with it. Without this tidbit, you won't be able to easily determine which link's name or location was changed. You have to read the usn with ReadOnlyOnClose set to 0 in the `Read_Usn_Journal_Data_V0`. This is a far chattier query, but without it, you can't accurately associate the change with one link or the other.
+
+[USN日志处理移动事件时的补充 | 记录坑的地方](https://www.qdebug.com/2021/01/25/USN%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86%E7%A7%BB%E5%8A%A8%E4%BA%8B%E4%BB%B6%E6%97%B6%E7%9A%84%E8%A1%A5%E5%85%85/)
+
 ## Standard information
 - Last modification date and time
   - Write -> `USN_REASON_DATA_OVERWRITE`, `USN_REASON_DATA_EXTEND` or `USN_REASON_DATA_TRUNCATION`
@@ -14,7 +25,10 @@
 
   [Timestamp and `USN_REASON_BASIC_INFO_CHANGE` - @port139 Blog](https://port139.hatenablog.com/entry/2018/09/30/203343)
 
+  [Manipulating LastWriteTime without leaving traces in the NTFS USN Journal | PSBits](https://gtworek.github.io/PSBits/lastwritetime.html)
+
 ## Hard links
+- Identify: `USN_RECORD_V2.(FileReferenceNumber, ParentFileReferenceNumber, FileName)`
 - Create: `USN_REASON_HARD_LINK_CHANGE`
 - Delete: `USN_REASON_HARD_LINK_CHANGE`
 - Rename: same as normal files

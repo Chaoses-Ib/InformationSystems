@@ -34,5 +34,17 @@ headers for nonresident attributes). In this case, an attribute called the **att
 ### Hard links
 > In case of a hard link the MFT entry will contain additional file name attributes with the parent file reference of each hard link.
 
+Statistics:
+
+Category | Count | Percent
+--- | --- | ---
+Files | 5057106 | 84%
+Files with one hard link | 4822961 | 80% (95.4% in files)
+Files with two or more hard links | 234145 | 4% (4.6% in files)
+Directories | 955384 | 16%
+Total | 6012490 | 100%
+
+Maximum hard link count: 109
+
 
 [^winter]: Windows Internals
