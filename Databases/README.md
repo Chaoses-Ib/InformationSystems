@@ -46,6 +46,8 @@ Courses:
 
 [CaryHsu - 學無止盡: 不同資料庫的比較 - SQL Server vs Oracle and MySQL](http://caryhsu.blogspot.com/2011/06/sql-server-vs-oracle-and-mysql.html) 2011年
 
+[数据量较大，数据库选型问题 - V2EX](https://www.v2ex.com/t/1007852)
+
 ## 数据库系统
 特点：
 - 数据结构化

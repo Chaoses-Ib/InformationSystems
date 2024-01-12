@@ -161,6 +161,8 @@ Options:
 
   [Design Discussion of Async Support - Issue #3254 - facebook/rocksdb](https://github.com/facebook/rocksdb/issues/3254)
 
+  [rocksdb asyncio benchmark - 王很水的笔记](https://wanghenshui.github.io/2023/02/10/rocksdb-asyncio-benchmark.html)
+
 - [Read-ahead](https://github.com/facebook/rocksdb/wiki/Iterator#read-ahead)
 
   > RocksDB does automatic readahead and prefetches data on noticing more than 2 IOs for the same table file during iteration. This applies only to the block based table format. The readahead size starts with 8KB and is exponentially increased on each additional sequential IO, up to a max of `BlockBasedTableOptions.max_auto_readahead_size` (default 256 KB). This helps in cutting down the number of IOs needed to complete the range scan.
