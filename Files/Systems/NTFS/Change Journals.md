@@ -51,6 +51,7 @@ Rust:
 - ~~[Change Journal: A unified change journal-like API for Linux and Windows that lets you monitor entire filesystems, mount points, and/or volumes for file change events. It uses fanotify on Linux and the USN Journal on Windows.](https://github.com/codeprentice-org/change-journal)~~
 
 ## Tools
+- [fsutil usn](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-usn)
 - [Everything](../../Windows/README.md#everything)
 
 

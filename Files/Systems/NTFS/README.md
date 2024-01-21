@@ -24,6 +24,9 @@ Rust:
 - [ntfs: An implementation of the NTFS filesystem in a Rust crate, usable from firmware level up to user-mode.](https://github.com/ColinFinck/ntfs)
 - [MFT: A parser for the MFT (Master File Table) format](https://github.com/omerbenamram/mft)
 
+## Tools
+- [fsutil](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil)
+
 ## Unicode
 ### Case sensitivity
 [Playing with case-insensitive file names -- My DFIR Blog](https://dfir.ru/2021/07/15/playing-with-case-insensitive-file-names/)
