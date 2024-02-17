@@ -183,7 +183,23 @@ Options:
 
 ## Write
 - [WriteBatch](https://github.com/facebook/rocksdb/wiki/Basic-Operations#atomic-updates)
+
+  [Reviewing LevelDB: Part III, WriteBatch isn't what you think it is - Ayende @ Rahien](https://ayende.com/blog/161412/reviewing-leveldb-part-iii-writebatch-isnt-what-you-think-it-is)
+
+  [WriteUnprepared Transactions](https://github.com/facebook/rocksdb/wiki/WriteUnprepared-Transactions)
+
+  [Is there any limitation of WriteBatch? - Issue #5938 - facebook/rocksdb](https://github.com/facebook/rocksdb/issues/5938)
+
+  [Memory grows without limit - Issue #4112 - facebook/rocksdb](https://github.com/facebook/rocksdb/issues/4112)
+
+  [Proposal: Allowing WriteBatch to emulate a memtable - Issue #4192 - facebook/rocksdb](https://github.com/facebook/rocksdb/issues/4192)
+
+  [RocksDB 源码分析 -- Write Batch - 我叫尤加利](https://youjiali1995.github.io/rocksdb/write-batch/)
+
 - [Write Batch With Index](https://github.com/facebook/rocksdb/wiki/Write-Batch-With-Index)
+
+  [WriteBatchWithIndex seems slow - Issue #608 - facebook/rocksdb](https://github.com/facebook/rocksdb/issues/608)
+
 - [Transactions](https://github.com/facebook/rocksdb/wiki/Transactions)
 
   TransactionDB 是基于 Write Batch With Index 实现的，有两个不同实现：
@@ -197,6 +213,10 @@ Options:
   
 - allow_mmap_writes
 - 并行
+- `unordered_write`
+
+  [Higher write throughput with `unordered_write` feature | RocksDB](https://rocksdb.org/blog/2019/08/15/unordered-write.html)
+
 - [PrepareForBulkLoad](https://github.com/facebook/rocksdb/blob/1567108fc10e50c68f6d9df1223c1c6e2d6aab2e/options/options.cc#L469)
 
   ```cpp
@@ -307,6 +327,8 @@ RocksDB 同时支持 on-desk database 和 in-memory database，并且还可以�
       - [Expose OptimisticTransactionDBOptions in C API - Issue #11703 - facebook/rocksdb](https://github.com/facebook/rocksdb/issues/11703)
     - [Improve memory efficiency of many OptimisticTransactionDBs by pdillinger - Pull Request #11439 - facebook/rocksdb](https://github.com/facebook/rocksdb/pull/11439)
 
+- WriteBatch
+
 [Investigate RocksDB memory consumption and limiting - Issue #3988 - camunda/zeebe](https://github.com/camunda/zeebe/issues/3988)
 
 ## [Concurrency](https://github.com/facebook/rocksdb/wiki/Basic-Operations#concurrency)
@@ -344,7 +366,7 @@ RocksDB 同时支持 on-desk database 和 in-memory database，并且还可以�
     [Implement `AsColumnFamilyRef` for `Arc<Mutex<BoundColumnFamily<'a>>>` · Issue #803 · rust-rocksdb/rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb/issues/803)
 
   [Options, ReadOptions, WriteOptions missing many settings · Issue #260 · rust-rocksdb/rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb/issues/260)
-  - [Support Write Buffer Manager - Issue #587 - rust-rocksdb/rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb/issues/587)
+  - ~~[Support Write Buffer Manager - Issue #587 - rust-rocksdb/rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb/issues/587)~~
 
   [Support RocksDB transaction. by yiyuanliu - Pull Request #565 - rust-rocksdb/rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb/pull/565)
   - [CompactRange and similar APIs from TransactionDB? · Issue #728 · rust-rocksdb/rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb/issues/728)
