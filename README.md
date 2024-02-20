@@ -16,6 +16,7 @@
     - [File Records](Files/Systems/NTFS/Records.md)
     - [Change Journals](Files/Systems/NTFS/Change%20Journals.md)
 - [Windows](Files/Windows/README.md)
+  - [User-space File Systems](Files/Windows/User/README.md)
 - [File Change Monitoring](Files/Monitoring.md)
 
 ## [Database Management Systems](Databases/README.md)
