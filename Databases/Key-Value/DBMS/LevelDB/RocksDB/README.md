@@ -14,6 +14,8 @@ RocksDB 的功能很丰富，可以灵活适应各种不同的应用场景，同
 
 [RocksDB Overview | PingCAP Docs](https://docs.pingcap.com/tidb/dev/rocksdb-overview)
 
+[Windows Port (Microsoft Contribution Notes)](https://github.com/facebook/rocksdb/blob/main/WINDOWS_PORT.md)
+
 ## Static sorted tables
 ### Block-based tables
 [Format version](https://github.com/facebook/rocksdb/blob/793a786fa3c16a2be782024446bd3f8bb5162875/include/rocksdb/table.h#L521)
@@ -329,6 +331,19 @@ RocksDB 同时支持 on-desk database 和 in-memory database，并且还可以�
 
 - WriteBatch
 
+- Memory allocator
+
+  [The effect of switching to TCMalloc on RocksDB memory use](https://blog.cloudflare.com/the-effect-of-switching-to-tcmalloc-on-rocksdb-memory-use/) ([Hacker News](https://news.ycombinator.com/item?id=26012874))
+  - [Reduce Memory usage by choosing a different low level allocator - Hyperledger Besu - Hyperledger Foundation](https://wiki.hyperledger.org/display/BESU/Reduce+Memory+usage+by+choosing+a+different+low+level+allocator)
+
+    ![](https://wiki.hyperledger.org/download/attachments/117441119/image-2024-1-18_12-12-11.png?version=1&modificationDate=1705576332000&api=v2)
+
+- `MALLOC_ARENA_MAX`
+
+  [Reduce Memory usage by choosing a different low level allocator - Hyperledger Besu - Hyperledger Foundation](https://wiki.hyperledger.org/display/BESU/Reduce+Memory+usage+by+choosing+a+different+low+level+allocator)
+
+  ![](https://wiki.hyperledger.org/download/attachments/117441119/image-2024-1-18_12-32-38.png?version=1&modificationDate=1705577559000&api=v2)
+
 [Investigate RocksDB memory consumption and limiting - Issue #3988 - camunda/zeebe](https://github.com/camunda/zeebe/issues/3988)
 
 ## [Concurrency](https://github.com/facebook/rocksdb/wiki/Basic-Operations#concurrency)
@@ -373,7 +388,9 @@ RocksDB 同时支持 on-desk database 和 in-memory database，并且还可以�
   
   [Add operations as traits by acrrd - Pull Request #431 - rust-rocksdb/rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb/pull/431)
 
-  [TxnDB : Transactions via rocksdb\_transaction\_t - Issue #144 - rust-rocksdb/rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb/issues/144)
+  [TxnDB : Transactions via `rocksdb_transaction_t` - Issue #144 - rust-rocksdb/rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb/issues/144)
+
+  [enabling the jemalloc feature doesn't actually enable jemalloc - Issue #863 - rust-rocksdb/rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb/issues/863)
 
 ## Tools
 [Administration and Data Access Tool · facebook/rocksdb Wiki](https://github.com/facebook/rocksdb/wiki/Administration-and-Data-Access-Tool):
