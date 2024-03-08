@@ -22,7 +22,14 @@ Data structures:
 
   The segregated fits approach is a popular choice with production-quality allocators such as the GNU malloc package provided in the C standard library because it is both fast and memory efficient. Search times are reduced because searches are limited to particular parts of the heap instead of the entire heap. Memory utilization can improve because of the interesting fact that a simple first-fit search of a segregated free list approximates a best-fit search of the entire heap.
 
+[There Ain't No Such Thing as a Free Custom Memory Allocator](https://arxiv.org/abs/2206.11728)
+
 [Hidden Costs of Memory Allocation | Random ASCII – tech blog of Bruce Dawson](https://randomascii.wordpress.com/2014/12/10/hidden-costs-of-memory-allocation/)
+
+[Memory allocation functions can give you more memory than you ask for, and you are welcome to use the freebies too, but watch out for the free lunch - The Old New Thing](https://devblogs.microsoft.com/oldnewthing/20120316-00/?p=8083)
+- > But the memory manager won't zero out the three bonus bytes it gave you when you called `Heap­Alloc`, because those bytes aren't new. In fact, the heap manager assumes that you knew about those three extra bytes and were actively using them, and it would be rude to zero out those bytes behind your back.
+
+How bad is using multiple different allocators in the same process in terms of memory usage?
 
 ## Implementations
 - Windows heap
@@ -31,11 +38,25 @@ Data structures:
 
   [\[llvm-dev\] RFC: Replacing the default CRT allocator on Windows](https://groups.google.com/g/llvm-dev/c/mWQEB-SzJD4)
 
-- [mimalloc: a compact general purpose allocator with excellent performance.](https://github.com/microsoft/mimalloc)
+  > 进程默认堆上内存承担较多功能，分配速度慢。（和理想状态下 glibc 的 malloc 比，速度只有六成左右。）除了比较节约内存，其他方面真的乏善可陈。
+
+  Tools:
+  - [HeapMemView - View Process Heap Memory](https://www.nirsoft.net/utils/heap_memory_view.html)
+
+- [mimalloc: a compact general purpose allocator with excellent performance.](https://github.com/microsoft/mimalloc) ([Wikipedia](https://en.wikipedia.org/wiki/Mimalloc))
+
+  - 可能比 Windows heap 节省高达 20% 的内存，也可能增加高达 35% 的内存，取决于具体的应用场景。可能在碎片内存较多的情况下占用低于 Windows heap。
+  - 比 Windows heap 的性能高大约 5~20%。可能在多线程的情况下性能提升更多。
+  - Memory leaks
+    - [memory leak in `mi_thread_data_zalloc` - Issue #748](https://github.com/microsoft/mimalloc/issues/748)
+    - [Memory leak when statically linked mimalloc to a dll, which is unloaded via a non main thread - Issue #288](https://github.com/microsoft/mimalloc/issues/288)
+  - [When will release the next version? - Issue #835](https://github.com/microsoft/mimalloc/issues/835)
 
   [如何评价 mimalloc？ - 知乎](https://www.zhihu.com/question/330717205)
 
   [mimalloc is a compact general purpose allocator with excellent performance characteristics. Initially developed by Daan Leijen for the run-time systems of the Koka and Lean languages. Published by Microsoft. : programming](https://www.reddit.com/r/programming/comments/c3ox2r/mimalloc_is_a_compact_general_purpose_allocator/)
+
+  [Reviewing mimalloc: Part I - Ayende @ Rahien](https://ayende.com/blog/187969-B/reviewing-mimalloc-part-i)
 
 - [jemalloc](https://github.com/jemalloc/jemalloc)
 
@@ -46,6 +67,10 @@ Data structures:
 - [rpmalloc: Public domain cross platform lock free thread caching 16-byte aligned memory allocator implemented in C](https://github.com/mjansson/rpmalloc)
 
 - [snmalloc: Message passing based allocator](https://github.com/microsoft/snmalloc)
+
+[Mimalloc-bench: Suite for benchmarking malloc implementations.](https://github.com/daanx/mimalloc-bench)
+
+[Benchmarking allocators](https://dustri.org/b/files/blackalps_2022.pdf)
 
 
 [^csapp]: Computer Systems：A Programmer's Perspective
