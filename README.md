@@ -47,6 +47,10 @@
       - [Audit](Databases/Relational/SQL/Security/Audit.md)
       - [Injection](Databases/Relational/SQL/Security/Injection.md)
   - DBMS
+    - [SQLite](Databases/Relational/DBMS/SQLite/README.md)
+      - [Datatypes](Databases/Relational/DBMS/SQLite/Types.md)
+      - [.NET](Databases/Relational/DBMS/SQLite/.NET.md)
+      - [Encryption](Databases/Relational/DBMS/SQLite/Encryption.md)
     - [Microsoft Access](Databases/Relational/DBMS/Access/README.md)
 
 - [Key-Value Databases](Databases/Key-Value/README.md)
