@@ -12,6 +12,12 @@ SQLite 是动态类型，创建表时指定的列类型只作为 type affinity�
   只支持 UTF-8 和 UTF-16 编码
 - `BLOB`
 
+### `BLOB`
+[Internal Versus External BLOBs](https://www.sqlite.org/intern-v-extern-blob.html)
+> We deduce the following rules of thumb from the matrix above:
+> - A database page size of 8192 or 16384 gives the best performance for large BLOB I/O.
+> - For BLOBs smaller than 100KB, reads are faster when the BLOBs are stored directly in the database file. For BLOBs larger than 100KB, reads from a separate file are faster.
+
 ## Type affinity
 判别机制很狗屎，"FLOATING PO<u>INT</u>" 会被判定成 `INTEGER`。
 

@@ -1,5 +1,9 @@
 # [SQLite](https://www.sqlite.org/index.html)
-[GitHub](https://github.com/sqlite/sqlite)
+[GitHub](https://github.com/sqlite/sqlite), [Wikiepdia](https://en.wikipedia.org/wiki/SQLite)
+
+[Replacing Elasticsearch with Rust and SQLite](https://nickb.dev/blog/replacing-elasticsearch-with-rust-and-sqlite/)
+
+[Performance/Avoid SQLite In Your Next Firefox Feature - MozillaWiki](https://wiki.mozilla.org/Performance/Avoid_SQLite_In_Your_Next_Firefox_Feature)
 
 ## The amalgamation
 The amalgamation is the recommended way of using SQLite in a larger application.
@@ -9,8 +13,18 @@ The amalgamation is the recommended way of using SQLite in a larger application.
 [SQLite Download Page](https://www.sqlite.org/download.html)
 
 ## Bindings
-C++：
+### C++
 - [SQLiteCpp: SQLiteC++ (SQLiteCpp) is a smart and easy to use C++ SQLite3 wrapper.](https://github.com/SRombauts/SQLiteCpp)
+
+### Rust
+- [Rusqlite: Ergonomic bindings to SQLite for Rust](https://github.com/rusqlite/rusqlite)
+  - [r2d2-sqlite: r2d2 connection pool for sqlite](https://github.com/ivanceras/r2d2-sqlite)
+- [sqlite: Interface to SQLite](https://github.com/stainless-steel/sqlite)
+- [Diesel: A safe, extensible ORM and Query Builder for Rust](https://github.com/diesel-rs/diesel)
+- [SQLx: 🧰 The Rust SQL Toolkit. An async, pure Rust SQL crate featuring compile-time checked queries without a DSL. Supports PostgreSQL, MySQL, and SQLite.](https://github.com/launchbadge/sqlx)
+
+[Comparison of sqlite crates? : r/rust](https://www.reddit.com/r/rust/comments/uxvyxw/comparison_of_sqlite_crates/)
+> In terms of performance is rusqulite the solution with the smallest overhead, followed by diesel, which is minimally slower. SQLx and anything build on top is significantly less slower, at least according to benchmarks I've seen. Sometimes its as much as factor 10 slower.
 
 ## Foreign key
 ```sql
@@ -38,6 +52,90 @@ PRAGMA foreign_keys = 1
 - `GRANT` and `REVOKE`
 
 [SQL Features That SQLite Does Not Implement](https://www.sqlite.org/omitted.html)
+
+## Files
+[Temporary Files Used By SQLite](https://www.sqlite.org/tempfiles.html)
+
+## Connections
+[Opening A New Database Connection](https://www.sqlite.org/c3ref/open.html)
+
+[Can multiple applications or multiple instances of the same application access a single database file at the same time?](https://sqlite.org/faq.html#q5)
+> Multiple processes can have the same database open at the same time. Multiple processes can be doing a `SELECT` at the same time. But only one process can be making changes to the database at any moment in time, however.
+>
+> You should avoid putting SQLite database files on NFS if multiple processes might try to access the file at the same time.
+
+[Can I read and write to a SQLite database concurrently from multiple connections? - Stack Overflow](https://stackoverflow.com/questions/10325683/can-i-read-and-write-to-a-sqlite-database-concurrently-from-multiple-connections)
+> Beginning with version 3.7.0, a new “Write Ahead Logging” (WAL) option is available, in which reading and writing can proceed concurrently. By default, WAL is not enabled. To turn WAL on, refer to the SQLite documentation.
+
+## Thread-safety
+[Using SQLite In Multi-Threaded Applications](https://www.sqlite.org/threadsafe.html)
+> SQLite supports three different threading modes:
+> - Single-thread. In this mode, all mutexes are disabled and SQLite is unsafe to use in more than a single thread at once.
+> - Multi-thread. In this mode, SQLite can be safely used by multiple threads provided that no single database connection nor any object derived from database connection, such as a prepared statement, is used in two or more threads at the same time.
+> - Serialized. In serialized mode, API calls to affect or use any SQLite database connection or any object derived from such a database connection can be made safely from multiple threads. The effect on an individual object is the same as if the API calls had all been made in the same order from a single thread. The name "serialized" arises from the fact that SQLite uses mutexes to serialize access to each object.
+>
+> The default mode is serialized.
+
+## Transactions
+- Rollback journals
+- [Write-ahead logs](https://www.sqlite.org/wal.html)
+  - Although it is said that "WAL mode works as efficiently with large transactions as does rollback mode", WAL can still be 15~40% slower than rollback mode for large transactions.
+
+[On the IO characteristics of the SQLite Transactions](https://oslab.kaist.ac.kr/wp-content/uploads/esos_files/publication/conferences/international/On%20the%20IO%20characteristics%20of%20the%20SQLite%20Transactions.pdf?ckattempt=1)
+
+## SELECT
+[The SQLite Query Optimizer Overview](https://www.sqlite.org/optoverview.html)
+
+### OFFSET
+[Scrolling Cursor](https://www2.sqlite.org/cvstrac/wiki?p=ScrollingCursor)
+> Do not leave queries open waiting for the user input. Run a query to fill up the screen with as much information as it will hold then `reset()` or `finalize()` the query statment. Get in, grab your data, then get out. Later on, when the user decides to scroll up or down (which will usually be eons of time later from the point of view of your CPU), run another query to refresh the screen with new data.
+> 
+> There a couple of problems with this approach. First off, since neither `sqlite3_reset()` nor `sqlite3_finalize()` are called on the statement, the database is locked and other processes are unable to update it. But perhaps more seriously is that there is not a good way to respond when the user presses the "Up" button to scroll back up. There is no `sqlite3_step_backwards()` function in SQLite. It is normally at this point in the reasoning process that the programmer gets on the mailing list asking for how to "scroll backwards".
+
+SQLite 的 `OFFSET` 实际上只是忽略了指定数量的结果，最差的情况下需要遍历所有结果。SQLite 官方不建议用 `OFFSET` 来实现滚动窗口（翻页），而是用 `WHERE` 比较来实现。
+
+> Do not try to implement a scrolling window using `LIMIT` and `OFFSET`. Doing so will become sluggish as the user scrolls down toward the bottom of the list.
+> 
+> Another error that crops up frequently is programmers trying to implement a scrolling window using `LIMIT` and `OFFSET`. The idea here is that you first just remember the index of the top entry in the display and run a query like this:
+> ```sql
+> SELECT title FROM tracks
+>  WHERE singer='Madonna'
+>  ORDER BY title
+>  LIMIT 5 OFFSET :index
+> ```
+> The index is initialized to 0. To scroll down just increment the index by 5 and rerun the query. To scroll up, decrement the index by 5 and rerun.
+> 
+> The above will work actually. The problem is that it gets slow when the index gets large. The way `OFFSET` works in SQLite is that it causes the `sqlite3_step()` function to ignore the first `:index` breakpoints that it sees. So, for example, if `:index` is 1000, you are really reading in 1005 entries and ignoring all but the last 5. The net effect is that scrolling starts to become sluggish as you get lower and lower in the list.
+> 
+> Actually, depending on how big your list is and how fast your machine runs, you might easily get away with using `OFFSET` this way. `OFFSET` will often work OK on a workstation. But on battery powered devices with slow CPUs and slower mass storage, using the `OFFSET` approach usually breaks down when the list becomes large.
+
+如果需要支持任意页数跳转，不能直接使用 `WHERE`，使用子查询也可能会比 `OFFSET` 更快。
+- 利用 index：
+  
+  ```sql
+  select * from Table where rowid in (
+  select rowid from Table limit %size offset %start)
+  ```
+
+也可以交替使用 `WHERE` 和 `OFFSET`，在跳转上下页时使用 `WHERE`，在跳转任意页时使用 `OFFSET`。
+
+[Sqlite Query Optimization (using Limit and Offset) - Stack Overflow](https://stackoverflow.com/questions/12266025/sqlite-query-optimization-using-limit-and-offset)
+
+[Stop using offset for pagination - Why it's grossly inefficient : r/programming](https://www.reddit.com/r/programming/comments/knlp8a/stop_using_offset_for_pagination_why_its_grossly/)
+
+## Bulk-inserting
+- Transactions
+
+  [Maximum number of inserts per transaction - Stack Overflow](https://stackoverflow.com/questions/16575424/maximum-number-of-inserts-per-transaction)
+
+- Prepared statements
+
+[Squeezing Performance from SQLite: Insertions | by Jason Feinstein | Medium](https://medium.com/@JasonWyatt/squeezing-performance-from-sqlite-insertions-971aff98eef2)
+
+[Towards Inserting One Billion Rows in SQLite Under A Minute - blag](https://avi.im/blag/2021/fast-sqlite-inserts/) ([Hacker News](https://news.ycombinator.com/item?id=27872575))
+
+## Memory usage
+SQLite 在默认配置下的 memory usage 很低，约 5~13 MiB，基本与数据库和 transaction 的规模无关。
 
 ## 统计量
 [function - Standard Deviation for SQLite - Stack Overflow](https://stackoverflow.com/questions/2298339/standard-deviation-for-sqlite)

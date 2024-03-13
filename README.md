@@ -49,8 +49,11 @@
   - DBMS
     - [SQLite](Databases/Relational/DBMS/SQLite/README.md)
       - [Datatypes](Databases/Relational/DBMS/SQLite/Types.md)
-      - [.NET](Databases/Relational/DBMS/SQLite/.NET.md)
+      - [Storage Engines](Databases/Relational/DBMS/SQLite/Engines/README.md)
+      - [Compression](Databases/Relational/DBMS/SQLite/Compression.md)
       - [Encryption](Databases/Relational/DBMS/SQLite/Encryption.md)
+      - [Full-text Search](Databases/Relational/DBMS/SQLite/FTS/README.md)
+      - [.NET](Databases/Relational/DBMS/SQLite/.NET.md)
     - [Microsoft Access](Databases/Relational/DBMS/Access/README.md)
 
 - [Key-Value Databases](Databases/Key-Value/README.md)

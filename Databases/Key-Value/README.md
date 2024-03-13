@@ -4,6 +4,8 @@ A **key–value database (key–value store)** is a data storage paradigm design
 [What's the big deal about key-value databases like FoundationDB and RocksDB? | notes.eatonphil.com](https://notes.eatonphil.com/whats-the-big-deal-about-key-value-databases.html)
 - [What's the big deal about embedded key-value databases like RocksDB? | Lobsters](https://lobste.rs/s/avljlh/what_s_big_deal_about_embedded_key_value)
 
+[Intro into database storage engines](https://sergeiturukin.com/2017/06/07/storage-engine-introduction.html)
+
 [TiKV | B-Tree vs LSM-Tree](https://tikv.org/deep-dive/key-value-engine/b-tree-vs-lsm/)
 - The main purpose for TiKV to use LSM-tree instead of B-tree as its underlying storage engine is because using cache technology to promote read performance is much easier than promote write performance.
 
