@@ -18,7 +18,6 @@ The amalgamation is the recommended way of using SQLite in a larger application.
 
 ### Rust
 - [Rusqlite: Ergonomic bindings to SQLite for Rust](https://github.com/rusqlite/rusqlite)
-  - [r2d2-sqlite: r2d2 connection pool for sqlite](https://github.com/ivanceras/r2d2-sqlite)
 - [sqlite: Interface to SQLite](https://github.com/stainless-steel/sqlite)
 - [Diesel: A safe, extensible ORM and Query Builder for Rust](https://github.com/diesel-rs/diesel)
 - [SQLx: 🧰 The Rust SQL Toolkit. An async, pure Rust SQL crate featuring compile-time checked queries without a DSL. Supports PostgreSQL, MySQL, and SQLite.](https://github.com/launchbadge/sqlx)
@@ -76,12 +75,51 @@ PRAGMA foreign_keys = 1
 >
 > The default mode is serialized.
 
+Why SQLite doesn't provide a thread-safe mode by using multi-thread mode and a connection pool? Isn't it more efficient than serialized mode?
+
+Rusqlite:
+- `Conncetion` is `Send + !Sync` and `!Clone`. 
+
+  [Share Connection into several threads - Issue #188 - rusqlite/rusqlite](https://github.com/rusqlite/rusqlite/issues/188)
+
+  - [r2d2-sqlite: r2d2 connection pool for sqlite](https://github.com/ivanceras/r2d2-sqlite)
+
+    `SqliteConnectionManager` is `Send + Sync` but `!Clone`. But `r2d2::Pool` is `Send + Sync` and `Clone`.
+
+  - [tokio-rusqlite: Asynchronous handle for rusqlite library.](https://github.com/programatik29/tokio-rusqlite)
+
 ## Transactions
 - Rollback journals
 - [Write-ahead logs](https://www.sqlite.org/wal.html)
   - Although it is said that "WAL mode works as efficiently with large transactions as does rollback mode", WAL can still be 15~40% slower than rollback mode for large transactions.
 
 [On the IO characteristics of the SQLite Transactions](https://oslab.kaist.ac.kr/wp-content/uploads/esos_files/publication/conferences/international/On%20the%20IO%20characteristics%20of%20the%20SQLite%20Transactions.pdf?ckattempt=1)
+
+## Virtual tables
+[The Virtual Table Mechanism Of SQLite](https://www.sqlite.org/vtab.html)
+
+## Statements
+[SQL Language Expressions](https://www.sqlite.org/lang_expr.html)
+
+[sql - What are valid table names in SQLite? - Stack Overflow](https://stackoverflow.com/questions/3694276/what-are-valid-table-names-in-sqlite)
+
+- The SQL standard requires double-quotes around identifiers and single-quotes around string literals.
+  - `"this is a legal SQL column name"`
+  - `'this is an SQL string literal'`
+
+  [Double-quoted String Literals Are Accepted](https://www.sqlite.org/quirks.html#double_quoted_string_literals_are_accepted)
+
+### Parameters
+- Parameters may not be used for column or table names, or as values for constraints or default values.
+
+  [Can I use parameters for the table name in sqlite3? - Stack Overflow](https://stackoverflow.com/questions/5870284/can-i-use-parameters-for-the-table-name-in-sqlite3)
+
+- `?`, `?NNN`
+
+- `:AAAA`, `@AAAA`, `$AAAA`
+
+- No variable length argument support
+- `SQLITE_MAX_VARIABLE_NUMBER` defaults to 32766 (prior to v3.22 it is 999)
 
 ## SELECT
 [The SQLite Query Optimizer Overview](https://www.sqlite.org/optoverview.html)
@@ -143,6 +181,11 @@ SQLite 在默认配置下的 memory usage 很低，约 5~13 MiB，基本与数�
 SELECT AVG((t.row - sub.a) * (t.row - sub.a)) as var from t, 
     (SELECT AVG(row) AS a FROM t) AS sub;
 ```
+
+## Extensions
+[Run-Time Loadable Extensions](https://www.sqlite.org/loadext.html)
+
+- `load_extension()` only loads the extension into the specified connection.
 
 ## Tools
 - Navicat

@@ -8,6 +8,10 @@ FROM < <<表名|视图名>, …> | (查询子句) [AS] 别名>
 [<UNION|INTERSECT|EXCEPT> 查询子句]
 ```
 
+[How to select an empty result set? - Stack Overflow](https://stackoverflow.com/questions/1456106/how-to-select-an-empty-result-set)
+- `SELECT NULL WHERE FALSE`
+- `SELECT NULL LIMIT 0`
+
 ## 聚集函数
 - `COUNT`
 

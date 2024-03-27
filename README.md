@@ -39,6 +39,7 @@
     - [Null](Databases/Relational/SQL/Null.md)
     - [Views](Databases/Relational/SQL/Views.md)
     - [Statements](Databases/Relational/SQL/Statements/README.md)
+      - [CREATE](Databases/Relational/SQL/Statements/CREATE.md)
       - [SELECT](Databases/Relational/SQL/Statements/SELECT.md)
     - [Functions](Databases/Relational/SQL/Functions/README.md)
     - Security

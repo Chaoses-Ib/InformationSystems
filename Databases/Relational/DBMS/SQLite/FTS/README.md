@@ -38,6 +38,26 @@ CREATE TABLE %_content(id INTEGER PRIMARY KEY, c0, c1...);
 
 [微信全文搜索优化之路 - 掘金](https://juejin.cn/post/6844903504419504135)
 
+## Contentless tables
+[External Content and Contentless Tables](https://www.sqlite.org/fts5.html#external_content_and_contentless_tables)
+
+```sql
+CREATE VIRTUAL TABLE f1 USING fts5(a, b, c, content='');
+```
+(If there is no value after `content`, it will be recognized as a normal column instead of an option.)
+
+- Contentless FTS5 tables do not support `UPDATE` or `DELETE` statements, or `INSERT` statements that do not supply a non-NULL value for the rowid field.
+
+  `INSERT INTO {table}({table}) VALUES('delete-all');`
+
+- Contentless tables do not support `REPLACE` conflict handling. `REPLACE` and `INSERT OR REPLACE` statements are treated as regular `INSERT` statements. Rows may be deleted from a contentless table using an FTS5 delete command.
+
+- Full-text queries and some auxiliary functions can still be used, but no column values apart from the `rowid` may be read from the table.
+  - Since `rowid` can only be integers, the client must be able to locate the original documents with integers.
+  - `bm25()` (`rank`) can be used with contentless tables.
+
+[Contentless SQLite FTS4 Tables for Large Immutable Documents - The Guinea Pig in the Cocoa Mine](http://cocoamine.net/blog/2015/09/07/contentless-fts4-for-large-immutable-documents/)
+
 ## Query
 [Full-text Query Syntax](https://www.sqlite.org/fts5.html#full_text_query_syntax)
 
@@ -73,6 +93,11 @@ SQLite FTS5 的内部结构使用了 [segment b-tree](https://www.sqlite.org/fts
 ## Sorting
 [Sorting by Auxiliary Function Results](https://www.sqlite.org/fts5.html#sorting_by_auxiliary_function_results)
 
+只 `COUNT(*)` 的话只需要正常查询 5%~33% 的时间，主要是排序比较耗时。
+
+### BM25
+[Okapi BM25 - Wikipedia](https://en.wikipedia.org/wiki/Okapi_BM25)
+
 > The difference between reading from the `rank` column and using the `bm25()` function directly within the query is only significant when sorting by the returned value.
 > ```sql
 > -- The following queries are logically equivalent. But the second may
@@ -83,11 +108,11 @@ SQLite FTS5 的内部结构使用了 [segment b-tree](https://www.sqlite.org/fts
 > SELECT * FROM fts WHERE fts MATCH ? ORDER BY rank;
 > ```
 
-Is `rank` persistent or calculated on the fly?
+`bm25()` can only be used on the entire table, not on a single column. But the weigets of every column can be set separately.
+- [SQLite Forum: FTS5: calculating column weight dynamically?](https://sqlite.org/forum/info/4e3fa41c48087701)
+- [rads/sqlite-okapi-bm25: 📑 SQLite extension to add the Okapi BM25 ranking algorithm](https://github.com/rads/sqlite-okapi-bm25)
 
-Can `bm25()` be used with contentless FTS tables?
-
-只 `COUNT(*)` 的话只需要正常查询 5%~33% 的时间，主要是排序比较耗时。
+Is `rank` persistent or calculated on the fly? On the fly.
 
 ## Extensions
 [微信团队分享：微信移动端的全文检索多音字问题解决方案-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/1198371)
