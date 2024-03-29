@@ -124,3 +124,42 @@ Is `rank` persistent or calculated on the fly? On the fly.
   - 不索引拼音的情况下，FTS 数据库的大小约为原始数据的 1.5~2.5 倍；索引拼音后约为 3.5~4.5 倍。
   - 是否索引拼音对搜索性能影响不大，不过会小幅提高搜索时的内存峰值。
   - 由于 `simple_query()` 会将连续字母当作拼音进行拆分，它对含字母查询的性能影响很大，并且查询越长影响越大。如果要支持拼音搜索，推荐只对中文用户开启。
+
+### Tokenizers
+FTS5 features three built-in tokenizer modules:
+- The **unicode61** tokenizer, based on the Unicode 6.1 standard. This is the default.
+- The **ascii** tokenizer, which assumes all characters outside of the ASCII codepoint range (0-127) are to be treated as token characters.
+- The **porter** tokenizer, which implements the [porter stemming algorithm](https://tartarus.org/martin/PorterStemmer).
+
+Custom tokenizers:
+```c
+typedef struct Fts5Tokenizer Fts5Tokenizer;
+typedef struct fts5_tokenizer fts5_tokenizer;
+struct fts5_tokenizer {
+  int (*xCreate)(void*, const char **azArg, int nArg, Fts5Tokenizer **ppOut);
+  void (*xDelete)(Fts5Tokenizer*);
+  int (*xTokenize)(Fts5Tokenizer*, 
+      void *pCtx,
+      int flags,            /* Mask of FTS5_TOKENIZE_* flags */
+      const char *pText, int nText, 
+      int (*xToken)(
+        void *pCtx,         /* Copy of 2nd argument to xTokenize() */
+        int tflags,         /* Mask of FTS5_TOKEN_* flags */
+        const char *pToken, /* Pointer to buffer containing token */
+        int nToken,         /* Size of token in bytes */
+        int iStart,         /* Byte offset of token within input text */
+        int iEnd            /* Byte offset of end of token within input text */
+      )
+  );
+};
+
+/* Flags that may be passed as the third argument to xTokenize() */
+#define FTS5_TOKENIZE_QUERY     0x0001
+#define FTS5_TOKENIZE_PREFIX    0x0002
+#define FTS5_TOKENIZE_DOCUMENT  0x0004
+#define FTS5_TOKENIZE_AUX       0x0008
+
+/* Flags that may be passed by the tokenizer implementation back to FTS5
+** as the third argument to the supplied xToken callback. */
+#define FTS5_TOKEN_COLOCATED    0x0001      /* Same position as prev. token */
+```
