@@ -82,6 +82,34 @@ FTS 的搜索性能较好，在匹配索引很少时可以在一毫秒内完成�
 
 FTS5 还支持比较复杂的匹配语法，比如通过前缀匹配词组、匹配连续词组、按顺序匹配词组、多词组距离限制、逻辑运算符。
 
+## Prefix queries
+[FTS5 Prefix Queries](https://www.sqlite.org/fts5.html#fts5_prefix_queries)
+
+- SQLite FTS 内置有 prefix 查询支持，不需要 prefix 索引，但也可以选择按字符数建立一个或多个 prefix 索引来提高性能。
+- 相比查询单个 token，查询 prefix 可能需要几倍到几十倍的时间。不过由于查询耗时本身在毫秒级，查询 prefix 耗时并不长。
+  - 相比以 prefix 开头的 token 种类数，token 出现的次数本身对性能的影响更大。比如以 "n" 为 prefix 进行查询时，有 108 种 token，耗时是 70x；而以 "a" 为 prefix 进行查询时，只有 40 种 token，但耗时是 130x。
+- 和查询单个 token 一样，如果不进行 LIMIT，查询结果较多的 prefix 时可能需要普通查询上千倍的时间。
+- 建立 prefix 索引能够降低 prefix 查询 5~50ms 的耗时（进行 LIMIT 时为 5~15ms），但会增加 30% 左右的构建耗时，15~45% 的数据库体积。
+- 另外，如果中文使用了单字分词，不需要使用 prefix 查询。对中文使用 prefix 查询会略微降低性能。
+
+建议对于英文在只输入了一个字母时不进行查询，在输入了更多字母或已经输入了其它词时再进行查询。后两种情况的 prefix 查询耗时都不高，没有必要建立 prefix 索引。
+
+### Prefix indexes
+> By default, FTS5 maintains a single index recording the location of each token instance within the document set. This means that querying for complete tokens is fast, as it requires a single lookup, but querying for a prefix token can be slow, as it requires a range scan. For example, to query for the prefix token `abc*` requires a range scan of all tokens greater than or equal to `abc` and less than `abd`.
+> 
+> A prefix index is a separate index that records the location of all instances of prefix tokens of a certain length in characters used to speed up queries for prefix tokens. For example, optimizing a query for prefix token `abc*` requires a prefix index of three-character prefixes.
+> 
+> To add prefix indexes to an FTS5 table, the "prefix" option is set to either a single positive integer or a text value containing a white-space separated list of one or more positive integer values. A prefix index is created for each integer specified. If more than one "prefix" option is specified as part of a single `CREATE VIRTUAL TABLE` statement, all apply.
+
+```sql
+-- Two ways to create an FTS5 table that maintains prefix indexes for
+-- two and three character prefix tokens.
+CREATE VIRTUAL TABLE ft USING fts5(a, b, prefix='2 3');
+CREATE VIRTUAL TABLE ft USING fts5(a, b, prefix=2, prefix=3);
+```
+
+具体实现不明，无法用工具在 tables 或 indexes 中查看到。
+
 ## Merge operation
 - `automerge`
 
