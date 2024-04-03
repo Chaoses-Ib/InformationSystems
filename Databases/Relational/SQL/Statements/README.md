@@ -86,6 +86,8 @@ VALUES (31, 'Sales'),
        (35, 'Marketing');
 ```
 
+[SQLite "INSERT OR REPLACE INTO" vs. "UPDATE ... WHERE" - Stack Overflow](https://stackoverflow.com/questions/2251699/sqlite-insert-or-replace-into-vs-update-where)
+
 ## 注释
 [SQLite 语法 | 菜鸟教程](https://www.runoob.com/sqlite/sqlite-syntax.html)
 ```sql

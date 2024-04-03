@@ -46,9 +46,26 @@ CREATE VIRTUAL TABLE f1 USING fts5(a, b, c, content='');
 ```
 (If there is no value after `content`, it will be recognized as a normal column instead of an option.)
 
-- Contentless FTS5 tables do not support `UPDATE` or `DELETE` statements, or `INSERT` statements that do not supply a non-NULL value for the rowid field.
+- Contentless tables
+  
+  Contentless tables do not support `UPDATE` or `DELETE` statements, or `INSERT` statements that do not supply a non-NULL value for the rowid field.
 
   `INSERT INTO {table}({table}) VALUES('delete-all');`
+
+- Contentless-delete tables
+
+  ```sql
+  CREATE VIRTUAL TABLE f1 USING fts5(a, b, c, content='', contentless_delete=1);
+  ```
+  - Support both `DELETE` and "`INSERT OR REPLACE INTO`" statements.
+  - Support `UPDATE` statements, but only if new values are supplied for all user-defined columns of the fts5 table.
+
+    ```sql
+    UPDATE f1 SET a=?, b=?, c=? WHERE rowid=?;
+    ```
+  - Not support the FTS5 delete command.
+
+  Unless backwards compatibility is required, new code should prefer contentless-delete tables to contentless tables.
 
 - Contentless tables do not support `REPLACE` conflict handling. `REPLACE` and `INSERT OR REPLACE` statements are treated as regular `INSERT` statements. Rows may be deleted from a contentless table using an FTS5 delete command.
 
@@ -107,6 +124,8 @@ SQLite FTS5 的内部结构使用了 [segment b-tree](https://www.sqlite.org/fts
 > SELECT * FROM fts WHERE fts MATCH ? ORDER BY bm25(fts);
 > SELECT * FROM fts WHERE fts MATCH ? ORDER BY rank;
 > ```
+
+BM25 is smaller-better.
 
 `bm25()` can only be used on the entire table, not on a single column. But the weigets of every column can be set separately.
 - [SQLite Forum: FTS5: calculating column weight dynamically?](https://sqlite.org/forum/info/4e3fa41c48087701)
