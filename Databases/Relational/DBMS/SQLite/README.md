@@ -5,6 +5,14 @@
 
 [Performance/Avoid SQLite In Your Next Firefox Feature - MozillaWiki](https://wiki.mozilla.org/Performance/Avoid_SQLite_In_Your_Next_Firefox_Feature)
 
+[libSQL: A fork of SQLite that is both Open Source, and Open Contributions.](https://github.com/tursodatabase/libsql)
+
+Distributed:
+- [rqlite: The lightweight, distributed relational database built on SQLite.](https://github.com/rqlite/rqlite)
+- [dqlite: Embeddable, replicated and fault-tolerant SQL engine.](https://github.com/canonical/dqlite)
+- [SQLSync: A collaborative offline-first wrapper around SQLite. It is designed to synchronize web application state between users, devices, and the edge.](https://github.com/orbitinghail/sqlsync)
+- [cr-sqlite: Convergent, Replicated SQLite. Multi-writer and CRDT support for SQLite](https://github.com/vlcn-io/cr-sqlite)
+
 ## The amalgamation
 The amalgamation is the recommended way of using SQLite in a larger application.
 
@@ -13,8 +21,15 @@ The amalgamation is the recommended way of using SQLite in a larger application.
 [SQLite Download Page](https://www.sqlite.org/download.html)
 
 ## Bindings
+- [Tencent/WCDB: A cross-platform database framework developed by WeChat.](https://github.com/Tencent/wcdb)
+  - Languages: C++, Java, Kotlin, Swift, Objective-C.
+  - 集成了数据库加密（SQLCipher）、修复、防注入、schema 升级、全文搜索、迁移、压缩。
+  - 虽然 README 有英文，但文档实际上只有中文。
+
 ### C++
-- [SQLiteCpp: SQLiteC++ (SQLiteCpp) is a smart and easy to use C++ SQLite3 wrapper.](https://github.com/SRombauts/SQLiteCpp)
+- [SQLiteCpp: A smart and easy to use C++ SQLite3 wrapper.](https://github.com/SRombauts/SQLiteCpp)
+- [sqlite\_modern\_cpp: The C++14 wrapper around sqlite library](https://github.com/SqliteModernCpp/sqlite_modern_cpp) (inactive)
+- [sqlite\_orm: ❤️ SQLite ORM light header only library for modern C++](https://github.com/fnc12/sqlite_orm)
 
 ### Rust
 - [Rusqlite: Ergonomic bindings to SQLite for Rust](https://github.com/rusqlite/rusqlite)
@@ -24,6 +39,17 @@ The amalgamation is the recommended way of using SQLite in a larger application.
 
 [Comparison of sqlite crates? : r/rust](https://www.reddit.com/r/rust/comments/uxvyxw/comparison_of_sqlite_crates/)
 > In terms of performance is rusqulite the solution with the smallest overhead, followed by diesel, which is minimally slower. SQLx and anything build on top is significantly less slower, at least according to benchmarks I've seen. Sometimes its as much as factor 10 slower.
+
+## Python
+- [aiosqlite: asyncio bridge to the standard sqlite3 module](https://github.com/omnilib/aiosqlite)
+- [sqlitedict: Persistent dict, backed by sqlite3 and pickle, multithread-safe.](https://github.com/piskvorky/sqlitedict)
+
+### JS
+- [SQL.JS: A javascript library to run SQLite on the web.](https://github.com/sql-js/sql.js)
+- [Prisma: Next-generation ORM for Node.js & TypeScript | PostgreSQL, MySQL, MariaDB, SQL Server, SQLite, MongoDB and CockroachDB](https://github.com/prisma/prisma)
+
+### Go
+- [sqlc: Generate type-safe code from SQL](https://github.com/sqlc-dev/sqlc)
 
 ## Foreign key
 ```sql
@@ -97,6 +123,11 @@ Rusqlite:
 
 ## Virtual tables
 [The Virtual Table Mechanism Of SQLite](https://www.sqlite.org/vtab.html)
+
+- [XLite: Query Excel spredsheets (.xlsx, .xls, .ods) using SQLite](https://github.com/x2bool/xlite)
+
+## Indexes
+- [sqlite\_blaster: Create huge Sqlite indexes at breakneck speeds](https://github.com/siara-cc/sqlite_blaster)
 
 ## Statements
 [SQL Language Expressions](https://www.sqlite.org/lang_expr.html)
@@ -187,8 +218,14 @@ SELECT AVG((t.row - sub.a) * (t.row - sub.a)) as var from t,
 
 - `load_extension()` only loads the extension into the specified connection.
 
+Extensions:
+- [sqlean: The ultimate set of SQLite extensions](https://github.com/nalgeon/sqlean)
+- [sqlite-vss: A SQLite extension for efficient vector search, based on Faiss!](https://github.com/asg017/sqlite-vss)
+
 ## Tools
 - Navicat
+
+- [DB Browser for SQLite](https://github.com/sqlitebrowser/sqlitebrowser)
 
 - [SQLiteStudio](https://sqlitestudio.pl/)
 
@@ -197,3 +234,14 @@ SELECT AVG((t.row - sub.a) * (t.row - sub.a)) as var from t,
 - [DB Browser for SQLite](https://sqlitebrowser.org/)
 
   只支持 SQLCipher 加密
+
+- [sqliteviz: Instant offline SQL-powered data visualisation in your browser](https://github.com/lana-k/sqliteviz)
+
+- [xeus-sql: Jupyter kernel for SQL databases](https://github.com/jupyter-xeus/xeus-sql)
+
+Replication:
+- [Litestream: Streaming replication for SQLite.](https://github.com/benbjohnson/litestream)
+
+Servers:
+- [Soul: 🕉 A SQLite REST and realtime server](https://github.com/thevahidal/soul)
+- [tuql: Automatically create a GraphQL server from a SQLite database or a SQL file](https://github.com/bradleyboy/tuql)

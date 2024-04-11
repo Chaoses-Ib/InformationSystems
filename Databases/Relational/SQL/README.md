@@ -6,6 +6,10 @@
 
 [SQL标准简介 - 云+社区 - 腾讯云](https://cloud.tencent.com/developer/article/1442564)
 
+## Parsers and transpilers
+- [SQLGlot: Python SQL Parser and Transpiler](https://github.com/tobymao/sqlglot)
+- [Logica: A logic programming language that compiles to SQL. It runs on Google BigQuery, PostgreSQL and SQLite.](https://github.com/EvgSkv/logica)
+
 ## 特点
 - 综合统一
 
