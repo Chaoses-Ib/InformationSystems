@@ -21,6 +21,33 @@ SQLite 是动态类型，创建表时指定的列类型只作为 type affinity�
 ## Type affinity
 判别机制很狗屎，"FLOATING PO<u>INT</u>" 会被判定成 `INTEGER`。
 
+### `NUMERIC`
+> A column with `NUMERIC` affinity may contain values using all five storage classes.
+> - When text data is inserted into a `NUMERIC` column, the storage class of the text is converted to `INTEGER` or `REAL` (in order of preference) if the text is a well-formed integer or real literal, respectively.
+> - If the TEXT value is a well-formed integer literal that is too large to fit in a 64-bit signed integer, it is converted to `REAL`.
+> - For conversions between `TEXT` and `REAL` storage classes, only the first 15 significant decimal digits of the number are preserved.
+> - If the `TEXT` value is not a well-formed integer or real literal, then the value is stored as `TEXT`.
+> - Hexadecimal integer literals are not considered well-formed and are stored as TEXT. (This is done for historical compatibility with versions of SQLite prior to version 3.8.6 2014-08-15 where hexadecimal integer literals were first introduced into SQLite.)
+> - If a floating point value that can be represented exactly as an integer is inserted into a column with `NUMERIC` affinity, the value is converted into an integer.
+>
+>   A string might look like a floating-point literal with a decimal point and/or exponent notation but as long as the value can be expressed as an integer, the `NUMERIC` affinity will convert it into an integer. Hence, the string `3.0e+5` is stored in a column with `NUMERIC` affinity as the integer `300000`, not as the floating point value `300000.0`.
+> - No attempt is made to convert `NULL` or `BLOB` values.
+
+A column that uses `INTEGER` affinity behaves the same as a column with `NUMERIC` affinity.
+
+A column with `REAL` affinity behaves like a column with `NUMERIC` affinity except that it forces integer values into floating point representation. (As an internal optimization, small floating point values with no fractional component and stored in columns with `REAL` affinity are written to disk as integers in order to take up less space and are automatically converted back into floating point as the value is read out. This optimization is completely invisible at the SQL level and can only be detected by examining the raw bits of the database file.)
+
+[SQLite Forum: The NUMERIC data type?](https://sqlite.org/forum/forumpost/6540c75cf6a7a3cb)
+
+## Decimal
+- `INTEGER`/`TEXT`/`BLOB` + user code
+
+- [The `decimal.c` extension](https://www.sqlite.org/floatingpoint.html#the_decimal_c_extension)
+
+- [SQLite3 Decimal](https://chiselapp.com/user/lifepillar/repository/sqlite3decimal/index)
+
+  [SQLite Forum: About the newly added decimal extension](https://sqlite.org/forum/forumpost/1166699aab)
+
 ## Collating sequences
 `TEXT` 排序方案，内建的只有三种：
 
