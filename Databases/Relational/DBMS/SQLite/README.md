@@ -124,7 +124,10 @@ Rusqlite:
 ## Virtual tables
 [The Virtual Table Mechanism Of SQLite](https://www.sqlite.org/vtab.html)
 
+- [sqlite-lines: A SQLite extension for reading large files line-by-line (NDJSON, logs, txt, etc.)](https://github.com/asg017/sqlite-lines)
+- [sqlite-xsv: the fastest CSV SQLite extension, written in Rust](https://github.com/asg017/sqlite-xsv)
 - [XLite: Query Excel spredsheets (.xlsx, .xls, .ods) using SQLite](https://github.com/x2bool/xlite)
+- [sqlite-http: A SQLite extension for making HTTP requests purely in SQL](https://github.com/asg017/sqlite-http)
 
 ## Indexes
 - [sqlite\_blaster: Create huge Sqlite indexes at breakneck speeds](https://github.com/siara-cc/sqlite_blaster)
@@ -218,9 +221,25 @@ SELECT AVG((t.row - sub.a) * (t.row - sub.a)) as var from t,
 
 - `load_extension()` only loads the extension into the specified connection.
 
+Rust: [sqlite-loadable-rs: A framework for writing fast and performant SQLite extensions in Rust](https://github.com/asg017/sqlite-loadable-rs)
+
 Extensions:
 - [sqlean: The ultimate set of SQLite extensions](https://github.com/nalgeon/sqlean)
+
 - [sqlite-vss: A SQLite extension for efficient vector search, based on Faiss!](https://github.com/asg017/sqlite-vss)
+  - [Benchmarks - Issue #31](https://github.com/asg017/sqlite-vss/issues/31)
+  
+  Successors:
+  - ~~[sqlite-vector: A SQLite extension for working with float and binary vectors. Work in progress!](https://github.com/asg017/sqlite-vector)~~
+  - [sqlite-vec: Work-in-progress vector search SQLite extension that runs anywhere.](https://github.com/asg017/sqlite-vec)
+
+- [sqlite-regex: A fast regular expression SQLite extension, written in Rust](https://github.com/asg017/sqlite-regex)
+
+- [sqlite-path: A SQLite extension for parsing, generating, and querying paths](https://github.com/asg017/sqlite-path)
+
+[asg017/sqlite-ecosystem: An overview of all my SQLite extensions, and a roadmap for future extensions and tooling!](https://github.com/asg017/sqlite-ecosystem)
+
+[sqlite-package-manager](https://github.com/asg017/sqlite-package-manager)
 
 ## Tools
 - Navicat
