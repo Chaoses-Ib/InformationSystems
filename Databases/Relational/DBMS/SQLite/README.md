@@ -227,11 +227,18 @@ Extensions:
 - [sqlean: The ultimate set of SQLite extensions](https://github.com/nalgeon/sqlean)
 
 - [sqlite-vss: A SQLite extension for efficient vector search, based on Faiss!](https://github.com/asg017/sqlite-vss)
+  - Only worked on Linux + MacOS machines (no Windows, WASM, mobile devices, etc.)
+  - Stored vectors all in-memory
+  - Various transaction-related bugs and issues
+  - Extremely hard and time-consuming to compile
+  - Missing common vector operations (scalar/binary quantization)
   - [Benchmarks - Issue #31](https://github.com/asg017/sqlite-vss/issues/31)
-  
+
   Successors:
   - ~~[sqlite-vector: A SQLite extension for working with float and binary vectors. Work in progress!](https://github.com/asg017/sqlite-vector)~~
   - [sqlite-vec: Work-in-progress vector search SQLite extension that runs anywhere.](https://github.com/asg017/sqlite-vec)
+
+    [I'm writing a new vector search SQLite Extension | Alex Garcia's Blog](https://alexgarcia.xyz/blog/2024/building-new-vector-search-sqlite/index.html) ([Hacker News](https://news.ycombinator.com/item?id=40243168))
 
 - [sqlite-regex: A fast regular expression SQLite extension, written in Rust](https://github.com/asg017/sqlite-regex)
 
