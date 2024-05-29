@@ -72,6 +72,8 @@
 
 - [Network Databases](Databases/Network/README.md)
 
+- [Vector Databases](Databases/Vector/README.md)
+
 - [Embedded Databases](Databases/Embedded.md)
 
 ## [Geographic Information Systems](Geographic/README.md)
