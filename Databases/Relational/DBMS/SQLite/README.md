@@ -141,6 +141,7 @@ Rusqlite:
 
 ## Transactions
 - Rollback journals
+  - 1000 insertions: 10s → 15ms
 - [Write-ahead logs](https://www.sqlite.org/wal.html)
   - Although it is said that "WAL mode works as efficiently with large transactions as does rollback mode", WAL can still be 15~40% slower than rollback mode for large transactions.
 
@@ -158,7 +159,12 @@ Rusqlite:
 - [sqlite\_blaster: Create huge Sqlite indexes at breakneck speeds](https://github.com/siara-cc/sqlite_blaster)
 
 ## Statements
-[SQL Language Expressions](https://www.sqlite.org/lang_expr.html)
+[Query Language Understood by SQLite](https://www.sqlite.org/lang.html)
+- [SQL Language Expressions](https://www.sqlite.org/lang_expr.html)
+- [Built-In Scalar SQL Functions](https://www.sqlite.org/lang_corefunc.html)
+
+BNF:
+- [sqlite-bnf: Machine readable BNF form of the sqlite grammar and a script which generates it from published sqlite website](https://github.com/AlecKazakova/sqlite-bnf)
 
 [sql - What are valid table names in SQLite? - Stack Overflow](https://stackoverflow.com/questions/3694276/what-are-valid-table-names-in-sqlite)
 
@@ -178,6 +184,11 @@ Rusqlite:
 - `:AAAA`, `@AAAA`, `$AAAA`
 
 - No variable length argument support
+
+  [select - SQLite: bind list of values to "WHERE col IN ( :PRM )" - Stack Overflow](https://stackoverflow.com/questions/4788724/sqlite-bind-list-of-values-to-where-col-in-prm)
+  - Generate `?`
+  - `json_each()`
+
 - `SQLITE_MAX_VARIABLE_NUMBER` defaults to 32766 (prior to v3.22 it is 999)
 
 ## SELECT
