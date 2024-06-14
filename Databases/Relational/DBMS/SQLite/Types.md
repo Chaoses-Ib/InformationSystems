@@ -6,10 +6,17 @@ SQLite 是动态类型，创建表时指定的列类型只作为 type affinity�
 ## Storage classes
 - `NULL`
 - `INTEGER`
+
+  The value is a signed integer, stored in 0, 1, 2, 3, 4, 6, or 8 bytes depending on the magnitude of the value.
+
 - `REAL`
+
+  The value is a floating point value, stored as an 8-byte IEEE floating point number.
+
 - `TEXT`
 
-  只支持 UTF-8 和 UTF-16 编码
+  The value is a text string, stored using the database encoding (UTF-8, UTF-16BE or UTF-16LE).
+
 - `BLOB`
 
 ### `BLOB`
@@ -41,6 +48,8 @@ A column with `REAL` affinity behaves like a column with `NUMERIC` affinity exce
 
 ## Decimal
 - `INTEGER`/`TEXT`/`BLOB` + user code
+
+  [→Base-10 (decimal) floating-point Arithmetic](https://github.com/Chaoses-Ib/ComputationalMathematics/blob/main/Arithmetic/Floating-point/README.md#base-10-decimal)
 
 - [The `decimal.c` extension](https://www.sqlite.org/floatingpoint.html#the_decimal_c_extension)
 
