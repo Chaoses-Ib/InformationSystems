@@ -24,12 +24,37 @@ The amalgamation is the recommended way of using SQLite in a larger application.
 - [Tencent/WCDB: A cross-platform database framework developed by WeChat.](https://github.com/Tencent/wcdb)
   - Languages: C++, Java, Kotlin, Swift, Objective-C.
   - 集成了数据库加密（SQLCipher）、修复、防注入、schema 升级、全文搜索、迁移、压缩。
+    - Thread-local connections
+  - Dependencies: SQLCipher (OpenSSL), zstd
+  - Binary size: 5 MB (Windows x64, about 3 MB larger than SQLite only)
   - 虽然 README 有英文，但文档实际上只有中文。
+
+  Build:
+  ```sh
+  git clone https://github.com/Tencent/wcdb.git
+  cd wcdb
+  git submodule update --init sqlcipher zstd
+  cd src
+  mkdir build
+  cd build
+  cmake .. -DBUILD_SHARED_LIBS=OFF
+  ```
+  MSBuild:
+  ```xml
+  <AdditionalIncludeDirectories>$(SolutionDir)wcdb\src\build\export_headers</AdditionalIncludeDirectories>
+  <AdditionalDependencies>$(SolutionDir)\wcdb\tools\prebuild\openssl\windows\win64\libssl.lib;$(SolutionDir)\wcdb\tools\prebuild\openssl\windows\win64\libcrypto.lib;Crypt32.lib;$(SolutionDir)\wcdb\tools\prebuild\zlib\windows\win64\zlibstatic.lib</AdditionalDependencies>
+  ```
+  - CRT: With `-DBUILD_SHARED_LIBS=OFF`, the CRT of `WCDB` and `zstd` is `/MD`, but the CRT of `sqlcipher` is `/MD`. 
 
 ### C++
 - [SQLiteCpp: A smart and easy to use C++ SQLite3 wrapper.](https://github.com/SRombauts/SQLiteCpp)
+  - Threading mode: Multi-thread
+  - Only basic functions. No connection pool, statement cache.
 - [sqlite\_modern\_cpp: The C++14 wrapper around sqlite library](https://github.com/SqliteModernCpp/sqlite_modern_cpp) (inactive)
 - [sqlite\_orm: ❤️ SQLite ORM light header only library for modern C++](https://github.com/fnc12/sqlite_orm)
+- [SQLiteWrapper: An easy-to-use, extensible and lightweight C++17 wrapper for SQLite](https://github.com/trailofbits/sqlite_wrapper) (discontinued)
+  - Thread-local connections
+- [LibzdbL Database Connection Pool Library](https://tildeslash.com/libzdb/)
 
 ### Rust
 - [Rusqlite: Ergonomic bindings to SQLite for Rust](https://github.com/rusqlite/rusqlite)
