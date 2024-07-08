@@ -31,10 +31,18 @@ Data structures:
 
 How bad is using multiple different allocators in the same process in terms of memory usage?
 
+[Does the pointer passed to `free()` have to point to beginning of the memory block, or can it point to the interior? - Stack Overflow](https://stackoverflow.com/questions/4589033/does-the-pointer-passed-to-free-have-to-point-to-beginning-of-the-memory-block)
+
 ## Implementations
 - Windows heap
 
   [Windows 8 Heap Internals](https://illmatics.com/Windows%208%20Heap%20Internals%20(Slides).pdf)
+
+  `HeapFree()`:
+  - The address to be freed by `HeapFree()` must be at the beginning of the block, otherwise the heap will corrupt and throw `STATUS_HEAP_CORRUPTION` (0xC0000374).
+  - [How can I find the heap that a memory block originally came from, so I can free it properly? - The Old New Thing](https://devblogs.microsoft.com/oldnewthing/20210812-00/?p=105549)
+
+  [Unmanaged Memory Fragmentation -- an old story | Microsoft Learn](https://learn.microsoft.com/en-us/archive/blogs/ricom/unmanaged-memory-fragmentation-an-old-story)
 
   [\[llvm-dev\] RFC: Replacing the default CRT allocator on Windows](https://groups.google.com/g/llvm-dev/c/mWQEB-SzJD4)
 
