@@ -123,3 +123,6 @@ WHERE EXISTS
 ```
 本例中子查询的查询条件依赖于外层父查询的某个属性值（`Student` 的 `Sno` 值），因此是相关子查询。
 这个相关子查询的处理过程是：首先取外层查询中 `Student` 表的第一个元组，根据它与内层查询相关的属性值（`Sno` 值）处理内层查询，若 `WHERE` 子句返回值为真，则取外层查询中该元组的 `Sname` 放入结果表；然后再取 `Student` 表的下一个元组； 重复这一过程，直至外层 `Student` 表全部检查完为止。
+
+## `RETURNING`
+SQLite: [RETURNING](https://www.sqlite.org/lang_returning.html)

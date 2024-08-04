@@ -25,6 +25,8 @@ The amalgamation is the recommended way of using SQLite in a larger application.
   - Languages: C++, Java, Kotlin, Swift, Objective-C.
   - 集成了数据库加密（SQLCipher）、修复、防注入、schema 升级、全文搜索、迁移、压缩。
     - Thread-local connections
+    - Not support custom types: [C++ 模型绑定 - Tencent/wcdb Wiki](https://github.com/Tencent/wcdb/wiki/C++-%e6%a8%a1%e5%9e%8b%e7%bb%91%e5%ae%9a)
+    - [可中断事务 (PauseableTransaction)](https://github.com/Tencent/wcdb/wiki/C++-%E9%AB%98%E7%BA%A7%E6%8E%A5%E5%8F%A3#%E5%8F%AF%E4%B8%AD%E6%96%AD%E4%BA%8B%E5%8A%A1)
   - Dependencies: SQLCipher (OpenSSL), zstd
   - Binary size: 5 MB (Windows x64, about 3 MB larger than SQLite only)
   - 虽然 README 有英文，但文档实际上只有中文。
@@ -58,6 +60,20 @@ The amalgamation is the recommended way of using SQLite in a larger application.
 
 ### Rust
 - [Rusqlite: Ergonomic bindings to SQLite for Rust](https://github.com/rusqlite/rusqlite)
+  - `Transaction`
+    - `Transaction::new()` takes `&mut Connection` and then the original connection cannot be used
+    - `Transaction::new_unchecked()` takes `&Connection`
+    - `Transaction` can deref to `Connection`
+  - [`ParamsFromIter`](https://docs.rs/rusqlite/latest/rusqlite/struct.ParamsFromIter.html)
+    - `a.iter().map(|v| v as &dyn rusqlite::ToSql).chain(b.iter().map(|v| v as &dyn rusqlite::ToSql))`
+  - JSON
+    - `Value::String("a")` will be converted to `"\"a\""`
+  
+      [Support for Number (Integer/Float) and Null in `serde_json` - Issue #882](https://github.com/rusqlite/rusqlite/issues/882)
+  
+      [ToSql for `serde_json::value` deserializes incorrectly for strings - Issue #1312](https://github.com/rusqlite/rusqlite/issues/1312)
+    - [serde\_rusqlite: Serialize/deserialize rusqlite rows](https://github.com/twistedfall/serde_rusqlite)
+  - [Exemplar: A boilerplate eliminator for rusqlite.](https://github.com/Colonial-Dev/exemplar)
 - [sqlite: Interface to SQLite](https://github.com/stainless-steel/sqlite)
 - [Diesel: A safe, extensible ORM and Query Builder for Rust](https://github.com/diesel-rs/diesel)
 - [SQLx: 🧰 The Rust SQL Toolkit. An async, pure Rust SQL crate featuring compile-time checked queries without a DSL. Supports PostgreSQL, MySQL, and SQLite.](https://github.com/launchbadge/sqlx)
@@ -117,6 +133,8 @@ PRAGMA foreign_keys = 1
 [Can I read and write to a SQLite database concurrently from multiple connections? - Stack Overflow](https://stackoverflow.com/questions/10325683/can-i-read-and-write-to-a-sqlite-database-concurrently-from-multiple-connections)
 > Beginning with version 3.7.0, a new “Write Ahead Logging” (WAL) option is available, in which reading and writing can proceed concurrently. By default, WAL is not enabled. To turn WAL on, refer to the SQLite documentation.
 
+- SQLite will fail to create the db if the parent directory doesn't exist.
+
 ## Thread-safety
 [Using SQLite In Multi-Threaded Applications](https://www.sqlite.org/threadsafe.html)
 > SQLite supports three different threading modes:
@@ -141,11 +159,19 @@ Rusqlite:
 
 ## Transactions
 - Rollback journals
+  - `DELETE` / `TRUNCATE` / `PERSIST`
+  - `MEMORY`
   - 1000 insertions: 10s → 15ms
+
 - [Write-ahead logs](https://www.sqlite.org/wal.html)
   - Although it is said that "WAL mode works as efficiently with large transactions as does rollback mode", WAL can still be 15~40% slower than rollback mode for large transactions.
 
 [On the IO characteristics of the SQLite Transactions](https://oslab.kaist.ac.kr/wp-content/uploads/esos_files/publication/conferences/international/On%20the%20IO%20characteristics%20of%20the%20SQLite%20Transactions.pdf?ckattempt=1)
+
+### Savepoints
+[Savepoints](https://www.sqlite.org/lang_savepoint.html)
+
+> `SAVEPOINT`s are a method of creating transactions, similar to `BEGIN` and `COMMIT`, except that the `SAVEPOINT` and `RELEASE` commands are named and may be nested.
 
 ## Virtual tables
 [The Virtual Table Mechanism Of SQLite](https://www.sqlite.org/vtab.html)
@@ -233,6 +259,8 @@ SQLite 的 `OFFSET` 实际上只是忽略了指定数量的结果，最差的情
 
 ## Bulk-inserting
 - Transactions
+
+  ~10k/s
 
   [Maximum number of inserts per transaction - Stack Overflow](https://stackoverflow.com/questions/16575424/maximum-number-of-inserts-per-transaction)
 
