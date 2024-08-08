@@ -31,6 +31,7 @@
 - [Three-schema Approach](Databases/Three-schema.md)
 
 - [Relational Databases](Databases/Relational/README.md)
+  - [Relational Schemas](Databases/Relational/Schemas.md)
   - [Relational Algebra](Databases/Relational/Algebra/README.md)
     - [Joins](Databases/Relational/Algebra/Joins.md)
   - [Normalization](Databases/Relational/Normalization/README.md)
