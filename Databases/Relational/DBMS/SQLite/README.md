@@ -26,6 +26,8 @@ The amalgamation is the recommended way of using SQLite in a larger application.
   - 集成了数据库加密（SQLCipher）、修复、防注入、schema 升级、全文搜索、迁移、压缩。
     - Thread-local connections
     - Not support custom types: [C++ 模型绑定 - Tencent/wcdb Wiki](https://github.com/Tencent/wcdb/wiki/C++-%e6%a8%a1%e5%9e%8b%e7%bb%91%e5%ae%9a)
+    - [数据库升级](https://github.com/Tencent/wcdb/wiki/C++-%e6%a8%a1%e5%9e%8b%e7%bb%91%e5%ae%9a#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8D%87%E7%BA%A7)
+    - [数据迁移](https://github.com/Tencent/wcdb/wiki/C++-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB)
     - [可中断事务 (PauseableTransaction)](https://github.com/Tencent/wcdb/wiki/C++-%E9%AB%98%E7%BA%A7%E6%8E%A5%E5%8F%A3#%E5%8F%AF%E4%B8%AD%E6%96%AD%E4%BA%8B%E5%8A%A1)
   - Dependencies: SQLCipher (OpenSSL), zstd
   - Binary size: 5 MB (Windows x64, about 3 MB larger than SQLite only)
@@ -75,11 +77,16 @@ The amalgamation is the recommended way of using SQLite in a larger application.
     - [serde\_rusqlite: Serialize/deserialize rusqlite rows](https://github.com/twistedfall/serde_rusqlite)
   - [Exemplar: A boilerplate eliminator for rusqlite.](https://github.com/Colonial-Dev/exemplar)
 - [sqlite: Interface to SQLite](https://github.com/stainless-steel/sqlite)
-- [Diesel: A safe, extensible ORM and Query Builder for Rust](https://github.com/diesel-rs/diesel)
-- [SQLx: 🧰 The Rust SQL Toolkit. An async, pure Rust SQL crate featuring compile-time checked queries without a DSL. Supports PostgreSQL, MySQL, and SQLite.](https://github.com/launchbadge/sqlx)
+- [microrm: Lightweight SQLite ORM - Kestrel's git](https://git.flying-kestrel.ca/kestrel/microrm)
+  - No migration support
+- [nanosql: Tiny, strongly-typed data mapper for SQLite and Rust](https://github.com/H2CO3/nanosql)
 
-[Comparison of sqlite crates? : r/rust](https://www.reddit.com/r/rust/comments/uxvyxw/comparison_of_sqlite_crates/)
-> In terms of performance is rusqulite the solution with the smallest overhead, followed by diesel, which is minimally slower. SQLx and anything build on top is significantly less slower, at least according to benchmarks I've seen. Sometimes its as much as factor 10 slower.
+[→DBMS](../README.md#rust)
+
+Discussions:
+- 2022-05 [Comparison of sqlite crates? : r/rust](https://www.reddit.com/r/rust/comments/uxvyxw/comparison_of_sqlite_crates/)
+  
+  > In terms of performance is rusqulite the solution with the smallest overhead, followed by diesel, which is minimally slower. SQLx and anything build on top is significantly less slower, at least according to benchmarks I've seen. Sometimes its as much as factor 10 slower.
 
 ## Python
 - [aiosqlite: asyncio bridge to the standard sqlite3 module](https://github.com/omnilib/aiosqlite)

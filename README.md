@@ -55,6 +55,7 @@
       - [Encryption](Databases/Relational/DBMS/SQLite/Encryption.md)
       - [Full-text Search](Databases/Relational/DBMS/SQLite/FTS/README.md)
       - [.NET](Databases/Relational/DBMS/SQLite/.NET.md)
+    - [PostgreSQL](Databases/Relational/DBMS/PostgreSQL/README.md)
     - [Microsoft Access](Databases/Relational/DBMS/Access/README.md)
 
 - [Key-Value Databases](Databases/Key-Value/README.md)
