@@ -132,8 +132,6 @@ Because `open()` can create a file, the usage of `creat()` has somewhat fallen o
 
 ## Libraries
 ### Rust
-- [glob: Support for matching file paths against Unix shell style patterns.](https://github.com/rust-lang/glob)
-  - [`require_literal_separator == require_literal_leading_dot == false` by default](https://docs.rs/glob/latest/glob/struct.MatchOptions.html)
 - [fs\_extra: Expanding opportunities standard library std::fs and std::io](https://github.com/webdesus/fs_extra)
   - Copy files (optionally with information about the progress).
   - Copy directories recursively (optionally with information about the progress).
