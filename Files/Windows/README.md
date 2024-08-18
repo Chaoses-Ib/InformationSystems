@@ -122,6 +122,20 @@ Tools:
   Type SUBST with no parameters to display a list of current virtual drives.
   ```
 
+## Network drives
+[You can't access this shared folder because your organization's security policies block unauthenticated guest access - Microsoft Q&A](https://learn.microsoft.com/en-us/answers/questions/59309/you-can-t-access-this-shared-folder-because-your-o)
+- `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters\AllowInsecureGuestAuth`
+
+## Links
+- Junctions
+  - [Can an NTFS junction point be followed over a network share? - Super User](https://superuser.com/a/1745062)
+
+    Windows 新版（至少 21H2 19044.1889 以上）不再支持在网络驱动器中使用 junction。
+
+    Hidden and system junctions will be filtered out, others will not, but cannot be accessed by other users?
+
+    [Windows junction invalid on network share - Super User](https://superuser.com/questions/1062248/windows-junction-invalid-on-network-share)
+
 ## Unicode
 ### Case sensitivity
 > Do not assume case sensitivity. For example, consider the names OSCAR, Oscar, and oscar to be the same, even though some file systems (such as a POSIX-compliant file system) may consider them as different. Note that NTFS supports POSIX semantics for case sensitivity but this is not the default behavior.
