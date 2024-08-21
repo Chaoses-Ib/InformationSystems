@@ -48,6 +48,45 @@ Pointers:
 
   Examples: ext4.
 
+## Times
+- Windows: [File Times - Win32 apps | Microsoft Learn](https://learn.microsoft.com/en-us/windows/win32/sysinfo/file-times)
+
+  [.net - Windows-compatible filesystems' file time resolutions - Stack Overflow](https://stackoverflow.com/questions/31519880/windows-compatible-filesystems-file-time-resolutions)
+
+File systems:
+- NTFS: 100ns
+  - > The NTFS file system delays updates to the last access time for a file by up to 1 hour after the last access.
+- FAT
+  - Create time: 10ms
+  - Write time: 2s
+  - Access time: 1d
+- exFAT: 10ms
+- Live File System: 1us
+- SMB
+  - [`dos filetime resolution`](https://www.samba.org/samba/docs/using_samba/ch11.html): 2s
+
+    > If set to yes, Samba rounds file times to the closest 2-second boundary. This option exists primarily to satisfy a quirk in Windows that prevents Visual C++ from correctly recognizing that a file has not changed. We recommend using this option only if you are using Microsoft Visual C++ on a Samba share that supports opportunistic locking.
+
+    > Under the DOS and Windows FAT filesystem, the finest granularity on time resolution is two seconds. Setting this parameter for a share causes Samba to round the reported time down to the nearest two second boundary when a query call that requires one second resolution is made to smbd(8).
+    > 
+    > This option is mainly used as a compatibility option for Visual C++ when used against Samba shares. If oplocks are enabled on a share, Visual C++ uses two different time reading calls to check if a file has changed since it was last read. One of these calls uses a one-second granularity, the other uses a two second granularity. As the two second call rounds any odd second down, then if the file has a timestamp of an odd number of seconds then the two timestamps will not match and Visual C++ will keep reporting the file has changed. Setting this option causes the two timestamps to match, and Visual C++ is happy.
+
+  [timestamp (or something) problems with Samba share](https://www.linuxquestions.org/questions/showthread.php?s=2dd4e3cfdd8c127ef6adb0d221fd1574&p=4096450#post4096450)
+
+  [How can I get high-precision timestamps (better than 1s) with Samba? - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/55567/how-can-i-get-high-precision-timestamps-better-than-1s-with-samba)
+
+- WebDAV: 1s
+
+  [WebDAV mounts loses precision, only gives up to second precision - Suspected Bug - rclone forum](https://forum.rclone.org/t/webdav-mounts-loses-precision-only-gives-up-to-second-precision/35487)
+
+Rust:
+- [`std::fs::File::set_times()`](https://doc.rust-lang.org/stable/std/fs/struct.File.html#method.set_times)
+  - Not support directories.
+- [filetime: Accessing file timestamps in a platform-agnostic fashion in Rust](https://github.com/alexcrichton/filetime)
+  - `emulate_second_only_system`
+
+[Reduce time stamp precision - Issue #12 - rfjakob/cshatag](https://github.com/rfjakob/cshatag/issues/12)
+
 ## POSIX
 [2.5 Standard I/O Streams](https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/functions/V2_chap02.html#tag_15_05)
 
