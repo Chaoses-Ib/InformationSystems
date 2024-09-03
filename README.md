@@ -48,6 +48,7 @@
         - [Discretionary Access Control](Databases/Relational/SQL/Security/Access/Discretionary.md)
       - [Audit](Databases/Relational/SQL/Security/Audit.md)
       - [Injection](Databases/Relational/SQL/Security/Injection.md)
+    - [Dynamic SQL](Databases/Relational/SQL/Dynamic.md)
   - [DBMS](Databases/Relational/DBMS/README.md)
     - [SQLite](Databases/Relational/DBMS/SQLite/README.md)
       - [Datatypes](Databases/Relational/DBMS/SQLite/Types.md)
