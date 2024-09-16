@@ -1,9 +1,17 @@
 # DBMS
 ## Bindings
+- 支持多个 DBMS 对于库开发者是有利的，可以扩大潜在用户群体，但对于用户来说，通用抽象会带来更多认知开销，以及对特定 DBMS 的功能缺少支持，实际上是不利的。
+
+Libraries:
+- [Prisma: Simplify working and interacting with databases](https://www.prisma.io/)
+
 ### Rust
 - [Diesel: A safe, extensible ORM and Query Builder for Rust](https://github.com/diesel-rs/diesel)
+  - From 2015-08
   - [Schema in Depth](https://diesel.rs/guides/schema-in-depth.html)
   - [diesel\_migrations](https://docs.rs/diesel_migrations/latest/diesel_migrations/)
+
+    > If you prefer to generate your migrations based on Rust code instead, the diesel CLI tool provides an additional `--diff-schema` on the `diesel migration generate` command that allows to generate migrations based on the current schema definition and your database.
 
     [How are people running their migrations in production? - Issue #559 - diesel-rs/diesel](https://github.com/diesel-rs/diesel/issues/559)
 
@@ -12,9 +20,17 @@
     [Diesel specific, is migration necessary? : r/rust](https://www.reddit.com/r/rust/comments/xhlizd/diesel_specific_is_migration_necessary/)
     > If the structs are not precisely the same as the tables then you start getting weird nonsensical error messages
 
+    既然已经能 diff 代码和 schema 了，为什么不再加一个启动时自动迁移呢？
+
 - [SQLx: 🧰 The Rust SQL Toolkit. An async, pure Rust SQL crate featuring compile-time checked queries without a DSL. Supports PostgreSQL, MySQL, and SQLite.](https://github.com/launchbadge/sqlx)
+  - From 2019-06
+  - Async
   - [SeaORM: 🐚 An async & dynamic ORM for Rust](https://github.com/SeaQL/sea-orm)
+    - From 2021-05
     - [Migration](https://www.sea-ql.org/SeaORM/docs/next/migration/setting-up-migration/)
+
+- [prisma-client-rust: Type-safe database access for Rust](https://github.com/Brendonovich/Prisma-Client-Rust)
+  - > I don't have exact figures but I can confidently say PCR is slower than pretty much all other Rust db libraries, as the engines have a fair bit of overhead. There may be some improvements, but there's always going to be more overhead with serializing queries into Prisma's format first.
 
 - [ormlite: An ORM in Rust for developers that love SQL.](https://github.com/kurtbuilds/ormlite)
   - > It auto-generates migrations from Rust structs. To my knowledge, it is the only Rust ORM with this capability.
@@ -27,6 +43,8 @@
 - [barrel: 🛢 A database schema migration builder for Rust](https://github.com/rust-db/barrel) (discontinued)
 
 [diesel-rs/metrics: Performance statistic collection for rusts database connection crates](https://github.com/diesel-rs/metrics)
+- Diesel >> SQLx > SeaORM
+- SQLite: Sync >> Async
 
 Discussions:
 - 2022-08 [Cornucopia v0.8: Generate type-checked Rust interfaces from your PostgreSQL queries. : r/rust](https://www.reddit.com/r/rust/comments/wdos9x/comment/iim7v0x/?utm_source=share&utm_medium=web2x&context=3)
@@ -43,6 +61,12 @@ Discussions:
   > - Performance is always a hot topic, so take this with a grain of salt, but in our benchmarks, Cornucopia performs very close to the `rust-postgres` drivers, which themselves beat SQLx by a significant margin in the ubiquitous db interface benchmarks provided by Diesel (<https://github.com/diesel-rs/metrics>). Take this with a grain of salt though, since this is an indirect comparison. We'll try to provide a direct comparison with SQLx in our benchmarks as soon as possible.
 
 - 2023-05 [What ORM do you use? : r/rust](https://www.reddit.com/r/rust/comments/13d9ayi/what_orm_do_you_use/)
+- 2024-01 [Community Review on Rust Database ORM crates : r/rust](https://www.reddit.com/r/rust/comments/18vzkfi/community_review_on_rust_database_orm_crates/)
+  - > Diesel is pretty nice as it's very type-safe, but you have to write your own migrations and maintain your own Rust structs corresponding to your database schema, which PCR does automatically.
+  - > SeaORM and sqlx aren't very type-safe which is the main reason why I don't use them. SeaORM is [not typesafe by design](https://www.sea-ql.org/SeaORM/docs/write-test/testing/#1-type-errors-1) and while sqlx does have type-safety, it has some [longstanding issues with nullability in joins](https://github.com/launchbadge/sqlx/issues?q=is%3Aissue+is%3Aopen+left+join), among other issues where generally, it simply cannot get as much information from the database as the programmer can provide via a code-based type system.
+- 2024-04 [SeaOrm vs diesel : r/rust](https://www.reddit.com/r/rust/comments/1cgm4x2/seaorm_vs_diesel/)
+  - > SeaORM I've only tried within the Loco framework. I found it to be too magic for my liking, and I'm not keen on the whole read-only writable struct types. I also dislike that you need to run a database to get it to validate types at compile time.
+- 2024-07 [My take on databases with Rust (sea-orm vs. diesel vs. sqlx) : r/rust](https://www.reddit.com/r/rust/comments/1e8ld5d/my_take_on_databases_with_rust_seaorm_vs_diesel/)
 
 ## .NET
 - [EF Core: A modern object-database mapper for .NET. It supports LINQ queries, change tracking, updates, and schema migrations.](https://github.com/dotnet/efcore)

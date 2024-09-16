@@ -68,17 +68,32 @@ The amalgamation is the recommended way of using SQLite in a larger application.
     - `Transaction` can deref to `Connection`
   - [`ParamsFromIter`](https://docs.rs/rusqlite/latest/rusqlite/struct.ParamsFromIter.html)
     - `a.iter().map(|v| v as &dyn rusqlite::ToSql).chain(b.iter().map(|v| v as &dyn rusqlite::ToSql))`
-  - JSON
+  - `named_params!` will cause `InvalidParameterName` if any parameter is not used in the SQL
+  - [rusqlite\_migration: ↕️ Simple database schema migration library for rusqlite, written with performance in mind.](https://github.com/cljoly/rusqlite_migration)
+  - [rusqlite::types](https://docs.rs/rusqlite/latest/rusqlite/types/index.html)
+  - Serde/JSON
     - `Value::String("a")` will be converted to `"\"a\""`
   
       [Support for Number (Integer/Float) and Null in `serde_json` - Issue #882](https://github.com/rusqlite/rusqlite/issues/882)
   
       [ToSql for `serde_json::value` deserializes incorrectly for strings - Issue #1312](https://github.com/rusqlite/rusqlite/issues/1312)
     - [serde\_rusqlite: Serialize/deserialize rusqlite rows](https://github.com/twistedfall/serde_rusqlite)
+      - 不太简洁，优势在于网络应用通常本来就会定义 Serde traits。
   - [Exemplar: A boilerplate eliminator for rusqlite.](https://github.com/Colonial-Dev/exemplar)
+    - 仍然有不少缺陷，但已经是最好的选择了。
+    - 不支持插入时省略 struct 中的 rowid 再用 `last_insert_rowid()` 获取，需要修改 rowid 类型为 `Option<i64>`，或者单独创建一个 struct
+    - 不支持标准 enum 语法，只能使用 [`sql_enum!`](https://docs.rs/exemplar/latest/exemplar/macro.sql_enum.html)
+
+    [r/rust](https://www.reddit.com/r/rust/comments/179d5k3/exemplar_a_boilerplate_eliminator_for_rusqlite/)
+  - [rusqlite-model: Model trait and derive implementation for rusqlite](https://github.com/OJFord/rusqlite-model)
+  - [rust-pretty-sqlite: Simple, Minimalistic Pretty Prints for SQLite using rusqlite](https://github.com/jeremychone/rust-pretty-sqlite)
+  - [MaxBondABE/rusqlite\_utils: Lightweight, low-level utilities for `rusqlite`.](https://github.com/MaxBondABE/rusqlite_utils) (discontinued)
+
 - [sqlite: Interface to SQLite](https://github.com/stainless-steel/sqlite)
+
 - [microrm: Lightweight SQLite ORM - Kestrel's git](https://git.flying-kestrel.ca/kestrel/microrm)
   - No migration support
+
 - [nanosql: Tiny, strongly-typed data mapper for SQLite and Rust](https://github.com/H2CO3/nanosql)
 
 [→DBMS](../README.md#rust)
@@ -153,14 +168,16 @@ PRAGMA foreign_keys = 1
 
 Why SQLite doesn't provide a thread-safe mode by using multi-thread mode and a connection pool? Isn't it more efficient than serialized mode?
 
+[mqudsi/sqlite-readers-writers: An SQLite benchmark for concurrent readers and writers](https://github.com/mqudsi/sqlite-readers-writers)
+
 Rusqlite:
 - `Conncetion` is `Send + !Sync` and `!Clone`. 
 
   [Share Connection into several threads - Issue #188 - rusqlite/rusqlite](https://github.com/rusqlite/rusqlite/issues/188)
 
   - [r2d2-sqlite: r2d2 connection pool for sqlite](https://github.com/ivanceras/r2d2-sqlite)
-
-    `SqliteConnectionManager` is `Send + Sync` but `!Clone`. But `r2d2::Pool` is `Send + Sync` and `Clone`.
+    - `cargo add r2d2-sqlite r2d2`
+    - `SqliteConnectionManager` is `Send + Sync` but `!Clone`. But `r2d2::Pool` is `Send + Sync` and `Clone`.
 
   - [tokio-rusqlite: Asynchronous handle for rusqlite library.](https://github.com/programatik29/tokio-rusqlite)
 
