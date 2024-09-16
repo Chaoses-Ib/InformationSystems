@@ -29,6 +29,7 @@ The amalgamation is the recommended way of using SQLite in a larger application.
     - [数据库升级](https://github.com/Tencent/wcdb/wiki/C++-%e6%a8%a1%e5%9e%8b%e7%bb%91%e5%ae%9a#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8D%87%E7%BA%A7)
     - [数据迁移](https://github.com/Tencent/wcdb/wiki/C++-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB)
     - [可中断事务 (PauseableTransaction)](https://github.com/Tencent/wcdb/wiki/C++-%E9%AB%98%E7%BA%A7%E6%8E%A5%E5%8F%A3#%E5%8F%AF%E4%B8%AD%E6%96%AD%E4%BA%8B%E5%8A%A1)
+    - Functions: `Expression::function(StringView::makeConstant(funcName)).invoke().arguments({ a, b })`
   - Dependencies: SQLCipher (OpenSSL), zstd
   - Binary size: 5 MB (Windows x64, about 3 MB larger than SQLite only)
   - 虽然 README 有英文，但文档实际上只有中文。
