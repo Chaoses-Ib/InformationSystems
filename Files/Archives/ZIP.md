@@ -5,7 +5,10 @@
 
 ## Libraries
 ### Rust
-- [zip2: Zip implementation in Rust](https://github.com/zip-rs/zip2)
+- ~~[zip: Zip implementation in Rust](https://github.com/zip-rs/zip)~~
+  - [zip2: Zip implementation in Rust](https://github.com/zip-rs/zip2)
+  
+  Libraries:
   - [zip-extract: Extract zip archives using the zip crate.](https://github.com/MCOfficer/zip-extract)
   - [zip-extensions-rs: Provides extensions for the zip crate](https://github.com/matzefriedrich/zip-extensions-rs)
 

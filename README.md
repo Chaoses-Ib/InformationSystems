@@ -86,6 +86,7 @@
 - [Embedded Databases](Databases/Embedded.md)
 
 ## [Compression](Compression/README.md)
+- [Streaming Compression](Compression/Streaming.md)
 
 ## [Geographic Information Systems](Geographic/README.md)
 - [Geographic Coordinate Systems](Geographic/Coordinate%20Systems.md)

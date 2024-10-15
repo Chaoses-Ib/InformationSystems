@@ -1,2 +1,90 @@
 # Compression
 [Wikipedia](https://en.wikipedia.org/wiki/Data_compression)
+
+[Lossless compression - Wikipedia](https://en.wikipedia.org/wiki/Lossless_compression)
+
+[Data Compression - Wikibooks, open books for an open world](https://en.wikibooks.org/wiki/Data_Compression)
+
+[Compression - facebook/rocksdb Wiki](https://github.com/facebook/rocksdb/wiki/Compression)
+
+Libraries:
+- [squash: Compression abstraction library and utilities](https://github.com/quixdb/squash)
+
+## Benchmarks
+[Squash Compression Benchmark](https://quixdb.github.io/squash-benchmark/)
+
+[TurboBench: Compression Benchmark](https://github.com/powturbo/TurboBench)
+
+[Maximum file compression benchmark 7Z ARC ZIPX versus RAR](https://peazip.github.io/maximum-compression-benchmark.html)
+- ZPAQ is clearly the top performing format in this benchmark focused on maximum attainable compression.
+- ZPAQ and ARC are the best compressors, but 7Z and RAR formats has a clear advantage in terms of decompression speed, faster than for any other tested format.
+- 7Z outperformed RAR in terms of compression ratio at all compression levels, but RAR outperformed 7Z in terms of compression speed.
+- Brotli and Zstd can provide surprisingly good compression ratios, even if they are designed primarily for fast compression tasks, with Zstandard being overall the best choice.
+
+[Choosing Between gzip, Brotli and zStandard Compression | Paul Calvano](https://paulcalvano.com/2024-03-19-choosing-between-gzip-brotli-and-zstandard-compression/)
+
+Discussions:
+- 2023-10 [What file compression format/algorithm has the best compression ratios (mainly for binary files of various types)? Compression and decompression time is irrelevant as this is for cold storage, and I have 36 GB of RAM. : r/DataHoarder](https://www.reddit.com/r/DataHoarder/comments/17cdnsu/what_file_compression_formatalgorithm_has_the/)
+
+  > The best relatively accessible ones are 7zip if you also want compatibility or zpaq if you invest a bit more compute and sacrifice compatibility a bit.
+
+  > LZMA-based formats are some of the most efficient - this includes 7zip and xz.
+
+## Dictionary type
+### Lempel–Ziv (LZ77 and LZ78)
+[Wikipedia](https://en.wikipedia.org/wiki/LZ77_and_LZ78)
+
+> We believe LZ4 is almost always better than Snappy. LZ4/Snappy is a lightweight compression algorithm so it usually strikes a good balance between space and CPU usage.
+
+#### Snappy
+[Wikipedia](https://en.wikipedia.org/wiki/Snappy_(compression))
+
+#### LZ4
+C++:
+- [lz4: Extremely Fast Compression algorithm](https://github.com/lz4/lz4)
+
+  Rust: [lz4-rs: Rust LZ4 bindings](https://github.com/10xGenomics/lz4-rs)
+
+## Hybrid
+> If you want to further reduce space and have some free CPU to use, ... We recommend ZSTD. If it is not available, Zlib is the second choice.
+
+### LZ77 + Huffman: Deflate
+[Wikipedia](https://en.wikipedia.org/wiki/Deflate)
+
+### LZ77 + Huffman + context: Brotli
+[Wikipedia](https://en.wikipedia.org/wiki/Brotli)
+
+### LZ77 + Huffman + ANS: Zstandard
+[Wikipedia](https://en.wikipedia.org/wiki/Zstd)
+
+C++:
+- [zstd: Zstandard - Fast real-time compression algorithm](https://github.com/facebook/zstd)
+
+  Rust: [zstd-rs: A rust binding for the zstd compression library.](https://github.com/gyscos/zstd-rs)
+
+### LZ77 + Range: LZMA
+- liblzma
+  
+  Rust: [rust-lzma: A Rust crate that provides a simple interface for LZMA compression and decompression.](https://github.com/fpgaminer/rust-lzma)
+
+### LZ77 + BWT + content mixing: ZPAQ
+[Wikipedia](https://en.wikipedia.org/wiki/ZPAQ)
+
+### RLE + BWT + MTF + Huffman: bzip2
+[Wikipedia](https://en.wikipedia.org/wiki/Bzip2)
+
+### Density
+[density: Superfast compression library](https://github.com/g1mv/density)
+
+## Shared dictionaries
+“黑压缩”
+
+## Solid compression
+[Wikipedia](https://en.wikipedia.org/wiki/Solid_compression)
+
+> Solid compression is a method for data compression of multiple files, wherein all the uncompressed files are concatenated and treated as a single data block. Such an archive is called a solid archive.
+
+> It is used natively in the 7z and RAR formats, as well as indirectly in tar-based formats such as `.tar.gz` and `.tar.bz2`. By contrast, the ZIP format is not solid because it stores separately compressed files (though solid compression can be emulated for small archives by combining the files into an uncompressed archive file and then compressing that archive file inside a second compressed ZIP file).
+
+## Cryptography
+> Cryptosystems often compress data (the "plaintext") before encryption for added security. When properly implemented, compression greatly increases the unicity distance by removing patterns that might facilitate cryptanalysis. However, many ordinary lossless compression algorithms produce headers, wrappers, tables, or other predictable output that might instead make cryptanalysis easier. Thus, cryptosystems must utilize compression algorithms whose output does not contain these predictable patterns.
