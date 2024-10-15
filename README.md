@@ -19,6 +19,8 @@
 - [Windows](Files/Windows/README.md)
   - [User-space File Systems](Files/Windows/User/README.md)
 - [File Change Monitoring](Files/Monitoring.md)
+- [Archives](Files/Archives/README.md)
+  - [ZIP](Files/Archives/ZIP.md)
 
 ## [Database Management Systems](Databases/README.md)
 - [Data Models](Databases/Models/README.md)
@@ -80,6 +82,8 @@
 - [Vector Databases](Databases/Vector/README.md)
 
 - [Embedded Databases](Databases/Embedded.md)
+
+## [Compression](Compression/README.md)
 
 ## [Geographic Information Systems](Geographic/README.md)
 - [Geographic Coordinate Systems](Geographic/Coordinate%20Systems.md)
