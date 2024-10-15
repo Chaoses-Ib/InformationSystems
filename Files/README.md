@@ -8,13 +8,39 @@ A **directory**, like a file, also has a low-level name (i.e., an inode number),
 The file system provides a convenient way to name all the files we are interested in. Names are important in systems as the first step to accessing any resource is being able to name it.[^three]
 
 ## File ID
+如何识别一个文件？
+- 路径
+  - 移动或重命名后会识别为不同文件，删除再创建会识别为同一文件
+    - 包括挂载点改变
+  - 同一文件的不同链接会识别为不同文件
+- 文件系统内索引
+  - 需要文件系统支持
+    - 对于网络映射文件系统，即使文件系统本身支持，网络映射协议也可能不支持
+  - 删除再创建（替换）会识别为不同文件
+    - [When a PC edits a file, does it delete the original file? - Super User](https://superuser.com/questions/1397186/when-a-pc-edits-a-file-does-it-delete-the-original-file)
+    - Office (except `.doc` with Fast save), AutoCAD[^id-windows-so], Listary (settings)
+  - 硬链接、符号链接需要特殊处理，同一文件的多个链接会被识别为同一文件
+    - 使用 `(parent_id, name)` 作为 key
+- 目录内索引
+  - 需要文件系统支持（FAT）
+  - 移动（以及可能的重命名为更长名字）后会识别为不同文件
+  - 同一文件的不同链接会识别为不同文件
+  - 删除再创建会识别为不同文件
+
+Linux:
+- [linux - Does the inode change when renaming or moving a file? - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/192800/does-the-inode-change-when-renaming-or-moving-a-file)
+- [Inode: is it both unique and 'permanent'?](https://www.unix.com/unix-for-dummies-questions-and-answers/157691-inode-both-unique-permanent.html)
+
+macOS:
+- [How macOS tracks your files: inside the inode -- The Eclectic Light Company](https://eclecticlight.co/2018/03/03/how-macos-tracks-your-files-inside-the-inode/)
+
 Windows:
 - [`BY_HANDLE_FILE_INFORMATION`](https://learn.microsoft.com/en-us/windows/win32/api/fileapi/ns-fileapi-by_handle_file_information)
   - `dwVolumeSerialNumber`: u32
   - `nFileIndexHigh`: u32
   - `nFileIndexLow`: u32
 
-  > The identifier that is stored in the `nFileIndexHigh` and `nFileIndexLow` members is called the file ID. Support for file IDs is file system-specific. File IDs are not guaranteed to be unique over time, because file systems are free to reuse them. In some cases, the file ID for a file can change over time.
+  > The identifier that is stored in the `nFileIndexHigh` and `nFileIndexLow` members is called the file ID. Support for file IDs is file system-specific. **File IDs are not guaranteed to be unique over time, because file systems are free to reuse them. In some cases, the file ID for a file can change over time.**
 
   > In the FAT file system, the file ID is generated from the first cluster of the containing directory and the byte offset within the directory of the entry for the file. Some defragmentation products change this byte offset. (Windows in-box defragmentation does not.) Thus, a FAT file ID can change over time. Renaming a file in the FAT file system can also change the file ID, but only if the new file name is longer than the old one.
 
@@ -34,6 +60,8 @@ Rust:
 - [file\_id](https://docs.rs/file-id/latest/file_id/)
 - [`winapi_util::file::Information`](https://docs.rs/winapi-util/latest/winapi_util/file/struct.Information.html#method.file_index)
   - [same-file: Cross platform Rust library for checking whether two file paths are the same file.](https://github.com/BurntSushi/same-file)
+
+[^id-windows-so]: [c# - Unique file identifier in windows - Stack Overflow](https://stackoverflow.com/questions/1866454/unique-file-identifier-in-windows)
 
 ## Index nodes
 One of the most important on-disk structures of a file system is the **inode**, which is the generic name that is used in many file systems to describe the structure that holds the metadata for a given file, such as its length, permissions, and the location of its constituent blocks. The name inode is short for index node, the historical name given to it in UNIX and possibly earlier systems, used because these nodes were originally arranged in an array, and the array indexed into when accessing a particular inode.[^three]
