@@ -16,6 +16,10 @@
 
 - SMB
 
+- Directory Opus VFS plugins
+
+> 还挺多的，官方的 ProjFS、Cloud Files、WebDAV、SMB，第三方的有 WinFsp、Dokany。官方的功能各有各的局限，第三方是套的文件系统驱动，控制比较大，不过就得安装他们签的驱动。DO 的 VFS 插件勉强也算一个。
+
 [Linux Fu: User Space File Systems --- Now For Windows, Too! | Hackaday](https://hackaday.com/2021/08/31/linux-fu-user-space-file-systems-now-for-windows-too/)
 
 ## Projected File System
