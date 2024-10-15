@@ -21,6 +21,7 @@
 - [Windows](Files/Windows/README.md)
   - [User-space File Systems](Files/Windows/User/README.md)
 - [File Change Monitoring](Files/Monitoring.md)
+- [File Synchronization](Files/Sync/README.md)
 - [Archives](Files/Archives/README.md)
   - [ZIP](Files/Archives/ZIP.md)
   - [7z](Files/Archives/7z.md)
