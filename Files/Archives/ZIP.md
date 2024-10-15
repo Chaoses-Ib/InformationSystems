@@ -1,7 +1,24 @@
 # ZIP
 [Wikipedia](https://en.wikipedia.org/wiki/ZIP_(file_format))
 
+- Compression: DEFLATE
+
 ## Libraries
+### Rust
+- [zip2: Zip implementation in Rust](https://github.com/zip-rs/zip2)
+  - [zip-extract: Extract zip archives using the zip crate.](https://github.com/MCOfficer/zip-extract)
+  - [zip-extensions-rs: Provides extensions for the zip crate](https://github.com/matzefriedrich/zip-extensions-rs)
+
+- [mtzip: A rust library for making zip files, focused on multithreading the process](https://github.com/JohnTheCoolingFan/mtzip)
+  - > Because Deflate compression cannot be multithreaded, the multithreading is achieved by having the files compressed individually. This means that if you have 12 threads available but only 6 files being added to the archive, you will only use 6 threads.
+
+- [zipit: Create and stream a zip archive into an AsyncWrite](https://github.com/scotow/zipit)
+  - No compression (stored method only).
+  - Only files (no directories).
+  - No customizable external file attributes.
+
+[High-Level Zip Library and Rust Libraries in General : r/rust](https://www.reddit.com/r/rust/comments/w9ok61/highlevel_zip_library_and_rust_libraries_in/)
+
 ### .NET
 - `System.IO.Compression`
   - [`ZipFile`](https://learn.microsoft.com/en-us/dotnet/api/system.io.compression.zipfile?view=net-8.0)
