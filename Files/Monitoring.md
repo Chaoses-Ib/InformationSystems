@@ -41,6 +41,38 @@ Rust:
   
   - [`notify_debouncer_mini`](https://docs.rs/notify-debouncer-mini/latest/notify_debouncer_mini/)
   - [`notify_debouncer_full`](https://docs.rs/notify-debouncer-full/latest/notify_debouncer_full/)
+    - 重复 `Rename`, 递归 `Remove`, 重复 `Create`, `Modify` after `Create`, 重复 [`Modify`](https://github.com/notify-rs/notify/blob/main/notify-debouncer-full/test_cases/emit_continuous_modify_content_events.hjson)
+    ```rust
+    let thread = std::thread::Builder::new()
+        .name("notify-rs debouncer loop".to_string())
+        .spawn(move || loop {
+            if stop_c.load(Ordering::Acquire) {
+                break;
+            }
+            std::thread::sleep(tick);
+            let send_data;
+            let errors;
+            {
+                let mut lock = data_c.lock().unwrap();
+                send_data = lock.debounced_events();
+                errors = lock.errors();
+            }
+            if !send_data.is_empty() {
+                event_handler.handle_event(Ok(send_data));
+            }
+            if !errors.is_empty() {
+                event_handler.handle_event(Err(errors));
+            }
+        })?;
+    ```
+    ```rust
+    if now.saturating_duration_since(event.time) >= self.timeout {
+        ...
+    }
+    ```
+    Cannot fetch on demand. 只能设置固定的周期，会影响实时性。
+
+    In-memory and will lose events on abort.
 
   [Known issues](https://docs.rs/notify/latest/notify/#known-problems):
   - Network file systems
@@ -53,6 +85,11 @@ Rust:
     [Rename event notification RenameMode error - Issue #385 - notify-rs/notify](https://github.com/notify-rs/notify/issues/385)
 
   - [Investigate ways to minimise the amount of PathBufs - Issue #194 - notify-rs/notify](https://github.com/notify-rs/notify/issues/194)
+
+  Tools:
+  - [watchexec: Executes commands in response to file modifications](https://github.com/watchexec/watchexec)
+    - [Watchexec library](https://github.com/watchexec/watchexec/tree/main/crates/lib)
+      - [throttle_collect()](https://github.com/watchexec/watchexec/blob/6c245d3aff31d9764ef98be7f31fe8337cb44635/crates/lib/src/action/worker.rs#L113)
 
 .NET:
 - [VS Code FileWatcher for Windows](https://github.com/Microsoft/vscode-filewatcher-windows)
