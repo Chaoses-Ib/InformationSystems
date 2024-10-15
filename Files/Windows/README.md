@@ -126,6 +126,18 @@ Tools:
 [You can't access this shared folder because your organization's security policies block unauthenticated guest access - Microsoft Q&A](https://learn.microsoft.com/en-us/answers/questions/59309/you-can-t-access-this-shared-folder-because-your-o)
 - `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters\AllowInsecureGuestAuth`
 
+### Logon sessions
+网络驱动器会与映射时使用的用户 ID 关联，而开启 UAC 后的管理员和标准用户的 ID 不同，无法互相访问对方映射的网络驱动器。可以通过在 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System` 中添加 `EnableLinkedConnections=1` 来同时允许管理员和标准用户使用。
+- [Some Programs Cannot Access Network Locations When UAC Is Enabled | Microsoft Learn](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee844140(v=ws.10)?redirectedfrom=MSDN)
+- [windows 7 - What does registry setting EnableLinkedConnections do on a technical level? - Server Fault](https://serverfault.com/questions/182758/what-does-registry-setting-enablelinkedconnections-do-on-a-technical-level)
+- [winforms - C# OpenFileDialog is not showing Network location or mapped drive - Stack Overflow](https://stackoverflow.com/questions/25892483/c-sharp-openfiledialog-is-not-showing-network-location-or-mapped-drive)
+- [c# - Mapped drives not visible on open dialog - Stack Overflow](https://stackoverflow.com/questions/32790495/mapped-drives-not-visible-on-open-dialog)
+
+在记事本、Word 2016、Listary 中都能复现这个问题，不过有遇到相似问题的用户反馈至少 Word 里可以正常看到，可能是新版 Word 自动绕过了这个限制。  
+这个问题会影响到强制将账户类型改为管理员，或者单独以管理员身份运行某个程序的用户。如果通过工具以管理员身份映射驱动器可能也会影响标准用户下运行的程序。网络共享不受这个问题的影响。
+
+[Mapped drives are not available - Windows Client | Microsoft Learn](https://learn.microsoft.com/en-us/troubleshoot/windows-client/networking/mapped-drives-not-available-from-elevated-command)
+
 ## Links
 - Junctions
   - [Can an NTFS junction point be followed over a network share? - Super User](https://superuser.com/a/1745062)
