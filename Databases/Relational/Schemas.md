@@ -28,6 +28,8 @@ Implementations:
 - Go
   - [sqldef: Idempotent schema management for MySQL, PostgreSQL, and more](https://github.com/sqldef/sqldef)
     - MySQL, PostgreSQL, SQLite, SQL Server
+    - "found syntax error when parsing DDL ..."
+      - [Issue with columns named `type` with PostgreSQL - Issue #347](https://github.com/sqldef/sqldef/issues/347)
   - [Stripe/pg-schema-diff: Go library for diffing Postgres schemas and generating SQL migrations](https://github.com/stripe/pg-schema-diff/)
   - [Atlas: Manage your database schema as code](https://github.com/ariga/atlas)
   - [Terraform: Terraform enables you to safely and predictably create, change, and improve infrastructure. It is a source-available tool that codifies APIs into declarative configuration files that can be shared amongst team members, treated as code, edited, reviewed, and versioned.](https://github.com/hashicorp/terraform)
