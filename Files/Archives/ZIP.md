@@ -7,10 +7,13 @@
 ### Rust
 - ~~[zip: Zip implementation in Rust](https://github.com/zip-rs/zip)~~
   - [zip2: Zip implementation in Rust](https://github.com/zip-rs/zip2)
+    - Cumbersome API
   
   Libraries:
   - [zip-extract: Extract zip archives using the zip crate.](https://github.com/MCOfficer/zip-extract)
   - [zip-extensions-rs: Provides extensions for the zip crate](https://github.com/matzefriedrich/zip-extensions-rs)
+    - [Appending files and directories - Issue #18](https://github.com/matzefriedrich/zip-extensions-rs/issues/18)
+    - Bad code quality
 
 - [mtzip: A rust library for making zip files, focused on multithreading the process](https://github.com/JohnTheCoolingFan/mtzip)
   - > Because Deflate compression cannot be multithreaded, the multithreading is achieved by having the files compressed individually. This means that if you have 12 threads available but only 6 files being added to the archive, you will only use 6 threads.
