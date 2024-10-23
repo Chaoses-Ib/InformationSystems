@@ -63,9 +63,19 @@ C++:
   Rust: [zstd-rs: A rust binding for the zstd compression library.](https://github.com/gyscos/zstd-rs)
 
 ### LZ77 + Range: LZMA
+[Wikipedia](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm)
+
+Lempel–Ziv–Markov chain algorithm
+
 - liblzma
   
   Rust: [rust-lzma: A Rust crate that provides a simple interface for LZMA compression and decompression.](https://github.com/fpgaminer/rust-lzma)
+
+[LZMA2 format](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm#LZMA2_format):
+> The LZMA2 container supports multiple runs of compressed LZMA data and uncompressed data. Each LZMA compressed run can have a different LZMA configuration and dictionary. This improves the compression of partially or completely incompressible files and allows multithreaded compression and multithreaded decompression by breaking the file into runs that can be compressed or decompressed independently in parallel. Criticism of LZMA2's changes over LZMA include header fields not being covered by CRCs, and parallel decompression not being possible in practice.
+
+- 7-Zip: LZMA2 compression, which is an improved version of LZMA, is now the default compression method for the .7z format, starting with version 9.30 on October 26, 2012.
+- [7-Zip / Discussion / Open Discussion: LZMA vs. LZMA2](https://sourceforge.net/p/sevenzip/discussion/45797/thread/2f6085ba/)
 
 ### LZ77 + BWT + content mixing: ZPAQ
 [Wikipedia](https://en.wikipedia.org/wiki/ZPAQ)
