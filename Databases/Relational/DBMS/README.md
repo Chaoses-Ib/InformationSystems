@@ -6,6 +6,14 @@ Libraries:
 - [Prisma: Simplify working and interacting with databases](https://www.prisma.io/)
 
 ### Rust
+- [tokio-rs/Toasty: An async ORM for Rust (incubating)](https://github.com/tokio-rs/toasty)
+  - [sharing experience from `loco.rs` - Issue #14](https://github.com/tokio-rs/toasty/issues/14)
+
+  [Announcing Toasty, an async ORM for Rust | Tokio - An asynchronous Rust runtime](https://tokio.rs/blog/2024-10-23-announcing-toasty) ([r/rust](https://www.reddit.com/r/rust/comments/1gak6zq/announcing_toasty_an_async_orm_for_rust/), [Hacker News](https://news.ycombinator.com/item?id=41929565))
+  > Another aspect of ease of use is minimizing boilerplate. Rust already has a killer feature for this: procedural macros. Most of you have already used Serde, so you know what a delight this can be. That said, I opted not to use procedural macros for Toasty, at least not initially.
+  > 
+  > Procedural macros generate a lot of hidden code at build time. This isn't a big deal for libraries like Serde because the Serde macros generate implementations of public traits (Serialize and Deserialize). Users of Serde aren't really expected to know the implementation details of those traits.
+
 - [Diesel: A safe, extensible ORM and Query Builder for Rust](https://github.com/diesel-rs/diesel)
   - From 2015-08
   - [Schema in Depth](https://diesel.rs/guides/schema-in-depth.html)
