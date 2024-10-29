@@ -19,3 +19,12 @@ println!("{:?}", fs::read_dir(path).unwrap().collect_vec());
 println!("{:?}", fs::read_dir(path).unwrap().map(|d| fs::read_dir(d.unwrap().path()).unwrap().collect_vec())).collect_vec();
 // [[Ok(DirEntry("Z:A\\1.txt")), Ok(DirEntry("Z:A\\2.txt"))], [Ok(DirEntry("Z:B\\3.txt"))]]
 ```
+
+## Security
+[security - Is there a safe / sanitised filename function in Rust - Stack Overflow](https://stackoverflow.com/questions/43973219/is-there-a-safe-sanitised-filename-function-in-rust)
+
+Rust:
+- [sanitize-filename](https://github.com/kardeiz/sanitize-filename)
+  - Name can be empty after `sanitize()`
+- [sanitise\_file\_name](https://docs.rs/sanitise-file-name/latest/sanitise_file_name/) ([GitLab](https://gitlab.com/chris-morgan/sanitise-file-name))
+- [tower-sanitize-path: Tower middleware to sanitize paths on requests](https://github.com/shuttle-hq/tower-sanitize-path)
