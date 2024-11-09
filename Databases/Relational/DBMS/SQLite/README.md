@@ -354,6 +354,8 @@ Extensions:
 
 - [xeus-sql: Jupyter kernel for SQL databases](https://github.com/jupyter-xeus/xeus-sql)
 
+- [simonw/sqlite-utils: Python CLI utility and library for manipulating SQLite databases](https://github.com/simonw/sqlite-utils)
+
 Replication:
 - [Litestream: Streaming replication for SQLite.](https://github.com/benbjohnson/litestream)
 

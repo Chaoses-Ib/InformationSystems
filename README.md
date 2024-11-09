@@ -45,6 +45,7 @@
     - [Data Types](Databases/Relational/SQL/Types/README.md)
     - [Null](Databases/Relational/SQL/Null.md)
     - [Keys](Databases/Relational/Keys.md)
+    - [Indexes](Databases/Relational/Indexes/README.md)
     - [Views](Databases/Relational/SQL/Views.md)
     - [Statements](Databases/Relational/SQL/Statements/README.md)
       - [CREATE](Databases/Relational/SQL/Statements/CREATE.md)
