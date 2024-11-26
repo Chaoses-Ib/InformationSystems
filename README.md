@@ -1,4 +1,6 @@
 # [Information Systems](Information%20Systems.md)
+- [Units of Information](Units.md)
+
 ## [Memory Management](Memory/README.md)
 - [Virtual Memory](Memory/Virtual/README.md)
   - [Swapping](Memory/Virtual/Swapping.md)
