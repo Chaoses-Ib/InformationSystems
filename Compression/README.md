@@ -30,6 +30,8 @@ Discussions:
 
   > LZMA-based formats are some of the most efficient - this includes 7zip and xz.
 
+- 2024-11 [Announcing Faster, Lighter Firefox Downloads for Linux with .tar.xz Packaging! -- Firefox Nightly News](https://blog.nightly.mozilla.org/2024/11/28/announcing-faster-lighter-firefox-downloads-for-linux-with-tar-xz-packaging/)
+
 ## Dictionary type
 ### Lempel–Ziv (LZ77 and LZ78)
 [Wikipedia](https://en.wikipedia.org/wiki/LZ77_and_LZ78)
