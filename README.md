@@ -3,7 +3,7 @@
 
 ## [Memory Management](Memory/README.md)
 - [Cache](Memory/Cache.md)
-- DDR SDRAM
+- [DDR SDRAM](Memory/DDR%20SDRAM/README.md)
   - [DDR5 SDRAM](Memory/DDR%20SDRAM/DDR5%20SDRAM.md)
 - [Virtual Memory](Memory/Virtual/README.md)
   - [Swapping](Memory/Virtual/Swapping.md)
