@@ -2,6 +2,9 @@
 - [Units of Information](Units.md)
 
 ## [Memory Management](Memory/README.md)
+- [Cache](Memory/Cache.md)
+- DDR SDRAM
+  - [DDR5 SDRAM](Memory/DDR%20SDRAM/DDR5%20SDRAM.md)
 - [Virtual Memory](Memory/Virtual/README.md)
   - [Swapping](Memory/Virtual/Swapping.md)
 - [Manual Memory Management](Memory/Manual/README.md)
