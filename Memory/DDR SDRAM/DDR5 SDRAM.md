@@ -90,6 +90,8 @@
   [微星主板不支持金百达内存条 NGA玩家社区](https://ngabbs.com/read.php?tid=35335611&rand=768)
   > 更新下bios，微星插金百达能不能点亮确实看运气
 
+  [\[求助\]主板亮dram红灯，能点亮但显示器无信号 NGA玩家社区](https://bbs.nga.cn/read.php?tid=36567094&rand=184)
+
 - 新乐士
   
   [在差异化中追求更高性价比 新乐士狂刃战士内存使用体验\_内存\_什么值得买](https://post.smzdm.com/p/allgzn7g/)
@@ -97,6 +99,21 @@
 - 光威
 
   [b650m小雕，天策6400，c32 adie，卡DRAM灯 178](https://nga.178.com/read.php?tid=38773159&rand=57)
+
+  [小白装机求助，CPU红灯，内存黄灯 NGA玩家社区](https://bbs.nga.cn/read.php?tid=38287423&rand=191)
+
+- Gskill
+
+  [Ez debug led : red cpu and yellow dram | MSI Global English Forum](https://forum-en.msi.com/index.php?threads/ez-debug-led-red-cpu-and-yellow-dram.391741/)
+  > Some people with MSI AM5 boards get the CPU+DRAM LEDs problem, this is a pretty common issue by now, i believe it's some kind of problem with the AM5 boards from MSI, it happens too often. People use good components and have no bent socket pins.
+
+  [MSI PRO B650-P Red CPU Light and Orange Dram Light on | MSI Global English Forum](https://forum-en.msi.com/index.php?threads/msi-pro-b650-p-red-cpu-light-and-orange-dram-light-on.387390/)
+
+- Corsair
+
+  [Help Debug led cpu and dram : r/MSI\_Gaming](https://www.reddit.com/r/MSI_Gaming/comments/1599v3n/help_debug_led_cpu_and_dram/)
+
+  [cpu and dram led debug | MSI Global English Forum](https://forum-en.msi.com/index.php?threads/cpu-and-dram-led-debug.386309/)
 
 [D5内存6000、6800、7200怎么选？同频率不同时序的体质差异！点赞收藏附内存性价比推荐表\_台式机内存\_什么值得买](https://post.smzdm.com/p/axzql8ww/)
 
