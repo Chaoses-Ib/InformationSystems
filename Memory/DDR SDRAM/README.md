@@ -4,6 +4,8 @@
 [\[其他问题\] 内存不亮症状的一种可能原因，排查过程和思路供参考 178](https://nga.178.com/read.php?tid=36581946&rand=14)
 - 短路
 
+[\[硬件求助\] 主板里的其中一条内存槽只要插上内存就点不亮主机，但单独使用另外一个槽就没问题 NGA玩家社区](https://ngabbs.com/read.php?tid=22119052&rand=843)
+
 ## Voltage
 - The higher, the riskier.
 
@@ -37,6 +39,9 @@ Generations:
 - EXPO
 
 [小白超频教程------内存篇\_内存\_什么值得买](https://post.smzdm.com/p/a25rz47n/)
+
+[Intel XMP vs AMD Expo? : r/buildapc](https://www.reddit.com/r/buildapc/comments/1azqagy/intel_xmp_vs_amd_expo/)
+> Afaik, the difference between EXPO and XMP is not just branding. Expo profile also automatically sets the speed of infinity fabric to match the ram speed, otherwise you'll have to do it manually if your AM5 board can see embedded XMP profile, too. Having both is more for the convenience of the manufacturer, so they can sell the sticks to both camps with just a little extra work.
 
 Motherboards:
 - ASUS: Nitro mode

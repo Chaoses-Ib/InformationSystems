@@ -42,6 +42,8 @@
 
 [AMD Confirms DDR5-6000 RAM Is The Sweet Spot For Ryzen 7000 CPUs | Tom's Hardware](https://www.tomshardware.com/news/amd-confirms-ddr5-6000-ram-is-the-sweet-spot-for-ryzen-7000-cpus)
 
+[Downtuning Ram from 6400mhz to 6000 Timings? : r/overclocking](https://www.reddit.com/r/overclocking/comments/1ec0zn5/downtuning_ram_from_6400mhz_to_6000_timings/)
+
 [AM5现在到底用什么内存？(16G\*2) 178](https://nga.178.com/read.php?tid=38095995&rand=470)
 
 [ZEN4内存的最佳频率是6000吗？ - 电脑讨论(新) - Chiphell - 分享与交流用户体验](https://www.chiphell.com/thread-2494900-1-1.html)
