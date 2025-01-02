@@ -79,6 +79,9 @@ Lempel–Ziv–Markov chain algorithm
 - 7-Zip: LZMA2 compression, which is an improved version of LZMA, is now the default compression method for the .7z format, starting with version 9.30 on October 26, 2012.
 - [7-Zip / Discussion / Open Discussion: LZMA vs. LZMA2](https://sourceforge.net/p/sevenzip/discussion/45797/thread/2f6085ba/)
 
+Benchmarks:
+- [7-Zip Compression Benchmark - OpenBenchmarking.org](https://openbenchmarking.org/test/pts/compress-7zip-1.11.0)
+
 ### LZ77 + BWT + content mixing: ZPAQ
 [Wikipedia](https://en.wikipedia.org/wiki/ZPAQ)
 

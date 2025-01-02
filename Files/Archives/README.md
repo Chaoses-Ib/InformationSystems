@@ -9,9 +9,11 @@
 
 [Common Compression File Formats | Scott Granneman](https://granneman.com/tech/background/compressionfileformats)
 
+[This may be a good place to ask this. Legitimate question, why do people still u... | Hacker News](https://news.ycombinator.com/item?id=37237082)
+
 ## Libraries
 C++:
-- [libarchive: Multi-format archive and compression library](https://github.com/libarchive/libarchive)
+- [libarchive: Multi-format archive and compression library](https://github.com/libarchive/libarchive) ([Wikipedia](https://en.wikipedia.org/wiki/Libarchive))
   - [vcpkg](https://vcpkg.io/en/package/libarchive)
 
   [LibarchiveFormats](https://github.com/libarchive/libarchive/wiki/LibarchiveFormats)
