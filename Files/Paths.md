@@ -20,6 +20,12 @@ println!("{:?}", fs::read_dir(path).unwrap().map(|d| fs::read_dir(d.unwrap().pat
 // [[Ok(DirEntry("Z:A\\1.txt")), Ok(DirEntry("Z:A\\2.txt"))], [Ok(DirEntry("Z:B\\3.txt"))]]
 ```
 
+## Libraries
+### Rust
+- [std::path](https://doc.rust-lang.org/std/path/index.html)
+- [camino: Like Rust's `std::path::Path`, but UTF-8.](https://github.com/camino-rs/camino)
+- [directories-rs: a mid-level library that provides config/cache/data paths, following the respective conventions on Linux, macOS and Windows](https://github.com/dirs-dev/directories-rs#basedirs)
+
 ## Security
 [security - Is there a safe / sanitised filename function in Rust - Stack Overflow](https://stackoverflow.com/questions/43973219/is-there-a-safe-sanitised-filename-function-in-rust)
 
