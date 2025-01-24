@@ -37,6 +37,11 @@ Libraries:
     - From 2021-05
     - [Migration](https://www.sea-ql.org/SeaORM/docs/next/migration/setting-up-migration/)
 
+    > 👈受害者，评价为管生不管养的屑库。一片一片的 bug，unstable 蹦 stable 的时候蹦出 breaking change 和花式 bug，PR 堆成山了没人管，而且文档一坨稀屎，各种微妙实现你得去 issue 里挖，然后看到各种 me too
+
+    > 用了sea-orm之后的感觉就是sqlx挺好的  
+    > rust需要其他orm
+
 - [prisma-client-rust: Type-safe database access for Rust](https://github.com/Brendonovich/Prisma-Client-Rust)
   - > I don't have exact figures but I can confidently say PCR is slower than pretty much all other Rust db libraries, as the engines have a fair bit of overhead. There may be some improvements, but there's always going to be more overhead with serializing queries into Prisma's format first.
 
