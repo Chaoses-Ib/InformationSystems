@@ -30,6 +30,8 @@
 - [File Transfer](Files/Transfer/README.md)
   - [Secure Copy Protocol (SCP)](Files/Transfer/SCP.md)
 - [File Synchronization](Files/Sync/README.md)
+  - [Syncthing](Files/Sync/Syncthing.md)
+  - [OneDrive](Files/Sync/OneDrive.md)
 - [Archives](Files/Archives/README.md)
   - [ZIP](Files/Archives/ZIP.md)
   - [7z](Files/Archives/7z.md)
