@@ -28,6 +28,17 @@
 
     Suitable for backup purposes.
 
+- Links
+
+  > Symbolic links (synced, except on Windows, but never followed)
+
+  [Add an option to follow symlinks instead of syncing them "as is" - Issue #1776 - syncthing/syncthing](https://github.com/syncthing/syncthing/issues/1776)
+
+  [How does Synchting handle symbolic links? - General - Syncthing Community Forum](https://forum.syncthing.net/t/how-does-synchting-handle-symbolic-links/21985)
+
+  [Option to follow directory junctions / symbolic links? - Feature - Syncthing Community Forum](https://forum.syncthing.net/t/option-to-follow-directory-junctions-symbolic-links/14750)
+  > Despite the phrasing of the topic, the only thing that is implemented is following junction points. Symlinks are not followed and there are no plans to ever do so.
+
 [Optimizing Rescan Interval setting - Support - Syncthing Community Forum](https://forum.syncthing.net/t/optimizing-rescan-interval-setting/1200)
 
 ## [File versioning](https://docs.syncthing.net/users/versioning.html)
