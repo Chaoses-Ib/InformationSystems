@@ -113,7 +113,7 @@ Git:
 ### China
 - [坚果云](https://www.jianguoyun.com/)
   - WebDAV
-  - [Pricing](https://www.jianguoyun.com/s/pricing): 上传 1 GB/月, 下载 3 GB/月
+  - [Pricing](https://www.jianguoyun.com/s/pricing): 上传 1 GiB/月, 下载 3 GiB/月 (not GB)
 - 巴别鸟
 - 百度网盘
   - Limited download speed
