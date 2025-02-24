@@ -5,13 +5,13 @@
 
 [Performance/Avoid SQLite In Your Next Firefox Feature - MozillaWiki](https://wiki.mozilla.org/Performance/Avoid_SQLite_In_Your_Next_Firefox_Feature)
 
+[SQLite的文艺复兴 - BMPI](https://www.bmpi.dev/dev/renaissance-sqlite/) ([V2EX](https://www.v2ex.com/t/910008), [知乎](https://zhuanlan.zhihu.com/p/601510076))
+
+[Many Small Queries Are Efficient In SQLite](https://www.sqlite.org/np1queryprob.html)
+
 [libSQL: A fork of SQLite that is both Open Source, and Open Contributions.](https://github.com/tursodatabase/libsql)
 
-Distributed:
-- [rqlite: The lightweight, distributed relational database built on SQLite.](https://github.com/rqlite/rqlite)
-- [dqlite: Embeddable, replicated and fault-tolerant SQL engine.](https://github.com/canonical/dqlite)
-- [SQLSync: A collaborative offline-first wrapper around SQLite. It is designed to synchronize web application state between users, devices, and the edge.](https://github.com/orbitinghail/sqlsync)
-- [cr-sqlite: Convergent, Replicated SQLite. Multi-writer and CRDT support for SQLite](https://github.com/vlcn-io/cr-sqlite)
+[→Distributed SQLite](Distributed.md)
 
 ## The amalgamation
 The amalgamation is the recommended way of using SQLite in a larger application.
@@ -104,7 +104,7 @@ Discussions:
   
   > In terms of performance is rusqulite the solution with the smallest overhead, followed by diesel, which is minimally slower. SQLx and anything build on top is significantly less slower, at least according to benchmarks I've seen. Sometimes its as much as factor 10 slower.
 
-## Python
+### Python
 - [aiosqlite: asyncio bridge to the standard sqlite3 module](https://github.com/omnilib/aiosqlite)
 - [sqlitedict: Persistent dict, backed by sqlite3 and pickle, multithread-safe.](https://github.com/piskvorky/sqlitedict)
 
@@ -362,3 +362,4 @@ Replication:
 Servers:
 - [Soul: 🕉 A SQLite REST and realtime server](https://github.com/thevahidal/soul)
 - [tuql: Automatically create a GraphQL server from a SQLite database or a SQL file](https://github.com/bradleyboy/tuql)
+- [Postlite: Postgres wire compatible SQLite proxy.](https://github.com/benbjohnson/postlite) (discontinued)
