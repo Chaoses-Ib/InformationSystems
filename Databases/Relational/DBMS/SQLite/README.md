@@ -72,6 +72,12 @@ The amalgamation is the recommended way of using SQLite in a larger application.
   - `named_params!` will cause `InvalidParameterName` if any parameter is not used in the SQL
   - [rusqlite\_migration: ↕️ Simple database schema migration library for rusqlite, written with performance in mind.](https://github.com/cljoly/rusqlite_migration)
   - [rusqlite::types](https://docs.rs/rusqlite/latest/rusqlite/types/index.html)
+    - `u64` and `usize` will cause error iff larger than `i64::MAX`, instead of `cast_signed()`
+
+      It's thus suggested to always use `i64` instead of `u64` in the data model, so that run-time errors can be avoided.
+
+      [Consider making Row::stmt public - Issue #802 - rusqlite/rusqlite](https://github.com/rusqlite/rusqlite/issues/802)
+
   - Serde/JSON
     - `Value::String("a")` will be converted to `"\"a\""`
   
