@@ -11,6 +11,7 @@
   - [CS:APP Malloc Lab](Memory/Manual/Malloc%20Lab.md)
 - [Automatic Memory Management](Memory/Automatic/README.md)
 - [Memory Protection](Memory/Protection/README.md)
+  - [Pages](Memory/Protection/Pages.md)
   - [Memory Protection Keys](Memory/Protection/Keys.md)
 - [Windows](Memory/Windows/README.md)
   - [Working Sets](Memory/Windows/Working%20Sets.md)
