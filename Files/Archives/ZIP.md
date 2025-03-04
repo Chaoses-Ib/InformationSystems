@@ -8,6 +8,8 @@
 - ~~[zip: Zip implementation in Rust](https://github.com/zip-rs/zip)~~
   - [zip2: Zip implementation in Rust](https://github.com/zip-rs/zip2)
     - Cumbersome API
+    - Binary size
+      - `default-features = false, features = ["deflate"]`: 0.47 MiB
   
   Libraries:
   - [zip-extract: Extract zip archives using the zip crate.](https://github.com/MCOfficer/zip-extract)
