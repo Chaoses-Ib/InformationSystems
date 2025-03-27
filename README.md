@@ -77,6 +77,7 @@
       - [Storage Engines](Databases/Relational/DBMS/SQLite/Engines/README.md)
       - [Compression](Databases/Relational/DBMS/SQLite/Compression.md)
       - [Encryption](Databases/Relational/DBMS/SQLite/Encryption.md)
+      - [Backup](Databases/Relational/DBMS/SQLite/Backup.md)
       - [Full-text Search](Databases/Relational/DBMS/SQLite/FTS/README.md)
       - [.NET](Databases/Relational/DBMS/SQLite/.NET.md)
       - [Distributed SQLite](Databases/Relational/DBMS/SQLite/Distributed.md)
