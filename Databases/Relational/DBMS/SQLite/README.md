@@ -9,6 +9,8 @@
 
 [Many Small Queries Are Efficient In SQLite](https://www.sqlite.org/np1queryprob.html)
 
+[Measuring and Reducing CPU Usage in SQLite](https://www.sqlite.org/cpu.html)
+
 [libSQL: A fork of SQLite that is both Open Source, and Open Contributions.](https://github.com/tursodatabase/libsql)
 
 [→Distributed SQLite](Distributed.md)
