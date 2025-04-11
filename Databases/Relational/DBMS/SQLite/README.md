@@ -5,6 +5,8 @@
 
 [Performance/Avoid SQLite In Your Next Firefox Feature - MozillaWiki](https://wiki.mozilla.org/Performance/Avoid_SQLite_In_Your_Next_Firefox_Feature)
 
+[Best practices for SQLite performance  |  App quality  |  Android Developers](https://developer.android.com/topic/performance/sqlite-performance-best-practices)
+
 [SQLite的文艺复兴 - BMPI](https://www.bmpi.dev/dev/renaissance-sqlite/) ([V2EX](https://www.v2ex.com/t/910008), [知乎](https://zhuanlan.zhihu.com/p/601510076))
 
 [Many Small Queries Are Efficient In SQLite](https://www.sqlite.org/np1queryprob.html)
