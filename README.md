@@ -105,6 +105,7 @@
 
 ## [Compression](Compression/README.md)
 - [Streaming Compression](Compression/Streaming.md)
+- [Differential Compression](Compression/Diff/README.md)
 
 ## [Geographic Information Systems](Geographic/README.md)
 - [Geographic Coordinate Systems](Geographic/Coordinate%20Systems.md)

@@ -1,6 +1,8 @@
 # Compression
 [Wikipedia](https://en.wikipedia.org/wiki/Data_compression)
 
+> In information theory, data compression, source coding, or bit-rate reduction is the process of encoding information using fewer bits than the original representation. Any particular compression is either lossy or lossless. Lossless compression reduces bits by identifying and eliminating statistical redundancy. No information is lost in lossless compression. Lossy compression reduces bits by removing unnecessary or less important information.
+
 [Lossless compression - Wikipedia](https://en.wikipedia.org/wiki/Lossless_compression)
 
 [Data Compression - Wikibooks, open books for an open world](https://en.wikibooks.org/wiki/Data_Compression)
@@ -9,6 +11,15 @@
 
 Libraries:
 - [squash: Compression abstraction library and utilities](https://github.com/quixdb/squash)
+- Rust
+  - [comde: Compression/decompression crate akin to serde](https://github.com/bbqsrc/comde/tree/master)
+
+## Duplicate elimination
+- Inner duplicate elimination: compression
+- Cross duplicate elimination
+  - Identical duplicate elimination: data deduplication ([Wikipedia](https://en.wikipedia.org/wiki/Data_deduplication))
+    - [→Hash functions](https://github.com/Chaoses-Ib/Cryptology#hash-functions)
+  - [Differential compression](Diff/README.md)
 
 ## Benchmarks
 [Squash Compression Benchmark](https://quixdb.github.io/squash-benchmark/)
