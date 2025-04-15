@@ -16,6 +16,9 @@
 
 [Compression and Decompression | NGINX Documentation](https://docs.nginx.com/nginx/admin-guide/web-server/compression/)
 
+## Compressing vs transorting
+Compressing can be thought as a side channel for transporting. If $\text{compression speed}\times (1-\text{compression ratio}) > \text{transport speed}$, compressing should be preferred. With streaming this can be further relaxed.
+
 ## gzip
 [Wikipedia](https://en.wikipedia.org/wiki/Gzip)
 

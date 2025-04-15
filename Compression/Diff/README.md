@@ -72,6 +72,10 @@ Data differencing is another form of compression. It utilizes duplicate eliminat
 
   [francisdb/jojodiff-rs: Rust library for working with JojoDiff files](https://github.com/francisdb/jojodiff-rs)
 
+## Chunking
+- [cdchunking-rs: Content-Defined Chunking for Rust](https://github.com/remram44/cdchunking-rs)
+- [hash-roll: A variety of content chunking algorithms with a common API in rust](https://github.com/codyps/hash-roll)
+
 
 [^bakerCompressingDifferencesExecutable1999]: Baker, B. S., Manber, U., & Muth, R. (1999). Compressing Differences of Executable Code.
 [^percivalNaiveDifferencesExecutable2003]: Percival, C. (2003). Naı¨ve Differences of Executable Code.

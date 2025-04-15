@@ -25,6 +25,8 @@
   - Only files (no directories).
   - No customizable external file attributes.
 
+- [stream-unzip: A streaming unzip library for rust projects](https://github.com/jsoverson/stream-unzip)
+
 [High-Level Zip Library and Rust Libraries in General : r/rust](https://www.reddit.com/r/rust/comments/w9ok61/highlevel_zip_library_and_rust_libraries_in/)
 
 ### .NET

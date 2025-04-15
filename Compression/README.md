@@ -9,10 +9,7 @@
 
 [Compression - facebook/rocksdb Wiki](https://github.com/facebook/rocksdb/wiki/Compression)
 
-Libraries:
-- [squash: Compression abstraction library and utilities](https://github.com/quixdb/squash)
-- Rust
-  - [comde: Compression/decompression crate akin to serde](https://github.com/bbqsrc/comde/tree/master)
+[Content-Encoding - HTTP | MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Encoding)
 
 ## Duplicate elimination
 - Inner duplicate elimination: compression
@@ -22,9 +19,19 @@ Libraries:
   - [Differential compression](Diff/README.md)
 
 ## Benchmarks
+ZPAQ > LZMA > Brotli > Zstandard > Deflate > CSC > lzham > LZ4 > lzo > Snappy
+
 [Squash Compression Benchmark](https://quixdb.github.io/squash-benchmark/)
+- DLL, i3-2105: ZPAQ > CSC > LZMA > lzham > Brotli > BZip2 > Defalte, Zstd?
 
 [TurboBench: Compression Benchmark](https://github.com/powturbo/TurboBench)
+- Incremental results
+- `-elzma,0,1,2,3,4,5,6,7,8,9`
+- `-ebrotli,4,5,6,7,8,9,10,11`
+- `-ezstd,9,10,11,12,13,14,15,16,17,18,19,20,21,22`
+- [feat: add TurboBench benchmarks - 16Hexa/pdbg-tests@99146d6](https://github.com/16Hexa/pdbg-tests/commit/99146d6a0b20d6b476960ed86d72f577406e56f5)
+
+[Compression Analysis Tool | Noemax](https://www.noemax.com/free-tools/compression-analysis-tool.asp)
 
 [Maximum file compression benchmark 7Z ARC ZIPX versus RAR](https://peazip.github.io/maximum-compression-benchmark.html)
 - ZPAQ is clearly the top performing format in this benchmark focused on maximum attainable compression.
@@ -52,11 +59,17 @@ Discussions:
 #### Snappy
 [Wikipedia](https://en.wikipedia.org/wiki/Snappy_(compression))
 
+Rust:
+- [rust-snappy: Snappy compression implemented in Rust (including the Snappy frame format).](https://github.com/burntsushi/rust-snappy)
+
 #### LZ4
 C++:
 - [lz4: Extremely Fast Compression algorithm](https://github.com/lz4/lz4)
 
   Rust: [lz4-rs: Rust LZ4 bindings](https://github.com/10xGenomics/lz4-rs)
+
+Rust:
+- [lz4\_flex: Fastest pure Rust implementation of LZ4 compression/decompression.](https://github.com/PSeitz/lz4_flex)
 
 ## Hybrid
 > If you want to further reduce space and have some free CPU to use, ... We recommend ZSTD. If it is not available, Zlib is the second choice.
@@ -64,25 +77,115 @@ C++:
 ### LZ77 + Huffman: Deflate
 [Wikipedia](https://en.wikipedia.org/wiki/Deflate)
 
+Rust:
+- [rust-lang/flate2-rs: DEFLATE, gzip, and zlib bindings for Rust](https://github.com/rust-lang/flate2-rs)
+
+  > FLATE, Gzip, and Zlib bindings for Rust - can use miniz_oxide for a pure Rust implementation.
+- [miniz\_oxide: Rust replacement for miniz](https://github.com/Frommi/miniz_oxide)
+- [deflate-rs: An implementation of a DEFLATE encoder in rust](https://github.com/image-rs/deflate-rs) (discontinued)
+- [Zopfli: A Rust implementation of the Zopfli compression algorithm.](https://github.com/zopfli-rs/zopfli)
+- [deflate64-rs: Derflate64 implementation in rust based on .NET's implementation](https://github.com/anatawa12/deflate64-rs)
+- [flate3](https://docs.rs/flate3/latest/flate3/)
+
+  > It should compress slightly better than flate2. It uses multiple threads to compress faster.
+
 ### LZ77 + Huffman + context: Brotli
 [Wikipedia](https://en.wikipedia.org/wiki/Brotli)
 
-### LZ77 + Huffman + ANS: Zstandard
+C++:
+- [google/brotli: Brotli compression format](https://github.com/google/brotli)
+
+  Rust: [brotlic: Bindings to the brotli library featuring a low-overhead encoder and decoder, Writers and Readers for compression and decompression at customizable compression qualities and window sizes.](https://github.com/AronParker/brotlic)
+
+Rust:
+- [dropbox/rust-brotli: Brotli compressor and decompressor written in rust that optionally avoids the stdlib](https://github.com/dropbox/rust-brotli)
+  - [Multithreaded compression - Issue #96](https://github.com/dropbox/rust-brotli/issues/96)
+
+  [Lossless compression with Brotli in Rust for a bit of Pied Piper on the backend - Dropbox](https://dropbox.tech/infrastructure/lossless-compression-with-brotli)
+  > Activating unsafe mode results in another gain, bringing the total speed up to 249MB/s, bringing Brotli to within 82% of the C code.
+  - `unsafe` feature has been removed?
+
+    [add a feature flag unsafe that avoids unnecessary array bounds checks - dropbox/rust-brotli@412e8c0](https://github.com/dropbox/rust-brotli/commit/412e8c0332ec31c3583a8c589564afc59c453bb6)
+
+  Wasm:
+  - [brotli-wasm: A reliable compressor and decompressor for Brotli, supporting node & browsers via wasm](https://github.com/httptoolkit/brotli-wasm)
+  - [brotli-dec-wasm: Brotli decompressor for browsers and web workers with WASM, but still having a small size (about 200KB)](https://github.com/ustclug-dev/brotli-dec-wasm)
+  - [wasm-brotli: 🗜 WebAssembly compiled Brotli library](https://github.com/dfrankland/wasm-brotli)
+
+    > requires a custom async wrapper for Webpack v4 usage and isn't usable at all in Webpack v5. Last updated in 2019.
+- [brotli-rs: A Brotli implementation in pure and safe Rust](https://github.com/ende76/brotli-rs) (discontinued)
+
+### LZ77 + Huffman + ANS: [Zstandard](https://facebook.github.io/zstd/)
 [Wikipedia](https://en.wikipedia.org/wiki/Zstd)
 
 C++:
 - [zstd: Zstandard - Fast real-time compression algorithm](https://github.com/facebook/zstd)
 
-  Rust: [zstd-rs: A rust binding for the zstd compression library.](https://github.com/gyscos/zstd-rs)
+  Rust: [zstd-rs: A rust binding for the zstd compression library.](https://github.com/gyscos/zstd-rs) (`zstd`, `zstd_safe`)
+  - [Documentation for WASM? - Issue #93](https://github.com/gyscos/zstd-rs/issues/93)
+
+Rust:
+- [KillingSpark/zstd-rs: zstd format implementation in pure rust](https://github.com/KillingSpark/zstd-rs)
+
+  > This crate contains a fully operational implementation of the decompression portion of the standard. It also provides a compressor which is usable, but it does not yet reach the speed, ratio or configurability of the original zstd library.
+
+JS:
+- Wasm
+  - [zstd-codec: Zstandard codec for Node.js and Web, powered by Emscripten](https://github.com/yoshihitoh/zstd-codec)
+  - [zstd-wasm: Zstandard for browser, Node.js and Deno](https://github.com/bokuweb/zstd-wasm)
+  - [zstd-js](https://github.com/OneIdentity/zstd-js)
+- [fzstd: High performance Zstandard decompression in a pure JavaScript, 8kB package](https://github.com/101arrowz/fzstd)
+
+  > WebAssembly ports of Zstandard are usually significantly (30-40%) faster than `fzstd`
+- Native
+  - [mongodb-js/zstd: A Zstd Compression Library](https://github.com/mongodb-js/zstd)
 
 ### LZ77 + Range: LZMA
 [Wikipedia](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm)
 
 Lempel–Ziv–Markov chain algorithm
 
-- liblzma
+- Even the level 0 has a good compression ratio (> Brotli 5~9, Deflate, Zstd 15, also in compression speed) for highly compressible (30%) data
+
+C++:
+- [XZ Utils](https://github.com/tukaani-project/xz): liblzma
+  - Performance
+    - 9: 5.6~7.7 MB/s
+    - 4: 25.3~28.9 MB/s
+    - 0: 51~55 MB/s
   
-  Rust: [rust-lzma: A Rust crate that provides a simple interface for LZMA compression and decompression.](https://github.com/fpgaminer/rust-lzma)
+  Rust:
+  - [xz2-rs: Bindings to liblzma in Rust (xz streams in Rust)](https://github.com/alexcrichton/xz2-rs) (discontinued)
+    - [liblzma-rs: Bindings to liblzma in Rust (xz streams in Rust)](https://github.com/portable-network-archive/liblzma-rs)
+      - Require Clang
+      - [☂️ WebAssembly Support - Issue #15](https://github.com/Portable-Network-Archive/liblzma-rs/issues/15)
+        - Binary size
+          - 97 KiB (`thin-lto` < no lto < `fat-lto`)
+          - Encoder-only: 69 KiB
+          - Decoder-only: 57 KiB
+        - Performance: ~20% of native (x86-64)
+          - Os
+            - 9: 2.6~3.3 MiB/s
+            - 4: 3.9~4.4 MiB/s
+            - 0: 11.9~13.2 MiB/s
+          - O3
+            - 9: 2.5~3.5 MiB/s
+            - 4: 4.4~4.7 MiB/s
+            - 0: 12.5~13.7 MiB/s
+  - [rust-lzma: A Rust crate that provides a simple interface for LZMA compression and decompression.](https://github.com/fpgaminer/rust-lzma)
+- 7-Zip: [LZMA SDK](https://7-zip.org/sdk.html)
+
+Rust:
+- [lzma-rs: An LZMA decoder written in pure Rust](https://github.com/gendx/lzma-rs) (`lzma_rs`)
+
+JS:
+- [LZMA-JS: A JavaScript implementation of the Lempel-Ziv-Markov (LZMA) chain compression algorithm](https://github.com/LZMA-JS/LZMA-JS)
+  - Performance
+    - 9: 0.24 MiB/s
+    - 4: 3.57 MiB/s
+  - [biw/lzma-web: A JavaScript implementation of the Lempel-Ziv-Markov (LZMA) chain compression algorithm](https://github.com/biw/lzma-web)
+- [Leo4815162342/lzma-purejs: Clean, fast LZMA encoder in Javascript](https://github.com/Leo4815162342/lzma-purejs)
+- [js-lzma: Port of LZMA to JavaScript](https://github.com/Magister/js-lzma)
 
 [LZMA2 format](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm#LZMA2_format):
 > The LZMA2 container supports multiple runs of compressed LZMA data and uncompressed data. Each LZMA compressed run can have a different LZMA configuration and dictionary. This improves the compression of partially or completely incompressible files and allows multithreaded compression and multithreaded decompression by breaking the file into runs that can be compressed or decompressed independently in parallel. Criticism of LZMA2's changes over LZMA include header fields not being covered by CRCs, and parallel decompression not being possible in practice.
@@ -93,17 +196,46 @@ Lempel–Ziv–Markov chain algorithm
 Benchmarks:
 - [7-Zip Compression Benchmark - OpenBenchmarking.org](https://openbenchmarking.org/test/pts/compress-7zip-1.11.0)
 
-### LZ77 + BWT + content mixing: ZPAQ
+### LZ77: [CSC](https://github.com/fusiyuan2010/CSC)
+
+### LZ77 + BWT + content mixing: [ZPAQ](https://www.mattmahoney.net/dc/zpaq.html)
 [Wikipedia](https://en.wikipedia.org/wiki/ZPAQ)
 
 ### RLE + BWT + MTF + Huffman: bzip2
 [Wikipedia](https://en.wikipedia.org/wiki/Bzip2)
 
+> The only reason to use bzip2 for “general purpose” compression is if you have to use bzip2 because an upstream mandates it, bzip2 has not been a good general purpose compression format since LZMA appeared: LZMA will always beat bzip2 in decompression speed, and will generally beat its compression ratio at any given CPU time, bzip2 only beats LZMA on memory use (especially on compression, but also decompression for very high LZMA modes). Bzip2 can be superior for specific data patterns which happen to fit BWT, but the odds are low.
+
+C++:
+- libbz2
+
+  Rust: [bzip2-rs: libbz2 (bzip2 compression) bindings for Rust](https://github.com/trifectatechfoundation/bzip2-rs)
+
+Rust:
+- [paolobarbolini/bzip2-rs: Pure Rust bzip2 decoder](https://github.com/paolobarbolini/bzip2-rs) (`bzip2_rs`)
+
+### [bzip3](https://github.com/kspalaiologos/bzip3)
+> A better, faster and stronger spiritual successor to BZip2. Features higher compression ratios and better performance thanks to a order-0 context mixing entropy coder, a fast Burrows-Wheeler transform code making use of suffix arrays and a RLE with Lempel Ziv+Prediction pass based on LZ77-style string matching and PPM-style context modeling.
+>
+> Like its ancestor, BZip3 excels at compressing text or code.
+
 ### Density
 [density: Superfast compression library](https://github.com/g1mv/density)
 
+## Libraries
+C++:
+- [squash: Compression abstraction library and utilities](https://github.com/quixdb/squash)
+
+Rust:
+- [async-compression: Adaptors between compression crates and Rust's async IO types](https://github.com/Nullus157/async-compression)
+- [comde: Compression/decompression crate akin to serde](https://github.com/bbqsrc/comde)
+
+[pure rust decompression libraries? : r/rust](https://www.reddit.com/r/rust/comments/1d8j5br/pure_rust_decompression_libraries/)
+
 ## Shared dictionaries
 “黑压缩”
+
+[Compression Dictionary Transport](https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-compression-dictionary)
 
 ## Solid compression
 [Wikipedia](https://en.wikipedia.org/wiki/Solid_compression)
