@@ -30,6 +30,7 @@
 - [File Change Monitoring](Files/Monitoring.md)
 - [File Transfer](Files/Transfer/README.md)
   - [Secure Copy Protocol (SCP)](Files/Transfer/SCP.md)
+  - [WebDAV](Files/Transfer/WebDAV.md)
 - [File Synchronization](Files/Sync/README.md)
   - [Syncthing](Files/Sync/Syncthing.md)
   - [OneDrive](Files/Sync/OneDrive.md)
