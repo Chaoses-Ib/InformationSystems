@@ -1,6 +1,8 @@
 # File Systems
 - [Apache OpenDAL: One Layer, All Storage.](https://github.com/apache/opendal)
 
+- [rust-vfs: A virtual filesystem for Rust](https://github.com/manuel-woelker/rust-vfs)
+
 - [Spacedrive: An open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.](https://github.com/spacedriveapp/spacedrive)
 
 - [remotefs-rs: ⏫ A client library to work with all file transfer protocols ⏬](https://github.com/remotefs-rs/remotefs-rs)

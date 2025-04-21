@@ -77,10 +77,38 @@ Rust:
 ### LZ77 + Huffman: Deflate
 [Wikipedia](https://en.wikipedia.org/wiki/Deflate)
 
+C++:
+- [zlib: A massively spiffy yet delicately unobtrusive compression library.](https://github.com/madler/zlib)
+- [zlib-ng: zlib replacement with optimizations for "next generation" systems.](https://github.com/zlib-ng/zlib-ng)
+  - [zlib-ng/pigzbench: Test of parallel compression acceleration](https://github.com/zlib-ng/pigzbench)
+
+  [2.0.0 Benchmark comparisons - zlib-ng/zlib-ng - Discussion #871](https://github.com/zlib-ng/zlib-ng/discussions/871)
+  > Zlib-ng compression beats both hands down on speed. Zlib-ng is about 4x faster than zlib (w/zlib-ng minigzip), and 2.1x faster than stock gzip from my Scientific Linux 7.
+  > 
+  > Zlib-ng decompression takes about 57% less time than zlib (w/zlib-ng minigzip), and 43% less time than gzip.
+  > 
+  > Zlib-ng loses a little on compressed size (due to 4-byte minimum match size instead of 3-byte). Level 6 zlib-ng loses with 41.038% vs 40.813% compressed size for gzip. Level 9 has 40.696% vs 40.549%.
+
+  > Our research with RocksDB and Zlib-ng shows that there is ~50% less throughput and ~45% latency increase in Zlib-ng vs Zstandard. Also not much difference observed in Compression ratios.
+
 Rust:
 - [rust-lang/flate2-rs: DEFLATE, gzip, and zlib bindings for Rust](https://github.com/rust-lang/flate2-rs)
+  - > FLATE, Gzip, and Zlib bindings for Rust - can use miniz_oxide for a pure Rust implementation.
+  - Supported formats: deflate, zlib, gzip
+  - Backends: `miniz_oxide`, `zlib-rs`, `zlib-ng`, `cloudflare_zlib`
+    - [Change default backend to `zlib-rs` instead - Issue #469 - rust-lang/flate2-rs](https://github.com/rust-lang/flate2-rs/issues/469)
 
-  > FLATE, Gzip, and Zlib bindings for Rust - can use miniz_oxide for a pure Rust implementation.
+    > zlib-rs (and zlib-ng) trades some compression ratio for speed so it doesn't compress as well as standard zlib and miniz\_oxide. This may or may not be desirable depending on application so it's somthing that has to be considered. When testing `cloudflare-zlib` it seemed like it was somewhere inbetween zlib and zlib-ng/zlib-rs on compression ratio and speed so maybe does some speed/ratio tradeoffs but not all (zlib and miniz/miniz\_oxide also has some slight differences in compression ratio characteristics but that's more a small variance that can go slightly either way due to slight difference in implementation rather than better/worse).
+- [zlib-rs: A safer zlib](https://github.com/trifectatechfoundation/zlib-rs)
+  - [zlib-rs benchmark dashboard](https://trifectatechfoundation.github.io/zlib-rs-bench/)
+  - [stop using custom wasm simd for `slide_hash` by folkertdev - Pull Request #343](https://github.com/trifectatechfoundation/zlib-rs/pull/343)
+
+  [Current zlib-rs performance - Blog - Tweede golf](https://tweedegolf.nl/en/blog/134/current-zlib-rs-performance)
+
+  [zlib-rs is faster than C - Trifecta Tech Foundation](https://trifectatech.org/blog/zlib-rs-is-faster-than-c/)
+  - [Rust can be faster than C](https://xuanwo.io/links/2025/02/rust_can_be_faster_than_c/)
+
+  [Switch to more performant, 100% Rust zlib by brainstorm - Pull Request #331 - zaeleus/noodles](https://github.com/zaeleus/noodles/pull/331)
 - [miniz\_oxide: Rust replacement for miniz](https://github.com/Frommi/miniz_oxide)
 - [deflate-rs: An implementation of a DEFLATE encoder in rust](https://github.com/image-rs/deflate-rs) (discontinued)
 - [Zopfli: A Rust implementation of the Zopfli compression algorithm.](https://github.com/zopfli-rs/zopfli)
@@ -177,6 +205,11 @@ C++:
 
 Rust:
 - [lzma-rs: An LZMA decoder written in pure Rust](https://github.com/gendx/lzma-rs) (`lzma_rs`)
+- [sevenz-rust2/lzma-rust2](https://github.com/hasenbanck/sevenz-rust2/tree/main/lzma-rust2) (`lzma-rust2`)
+
+  > supports partial decompression and BCJ, and most importantly, it supports compression.
+
+  [Consider using lzma-rust - Issue #200](https://github.com/zip-rs/zip2/issues/200)
 
 JS:
 - [LZMA-JS: A JavaScript implementation of the Lempel-Ziv-Markov (LZMA) chain compression algorithm](https://github.com/LZMA-JS/LZMA-JS)

@@ -4,6 +4,8 @@
 ## Libraries
 Rust:
 - [tar-rs: Tar file reading/writing for Rust](https://github.com/alexcrichton/tar-rs)
+  - [lzma\_tarball: A library for easily creating tarball archives using LZMA](https://github.com/Drew-Chase/lzma_tarball)
+  - [archive-rs](https://github.com/archive-rs/archive-rs)
 - [tar-parser.rs: tar file parser written in rust using nom](https://github.com/Berrysoft/tar-parser.rs)
 
 ## Tools

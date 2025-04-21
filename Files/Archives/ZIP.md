@@ -1,15 +1,37 @@
 # ZIP
 [Wikipedia](https://en.wikipedia.org/wiki/ZIP_(file_format))
 
-- Compression: DEFLATE
+[Specifications - libzip](https://libzip.org/specifications/)
+
+- Compression: [DEFLATE](../../Compression/README.md#lz77--huffman-deflate), ...
+  - Other compression algorithms are not widely supported
+- Can contain files with the same name, though some tools don't support this
+  - Support: 7-Zip, NanaZip
+  - Not support: unzip (Debian), Explorer, Directory Opus, WinRAR
 
 ## Libraries
+[→Archives libraries](README.md#libraries)
+
+### C++
+- [libzip: A C library for reading, creating, and modifying zip archives.](https://github.com/nih-at/libzip)
+
 ### Rust
 - ~~[zip: Zip implementation in Rust](https://github.com/zip-rs/zip)~~
   - [zip2: Zip implementation in Rust](https://github.com/zip-rs/zip2)
     - Cumbersome API
+    - Smart extract: `extract_unwrapped_root_dir()`
+    - Cannot remove a file directly
+      - [Deletion of zip entries in-place - Issue #166](https://github.com/zip-rs/zip2/issues/166)
+      - [How to delete an entry from zip archive - Issue #13](https://github.com/zip-rs/zip2/issues/13)
+    - `merge_archive()` will retain files with the same name
+      - [merge\_archives creating corrupted archives - Issue #271](https://github.com/zip-rs/zip2/issues/271)
+    - Features
+      - Without zopfli: `zip = { version = "2", default-features = false, features = ["deflate-flate2", "flate2"] }; flate2 = { version = "1", default-features = false, features = ["zlib-rs"] }`
+      - [Zopfli unusable on its own - Issue #273](https://github.com/zip-rs/zip2/issues/273)
     - Binary size
       - `default-features = false, features = ["deflate"]`: 0.47 MiB
+    - [Release series 2.x issue: invalid zip file with overlapped components. - Issue #249](https://github.com/zip-rs/zip2/issues/249)
+    - [Yank both 2.6.0 and 2.6.1 as they both introduce a breaking change and republish as 3.0.0 - Issue #337](https://github.com/zip-rs/zip2/issues/337)
   
   Libraries:
   - [zip-extract: Extract zip archives using the zip crate.](https://github.com/MCOfficer/zip-extract)
@@ -26,6 +48,8 @@
   - No customizable external file attributes.
 
 - [stream-unzip: A streaming unzip library for rust projects](https://github.com/jsoverson/stream-unzip)
+
+- [vfs-zip: Virtual FileSystem abstractions for ZIP files](https://github.com/MaulingMonkey/vfs-zip) (discontinued)
 
 [High-Level Zip Library and Rust Libraries in General : r/rust](https://www.reddit.com/r/rust/comments/w9ok61/highlevel_zip_library_and_rust_libraries_in/)
 

@@ -18,8 +18,14 @@ C++:
 
   [LibarchiveFormats](https://github.com/libarchive/libarchive/wiki/LibarchiveFormats)
 
-  Rust: [compress-tools-rs: A Swiss Army Knife for handling compressed data in Rust](https://github.com/OSSystems/compress-tools-rs)
-  - > You must have `libarchive`, 3.2.0 or newer, properly installed on your system in order to use this. If building on \*nix and Windows GNU systems, `pkg-config` is used to locate the `libarchive`; on Windows MSVC, `vcpkg` will be used to locating the `libarchive`.
+  Rust:
+  - [compress-tools-rs: A Swiss Army Knife for handling compressed data in Rust](https://github.com/OSSystems/compress-tools-rs)
+    - > You must have `libarchive`, 3.2.0 or newer, properly installed on your system in order to use this. If building on \*nix and Windows GNU systems, `pkg-config` is used to locate the `libarchive`; on Windows MSVC, `vcpkg` will be used to locating the `libarchive`.
+  - [simple-archive](https://github.com/jaimecura/simple-archive)
+  - [akv](https://github.com/branchseer/akv) (discontinued)
+  - [archive-reader](https://github.com/YaxinCheng/archive-reader) (discontinued)
+  - [libarchive-rust: A Rust crate for interacting with archives using libarchive](https://github.com/fnichol/libarchive-rust) (discontinued)
+  - [archivefs: A read-only FUSE filesystem for mounting compressed archives, inspired by archivemount.](https://github.com/bugnano/archivefs)
 
 ## Formats
 - [Zap: An extremely fast alternative to zip which is written in rust.](https://github.com/SteveGremory/Zap) (inactive)
