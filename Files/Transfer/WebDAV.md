@@ -3,6 +3,11 @@
 
 WebDAV (Web Distributed Authoring and Versioning)
 
+RFCs:
+- [RFC 2518 - HTTP Extensions for Distributed Authoring -- WEBDAV](https://datatracker.ietf.org/doc/html/rfc2518)
+
+[WebDAV explained](https://http.dev/webdav)
+
 [WebDAV: the Awesome File Sharing Method No One Is Using - simonsafar.com](https://simonsafar.com/2022/webdav/)
 
 Only used for file management practically?
@@ -11,19 +16,67 @@ Only used for file management practically?
 
 [fstanis/awesome-webdav: A curated list of awesome apps that support WebDAV and tools related to it.](https://github.com/fstanis/awesome-webdav)
 
+[有无支持 webdav 应用推荐分享（任何场景） - V2EX](https://www.v2ex.com/t/1040391)
+
 [WebDav 对 Windows 设备是不是不太友好？ - V2EX](https://v2ex.com/t/598070)
+
+## Methods
+### OPTIONS
+[\[MS-WDV\]: Example OPTIONS Command | Microsoft Learn](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-wdv/47573dae-9027-467f-97a4-a19f86703ad2)
+
+DAV Header:
+> DAV = "DAV" ":" "1" ["," "2"] ["," 1#extend]
+> 
+> This header indicates that the resource supports the DAV schema and
+> protocol as specified. All DAV compliant resources MUST return the
+> DAV header on all OPTIONS responses.
+
+Collection Resources:
+> A resource MAY be a collection but not be WebDAV compliant.  That is,
+> the resource may comply with all the rules set out in this
+> specification regarding how a collection is to behave without
+> necessarily supporting all methods that a WebDAV compliant resource
+> is required to support.  In such a case the resource may return the
+> DAV:resourcetype property with the value DAV:collection but MUST NOT
+> return a DAV header containing the value "1" on an OPTIONS response.
+
+[How to make HTTP OPTIONS responses working for WebDAV with Apache2? - Server Fault](https://serverfault.com/questions/1167436/how-to-make-http-options-responses-working-for-webdav-with-apache2)
 
 ## Servers
 - Nginx
   - [Module `ngx_http_dav_module`](https://nginx.org/en/docs/http/ngx_http_dav_module.html)
 
     > The module processes HTTP and WebDAV methods PUT, DELETE, MKCOL, COPY, and MOVE. WebDAV clients that require additional WebDAV methods to operate will not work with this module.
+
+    - Though `ngx_http_dav_module` doesn't support `PROPFIND`, there is [auto index](https://github.com/Chaoses-Ib/Networks/blob/main/Application/HTTP/Servers/Nginx/Index.md#auto-index)
+    - `client_max_body_size 1m` by default
+
+    ```nginx
+    location /data/ {
+        alias ../data/;
+
+        dav_methods PUT DELETE MKCOL COPY MOVE;
+        create_full_put_path on;
+        client_max_body_size 200m;
+
+        # auth_basic "realm";
+        # # conf/.htpasswd
+        # auth_basic_user_file .htpasswd;
+        # or:
+        # auth_request /auth;
+
+        autoindex on;
+        autoindex_format json;
+    }
+    ```
+
   - [nginx-dav-ext-module: nginx WebDAV PROPFIND,OPTIONS,LOCK,UNLOCK support](https://github.com/arut/nginx-dav-ext-module) (discontinued)
     - [AUR (en) - nginx-mainline-mod-dav-ext](https://aur.archlinux.org/packages/nginx-mainline-mod-dav-ext)
     - Windows
       - [Making on Windows - Issue #2](https://github.com/arut/nginx-dav-ext-module/issues/2)
       - [build for windows libxslt not found - Issue #70](https://github.com/arut/nginx-dav-ext-module/issues/70)
     - [Please stop using this Crappy old repo - Issue #74](https://github.com/arut/nginx-dav-ext-module/issues/74)
+    - [#196 (Inconsistent behavior on uri's with unencoded spaces followed by H) -- nginx](https://trac.nginx.org/nginx/ticket/196)
   - [dotwee/nginx-webdav-nononsense - Docker Image | Docker Hub](https://hub.docker.com/r/dotwee/nginx-webdav-nononsense)
 
   [#2580 (Full native WebDAV support) -- nginx](https://trac.nginx.org/nginx/ticket/2580)
@@ -96,7 +149,36 @@ Rust:
 
 JS:
 - [webdav-client: WebDAV client written in Typescript for NodeJS and the browser](https://github.com/perry-mitchell/webdav-client)
+  - [onUploadProgress is not triggering. - Issue #319 - perry-mitchell/webdav-client](https://github.com/perry-mitchell/webdav-client/issues/319)
+    - [webdav doesn't support upload progress since v5 - Issue #11153 - nextcloud/spreed](https://github.com/nextcloud/spreed/issues/11153)
+      - [nextcloud-upload: Nextcloud Upload helpers for Nextcloud apps https://npmjs.org/@nextcloud/upload](https://github.com/nextcloud-libraries/nextcloud-upload)
+    - [Upgrade to webdav-client V5 - Issue #65 - club-1/webdav-drive](https://github.com/club-1/webdav-drive/issues/65)
   - [daview: Proxy a WebDAV instance with a nicer UI and custom authentication](https://github.com/tale/daview)
+
+  Upload ([`putFileContents()`](https://github.com/perry-mitchell/webdav-client/blob/0e3520fcb94767686653fa87f2b0be2f2cb26659/source/operations/putFileContents.ts)):
+  ```ts
+  import { createClient, type ProgressEvent } from 'webdav/web'
+
+  const client = createClient('/data/app/')
+
+  async function customUpload(options: UploadCustomRequestOptions) {
+    const fileInfo = options.file
+    const buffer = await fileInfo.file?.arrayBuffer()
+    client.putFileContents(`/${fileInfo.name}`, buffer!, {
+      onUploadProgress: (e: ProgressEvent) => {
+        // console.log('Upload progress:', e)
+        options.onProgress({ percent: e.loaded / e.total * 100 })
+      },
+    }).then(() => {
+      options.onFinish()
+      message.success('上传成功')
+    }).catch((error) => {
+      options.onError()
+      message.error(`上传失败: ${error}`)
+    })
+  }
+  ```
+
 - [webdav-js: A simple WebDAV client written in JS for use as a bookmarklet, or integration into a web server.](https://github.com/dom111/webdav-js)
   - Download, Copy, Rename, Move, Delete
   - Upload: No progress, just spin

@@ -112,7 +112,9 @@ Git:
 
 ### China
 - [坚果云](https://www.jianguoyun.com/)
-  - WebDAV
+  - [WebDAV](https://help.jianguoyun.com/?p=2064)
+
+    [通过坚果云 webdav 同步数据时需要注意坚果云的请求频率限制 - V2EX](https://www.v2ex.com/t/722770)
   - [Pricing](https://www.jianguoyun.com/s/pricing): 上传 1 GiB/月, 下载 3 GiB/月 (not GB)
 - 巴别鸟
 - 百度网盘
