@@ -3,6 +3,12 @@
 
 > According to OpenSSH developers in April 2019, SCP is outdated, inflexible and not readily fixed; they recommend the use of more modern protocols like SFTP and rsync for file transfer. As of OpenSSH version 9.0, `scp` client therefore uses SFTP for file transfers by default instead of the legacy SCP/RCP protocol.
 
+## Directory
+- How to `mkdir` automatically?
+  - `-r dir` (not `-r dir/`)
+
+  [PSCP: Upload an entire folder, Windows to Linux - Server Fault](https://serverfault.com/questions/295565/pscp-upload-an-entire-folder-windows-to-linux)
+
 ## Performance
 Slow for a lot of small files.
 
