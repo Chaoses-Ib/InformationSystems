@@ -144,7 +144,6 @@ Because `open()` can create a file, the usage of `creat()` has somewhat fallen o
   - Get folder size
   - Get collection of directory entries
 - [copy\_dir: Copy a directory recursively in Rust](https://github.com/mdunsmuir/copy_dir) (discontinued)
-- [tempfile: Temporary file library for rust](https://github.com/Stebalien/tempfile)
 
 
 [^three]: Operating Systems: Three Easy Pieces

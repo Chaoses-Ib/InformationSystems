@@ -38,6 +38,7 @@
   - [ZIP](Files/Archives/ZIP.md)
   - [7z](Files/Archives/7z.md)
   - [tar](Files/Archives/tar.md)
+- [Temporary Files](Files/Temp.md)
 - [Trash](Files/Trash.md)
 
 ## [Database Management Systems](Databases/README.md)
