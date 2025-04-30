@@ -3,6 +3,9 @@
 
 > According to OpenSSH developers in April 2019, SCP is outdated, inflexible and not readily fixed; they recommend the use of more modern protocols like SFTP and rsync for file transfer. As of OpenSSH version 9.0, `scp` client therefore uses SFTP for file transfers by default instead of the legacy SCP/RCP protocol.
 
+## Tools
+- [asfa: Avoid sending file attachments by uploading them via SSH to a remote site and sharing a publicly-accessible URL with non-guessable (hash-based) prefix instead.](https://github.com/obreitwi/asfa)
+
 ## Directory
 - How to `mkdir` automatically?
   - `-r dir` (not `-r dir/`)

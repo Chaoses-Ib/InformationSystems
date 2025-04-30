@@ -19,6 +19,7 @@
 ## [File Systems](Files/README.md)
 - [Paths](Files/Paths.md)
 - [Traversal](Files/Traversal.md)
+- [File Deletion](Files/Deletion/README.md)
 - [File Systems](Files/Systems/README.md)
   - [New Technology File System](Files/Systems/NTFS/README.md)
     - [Clusters](Files/Systems/NTFS/Clusters.md)

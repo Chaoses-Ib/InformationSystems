@@ -34,3 +34,4 @@ Rust:
   - Name can be empty after `sanitize()`
 - [sanitise\_file\_name](https://docs.rs/sanitise-file-name/latest/sanitise_file_name/) ([GitLab](https://gitlab.com/chris-morgan/sanitise-file-name))
 - [tower-sanitize-path: Tower middleware to sanitize paths on requests](https://github.com/shuttle-hq/tower-sanitize-path)
+- [filerefine: 🧹 FileRefine is a Rust-based CLI tool that renames files in a directory to remove unwanted or problematic characters from filenames.](https://github.com/trinhminhtriet/filerefine)

@@ -7,6 +7,10 @@
 
 - [remotefs-rs: ⏫ A client library to work with all file transfer protocols ⏬](https://github.com/remotefs-rs/remotefs-rs)
 
+- [freqfs: An in-memory filesystem cache layer based on tokio::fs, with least-frequently-used eviction](https://github.com/haydnv/freqfs)
+
+  [Freqfs: In-memory filesystem cache for Rust | Hacker News](https://news.ycombinator.com/item?id=28721815)
+
 - [CloudDrive：一个强大的多云盘管理工具，为用户提供包含云盘本地挂载的一站式的多云盘解决方案](https://www.clouddrive2.com/)
   - [跨云盘文件快速复制](https://www.clouddrive2.com/features.html#inter-cloud-copy)
   - 详细介绍至少有部分是 AI 生成的
