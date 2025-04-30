@@ -6,12 +6,20 @@ File deletion, file removal
 
 Rust:
 - `std::fs`
+- [mverleg/file\_shred: Secure file deletion from the command line](https://github.com/mverleg/file_shred)
+- [ltpp-universe/file-operation: A Rust library providing a set of utilities for common file operations such as reading, writing, and querying file metadata like size. It aims to simplify file handling in Rust projects, offering safe and efficient file manipulation methods.](https://github.com/ltpp-universe/file-operation)
+
+## Directories
+Rust:
+- [`remove_dir_all`: Reliable parallel `remove_dir_all` implementation for Windows and other platforms.](https://github.com/XAMPPRocky/remove_dir_all)
+
+  > - the `parallel` feature parallelises the deletion. This is useful when high syscall latency is occurring, such as on Windows (deletion IO accrues to the process), or network file systems of any kind. This feature is off by default. When enabled, it will disable itself on MacOS because of the bug reported in this [blog post](https://gregoryszorc.com/blog/2018/10/29/global-kernel-locks-in-apfs/). Use [`RemoverBuilder`](https://docs.rs/remove_dir_all/latest/remove_dir_all/struct.RemoverBuilder.html "struct remove_dir_all::RemoverBuilder") to override this behaviour and force enable/disable parallelism at runtime.
+  > - It tolerates files not being deleted atomically (this is a Windows specific behaviour).
+  > - It resets the readonly flag on Windows as needed.
 - [suptejas/delete: Fast, easy deletion of files and folders with async and cross-platform support.](https://github.com/suptejas/delete)
 
   > removes all files and folders in subfolders recursively using tokio workers ... 2-3x faster than `std::fs::remove_dir_all`
 - [Himasnhu-AT/frm: Faster file deletion written in Rust, alternative to rm](https://github.com/Himasnhu-AT/frm)
-- [mverleg/file\_shred: Secure file deletion from the command line](https://github.com/mverleg/file_shred)
-- [ltpp-universe/file-operation: A Rust library providing a set of utilities for common file operations such as reading, writing, and querying file metadata like size. It aims to simplify file handling in Rust projects, offering safe and efficient file manipulation methods.](https://github.com/ltpp-universe/file-operation)
 
 ## Windows
 Rust:
