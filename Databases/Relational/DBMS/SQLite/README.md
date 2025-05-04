@@ -188,7 +188,8 @@ Rusqlite:
 
   - [r2d2-sqlite: r2d2 connection pool for sqlite](https://github.com/ivanceras/r2d2-sqlite)
     - `cargo add r2d2-sqlite r2d2`
-    - `SqliteConnectionManager` is `Send + Sync` but `!Clone`. But `r2d2::Pool` is `Send + Sync` and `Clone`.
+    - [r2d2](../../../Connections.md#rust)
+    - `SqliteConnectionManager` is `Send + Sync` but `!Clone`. But `r2d2::Pool` is `Send + Sync` and `Clone` (because of inner `Arc`).
 
   - [tokio-rusqlite: Asynchronous handle for rusqlite library.](https://github.com/programatik29/tokio-rusqlite)
 

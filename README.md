@@ -52,6 +52,7 @@
   - [Physical](Databases/Models/Physical/README.md)
 
 - [Three-schema Approach](Databases/Three-schema.md)
+- [Connections](Databases/Connections.md)
 
 - [Relational Databases](Databases/Relational/README.md)
   - [Relational Schemas](Databases/Relational/Schemas.md)
@@ -101,6 +102,7 @@
       - [Bolt](Databases/Key-Value/DBMS/LMDB/Bolt.md)
 
 - [Network Databases](Databases/Network/README.md)
+- [Document Databases](Databases/Document/README.md)
 
 - [Vector Databases](Databases/Vector/README.md)
 
