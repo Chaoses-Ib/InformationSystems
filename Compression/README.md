@@ -3,6 +3,8 @@
 
 > In information theory, data compression, source coding, or bit-rate reduction is the process of encoding information using fewer bits than the original representation. Any particular compression is either lossy or lossless. Lossless compression reduces bits by identifying and eliminating statistical redundancy. No information is lost in lossless compression. Lossy compression reduces bits by removing unnecessary or less important information.
 
+Repetition is just a property of some data that can be used to transform them into a shorter form, at the cost of tranforming other data into a longer form.
+
 [Lossless compression - Wikipedia](https://en.wikipedia.org/wiki/Lossless_compression)
 
 [Data Compression - Wikibooks, open books for an open world](https://en.wikibooks.org/wiki/Data_Compression)

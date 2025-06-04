@@ -18,6 +18,8 @@
 
 [The Simple Beauty of XOR Floating Point Compression | Clemens' Blog](https://clemenswinter.com/2024/04/07/the-simple-beauty-of-xor-floating-point-compression/)
 
+[python - Compression of randomly ordered non-repeating incremental integers - Stack Overflow](https://stackoverflow.com/questions/77742122/compression-of-randomly-ordered-non-repeating-incremental-integers)
+
 ## Algorithms
 - Transform + general compression
   - Delta encoding ([Wikipedia](https://en.wikipedia.org/wiki/Delta_encoding))
@@ -42,6 +44,8 @@
 
 - [fast-pack/FastPFOR: The FastPFOR C++ library: Fast integer compression](https://github.com/fast-pack/FastPFor)
   - Rust: [fast-pack/FastPFOR-rs: FastPFOR library written in Rust](https://github.com/fast-pack/FastPFOR-rs)
+
+  [Integer compression: Understanding FastPFor - Ayende @ Rahien](https://ayende.com/blog/199523-C/integer-compression-understanding-fastpfor)
 - [powturbo/TurboPFor-Integer-Compression: Fastest Integer Compression](https://github.com/powturbo/TurboPFor-Integer-Compression)
   - Rust
 - [fast-pack/simdcomp: A simple C library for compressing lists of integers using binary packing](https://github.com/fast-pack/simdcomp)
@@ -51,7 +55,7 @@
     - ~~[fralalonde/mayda: Fast Rust integer compression using SIMD](https://github.com/fralalonde/mayda)~~
   - Java: [fast-pack/JavaFastPFOR: A simple integer compression library in Java](https://github.com/fast-pack/JavaFastPFOR)
 - [vteromero/VTEnc: VTEnc C library](https://github.com/vteromero/VTEnc)
-- Stream VByte
+- Stream VByte: Faster Byte-Oriented Integer Compression[^StreamVByteFaster2018]
 
   [Stream VByte: breaking new speed records for integer compression -- Daniel Lemire's blog](https://lemire.me/blog/2017/09/27/stream-vbyte-breaking-new-speed-records-for-integer-compression/)
 
@@ -60,3 +64,28 @@
 
 ## Time series
 - [rana/tms: Time series compression library in Rust and SIMD.](https://github.com/rana/tms)
+
+## Order
+The order of integers is also an information and takes space. How to compress optimally without preserving the order?
+
+- Sorting (+ delta encoding)
+
+  Can improve compression performance, but is this optimal?
+
+- Integer Set Compression and Statistical Modeling[^larssonIntegerSetCompression2014]
+
+  > In this work, we address the case where enumeration of elements may be arbitrary or random, but where statistics is kept in order to estimate probabilities of elements. We present a recursive subset-size encoding method that is able to benefit from statistics, explore the effects of permuting the enumeration order based on element probabilities, and discuss general properties and possibilities for this class of compression problem.
+
+- Compressing Sets and Multisets of Sequences[^steinrueckenCompressingSetsMultisets2015]
+
+  > We propose a technique that transforms the multiset into an order-invariant tree representation, and derive an arithmetic code that optimally compresses the tree. Our method achieves compression even if the sequences in the multiset are individually incompressible (such as cryptographic hash sums). The algorithm is demonstrated practically by compressing collections of SHA-1 hash sums, and multisets of arbitrary, individually encodable objects.
+
+  How is this better than sorting?
+  > Making an order-invariant representation of $W$ could be as easy as arranging the words in some sorted order: if both the sender and receiver use the same ordering, zero probability could be given to all words whose appearance violates the agreed order, reallocating the excluded probability mass to words that remain compatible with the ordering. However, the correct probability for the next element in a sorted sequence is expensive to compute, making this approach unappealing.
+
+## [→Homomorphic Compression](Homomorphic/README.md)
+
+
+[^larssonIntegerSetCompression2014]: Larsson, N. J. (2014). Integer Set Compression and Statistical Modeling (No. arXiv:1402.1936). arXiv. https://doi.org/10.48550/arXiv.1402.1936
+[^steinrueckenCompressingSetsMultisets2015]: Steinruecken, C. (2015). Compressing Sets and Multisets of Sequences. IEEE Transactions on Information Theory, 61(3), 1485–1490. https://doi.org/10.1109/TIT.2015.2392093
+[^StreamVByteFaster2018]: Stream VByte: Faster byte-oriented integer compression. (2018). Information Processing Letters, 130, 1–6. https://doi.org/10.1016/j.ipl.2017.09.011
