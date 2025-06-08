@@ -9,6 +9,36 @@
   - Support: 7-Zip, NanaZip
   - Not support: unzip (Debian), Explorer, Directory Opus, WinRAR
 
+## Paths
+- The path separator must be `/`
+
+  > 4.4.17.1 The name of the file, with optional relative path.
+  > The path stored MUST NOT contain a drive or
+  > device letter, or a leading slash.  All slashes
+  > MUST be forward slashes '/' as opposed to
+  > backwards slashes '\' for compatibility with Amiga
+  > and UNIX file systems etc.  If input came from standard
+  > input, there is no file name field.  
+
+  Implementations:
+  - libarchive
+    - Windows: ✔️
+  - WinRAR: ✔️
+  - 360压缩: `\` as two spaces
+
+    > 🌚360压缩居然不兼容用 `\` 当路径分隔符的 zip，只支持 `/` ，win 自带的和 winrar 都兼容
+
+  Zip paths should always use forward slashes (`/`) as separators.
+
+  [Zip file path separator - Stack Overflow](https://stackoverflow.com/questions/60276764/zip-file-path-separator)
+
+  [windows - Zip files expand with backslashes on Linux, no subdirectories - Super User](https://superuser.com/questions/1382839/zip-files-expand-with-backslashes-on-linux-no-subdirectories)
+
+  [Mitigation: ZipArchiveEntry.FullName Path Separator - .NET Framework | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/framework/migration-guide/mitigation-ziparchiveentry-fullname-path-separator)
+  > Starting with apps that target the .NET Framework 4.6.1, the path separator used in the `ZipArchiveEntry.FullName` property has changed from the backslash (`\`) used in previous versions of the .NET Framework to a forward slash (`/`).
+
+  [Only write cross platform compatible directory separators in Compress-Archive by mryanmurphy - Pull Request #62 - PowerShell/Microsoft.PowerShell.Archive](https://github.com/PowerShell/Microsoft.PowerShell.Archive/pull/62)
+
 ## Libraries
 [→Archives libraries](README.md#libraries)
 

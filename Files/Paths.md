@@ -24,6 +24,13 @@ println!("{:?}", fs::read_dir(path).unwrap().map(|d| fs::read_dir(d.unwrap().pat
 ### Rust
 - [std::path](https://doc.rust-lang.org/std/path/index.html)
 - [camino: Like Rust's `std::path::Path`, but UTF-8.](https://github.com/camino-rs/camino)
+- [chipsenkbeil/typed-path: Provides typed variants of Path and PathBuf for Unix and Windows](https://github.com/chipsenkbeil/typed-path)
+
+  [\[typed-path\] New crate to parse and manipulate paths for unix and windows agnostic of compiled target : r/rust](https://www.reddit.com/r/rust/comments/wx3j81/typedpath_new_crate_to_parse_and_manipulate_paths/)
+- Forward slashes
+  - [rhysd/path-slash: Tiny Rust library to convert a file path from/to slash path](https://github.com/rhysd/path-slash)
+  - typed-path
+  - [unix\_path - Rust](https://docs.rs/unix_path/latest/unix_path/) (discontinued)
 - [directories-rs: a mid-level library that provides config/cache/data paths, following the respective conventions on Linux, macOS and Windows](https://github.com/dirs-dev/directories-rs#basedirs)
 
 ## Security
