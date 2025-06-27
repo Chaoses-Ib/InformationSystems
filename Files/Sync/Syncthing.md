@@ -15,6 +15,29 @@
 
 [Usage reporting](https://data.syncthing.net/) (Grafana)
 
+## Syncing
+[Understanding Synchronization --- Syncthing documentation](https://docs.syncthing.net/users/syncing.html)
+
+> Syncthing 是靠每台裝置對每個檔案的版本變更歷史來同步。這是透過「版本向量（version vector）」實現的，每個檔案的版本資訊包含各裝置的更新次數，確保同步的準確性。所以它知道不同裝置上誰先動過哪個檔案、誰刪除、誰更新。  
+> 出處： [Block Exchange Protocol v1](https://docs.syncthing.net/specs/bep-v1.html)  
+> 出處： [Version vector - Syncthing Community Forum](https://forum.syncthing.net/t/version-vector/14594)
+> 
+> 當兩個裝置對同一檔案進行了不同的修改，且彼此的版本向量無法判定先後關係時，Syncthing 會認定為衝突，並保留雙方的版本以避免資料遺失。此時會將其中一個版本重新命名為 filename.sync-conflict-日期-時間-修改者.ext，保留原始檔案，讓使用者自行決定如何處理。  
+> 出處： [How does conflict resolution work? - Syncthing Forum forum.syncthing.net](https://forum.syncthing.net/t/how-does-conflict-resolution-work/15113)[^sync-do]
+
+[^sync-do]: [Telegram: View @IbDirectoryOpusGroup](https://t.me/IbDirectoryOpusGroup/11512)
+
+### Latency
+- `rescanIntervalS`
+- `fsWatcherEnabled`
+  - `fsWatcherTimeoutS` (defaults to 10s)
+  - > deleted files are further delayed for 1min
+
+[File transfer initiated with delay - Support - Syncthing Community Forum](https://forum.syncthing.net/t/file-transfer-initiated-with-delay/19285)
+> I have a doubt about a sync delay I’m getting, which may range from 1 to up to 10 minutes in rare occasions (customer reported).
+>
+> In some quick tests I made, I managed to get hosts aligned usually quick, but often after at least 60s. One situation I monitored was the deletion of a file, which was propagated after one minute.
+
 ## Folders
 - Folder path supports `~`
 - Shared folder path defaults to `~\{Folder ID}`
