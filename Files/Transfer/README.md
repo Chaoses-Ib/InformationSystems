@@ -3,6 +3,8 @@
 
 To say a protocol is a file transfer protocol, it should at least support directory transfer.
 
+[Comparison of file transfer protocols - Wikipedia](https://en.wikipedia.org/wiki/Comparison_of_file_transfer_protocols)
+
 [Which file access is the best : Webdav or FTP? - Stack Overflow](https://stackoverflow.com/questions/11216884/which-file-access-is-the-best-webdav-or-ftp)
 > WebDAV has the following advantages over FTP:
 > 1. By working via one TCP connection it's easier to configure it to bypass firewalls, NATs and proxies. In FTP the data channel can cause problems with proper NAT setup.
@@ -16,6 +18,8 @@ To say a protocol is a file transfer protocol, it should at least support direct
 [How to copy files from one machine to another using ssh - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/106480/how-to-copy-files-from-one-machine-to-another-using-ssh)
 
 [帮忙推荐一款轻量开源文件管理服务 - V2EX](https://www.v2ex.com/t/1125578)
+
+## [→Network file systems](../Network/README.md)
 
 ## Tools
 Go:
