@@ -33,6 +33,7 @@
   - [Secure Copy Protocol (SCP)](Files/Transfer/SCP.md)
   - [WebDAV](Files/Transfer/WebDAV.md)
 - [File Synchronization](Files/Sync/README.md)
+  - [rsync](Files/Sync/rsync.md)
   - [Syncthing](Files/Sync/Syncthing.md)
   - [OneDrive](Files/Sync/OneDrive.md)
 - [Network File Systems](Files/Network/README.md)

@@ -1,6 +1,17 @@
 # File Synchronization
 [Wikipedia](https://en.wikipedia.org/wiki/File_synchronization)
 
+## Automatic synchronization
+Compared to manual synchronization:
+- Automatic synchronization costs more resource, either on the master or the nodes.
+- But automatic synchronization can be passive, i.e. nodes can pull changes automatically without a sync command from the master, and thus scales better.
+  - The master also doesn't need to know where to put the files, just a shared resource id is enough.
+  - Though passive automatic synchronization doesn't work with cloud storage.
+- Manual synchronization puts more security risk on the master, while automatic synchronization puts more on the nodes side.
+  - Manual synchronization: If master is hacked, all nodes leaked; if a node is brute forced, only the node is poisoned
+  - Automatic synchronization: If master or a node is hacked, all are poisoned
+- Backup needs automatic to be useful
+
 ## Tools
 [Comparison of file synchronization software - Wikipedia](https://en.wikipedia.org/wiki/Comparison_of_file_synchronization_software)
 
@@ -11,7 +22,7 @@ C++:
   [Git for file syncing - Features - Joplin Forum](https://discourse.joplinapp.org/t/git-for-file-syncing/9474)
   > I expect bundling a git client with desktop and especially mobile would not be an easy task.
 
-- rsync
+- [→rsync](rsync.md)
   - Cannot detect conflict, renames or moves
   - Windows: [cwRsync](https://itefix.net/cwrsync)
     - 11 MiB
@@ -42,11 +53,13 @@ Go:
 
   > Distributed peer-to-peer sync with automatic NAT traversal. Custom topology (star, full-mesh, mixed). Encryption.
 
-- rclone
+- [→rclone](rsync.md#rclone)
   - MIT
   - 58 MiB
 
   > Supports over 50 cloud, protocol and virtual backends including S3 buckets, Google Drive, Microsoft OneDrive, and other high-latency file storage. Capabilities include sync, cache, encrypt, compress and mount.
+
+[Never Lose Your Documents! Use rclone (or worse yet syncthing) : r/ObsidianMD](https://www.reddit.com/r/ObsidianMD/comments/178g23v/never_lose_your_documents_use_rclone_or_worse_yet/)
 
 .NET:
 - [Microsoft Sync Framework](https://learn.microsoft.com/en-us/previous-versions/sql/synchronization/mt490616(v=msdn.10)?redirectedfrom=MSDN)
@@ -70,6 +83,8 @@ Others:
 →IPFS
 
 [Self-hosted file sync service like Google Drive/Dropbox that isn't Nextcloud : r/selfhosted](https://www.reddit.com/r/selfhosted/comments/wzjuqk/selfhosted_file_sync_service_like_google/)
+
+[Replacing Syncthing : r/selfhosted](https://www.reddit.com/r/selfhosted/comments/f0r46h/replacing_syncthing/)
 
 [synchronization - .NET File Sync Library - Stack Overflow](https://stackoverflow.com/questions/150397/net-file-sync-library)
 

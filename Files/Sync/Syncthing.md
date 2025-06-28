@@ -2,10 +2,17 @@
 [GitHub](https://github.com/syncthing/syncthing), [Wikipedia](https://en.wikipedia.org/wiki/Syncthing)
 
 - MPL v2
-- `scoop instlal syncthing`
+- Linux
+  - [Debian](https://apt.syncthing.net/): `sudo apt-get install syncthing`
+
+  `systemctl enable syncthing@root.service`
+- Windows: `scoop instlal syncthing`
 
   > To start syncthing automatically, use a method described at [Starting Syncthing Automatically](https://docs.syncthing.net/users/autostart.html#windows).
 - 20 MiB, 70 MiB memory usage, 0.01% CPU usage
+- [Object Store (S3) backend - Issue #8113](https://github.com/syncthing/syncthing/issues/8113)
+
+  [Integrate S3 cloud storage - Feature - Syncthing Community Forum](https://forum.syncthing.net/t/integrate-s3-cloud-storage/23528)
 
 > Distributed peer-to-peer sync with automatic NAT traversal. Custom topology (star, full-mesh, mixed). Encryption.
 
@@ -14,6 +21,8 @@
 [Configuration Tuning](https://docs.syncthing.net/users/tuning.html)
 
 [Usage reporting](https://data.syncthing.net/) (Grafana)
+
+[Computers as I used to love them @ tonsky.me](https://tonsky.me/blog/syncthing/) ([Hacker News](https://news.ycombinator.com/item?id=23537243))
 
 ## Syncing
 [Understanding Synchronization --- Syncthing documentation](https://docs.syncthing.net/users/syncing.html)
@@ -43,6 +52,7 @@
 - Shared folder path defaults to `~\{Folder ID}`
   - `scoop\persist\example`
   - Use together with Auto Accept
+  - `default`: `~/Sync` (`/root/Sync`, `C:\Users\Alice\Sync`)
 - [Folder type](https://docs.syncthing.net/users/foldertypes.html)
   - Send & Receive
   - Send Only
@@ -91,10 +101,22 @@
 
   > Parties doing surveillance on your network (whether that be corporate IT, the NSA or someone else) will be able to see that you use Syncthing, and your device IDs [are OK to share anyway](https://docs.syncthing.net/users/faq.html#should-i-keep-my-device-ids-secret), but the actual transmitted data is protected as well as we can. Knowing your device ID can expose your IP address, using global discovery.
 
+[Auto-setup of Syncthing in local server cluster? Auto-add new servers? Auto-share default folder? - Support - Syncthing Community Forum](https://forum.syncthing.net/t/auto-setup-of-syncthing-in-local-server-cluster-auto-add-new-servers-auto-share-default-folder/20386)
+
+[Syncthing cli (command line interface) for automate add remote device and folders in terminal - Support - Syncthing Community Forum](https://forum.syncthing.net/t/syncthing-cli-command-line-interface-for-automate-add-remote-device-and-folders-in-terminal/9977)
+
 ## CLI
 - `syncthing --no-console` only works with ConHost, not WT
 - `--gui-address` defaults to probe a random port at the first startup
 - Startup: `conhost syncthing --no-console --no-browser --gui-address http://127.0.0.1:8443`
+- Auth
+  - `syncthing generate --gui-password ...`
+  - Tunnels
+
+  [syncthing --gui-address=0.0.0.0:8384 with a password? - Support - Syncthing Community Forum](https://forum.syncthing.net/t/syncthing-gui-address-0-0-0-0-8384-with-a-password/20271)
+- Reload: `syncthing cli restart` (`SIGHUP`)
+
+[linux - How can I configure Syncthing from command line to share a folder with another computer with a specific ID? - Super User](https://superuser.com/questions/1397683/how-can-i-configure-syncthing-from-command-line-to-share-a-folder-with-another-c)
 
 ## [GUI](https://docs.syncthing.net/users/contrib.html#gui-wrappers)
 - Syncthing web UI
@@ -116,5 +138,7 @@ Windows:
   - Conflict resolver
 
 ## Data
+[Syncthing Configuration --- Syncthing documentation](https://docs.syncthing.net/users/config.html)
+
 Windows: `%LOCALAPPDATA%\Syncthing`
 - `%APPDATA%\SyncTrayzor`
