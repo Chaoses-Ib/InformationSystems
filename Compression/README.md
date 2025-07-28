@@ -264,6 +264,24 @@ C++:
 Rust:
 - [async-compression: Adaptors between compression crates and Rust's async IO types](https://github.com/Nullus157/async-compression)
 - [comde: Compression/decompression crate akin to serde](https://github.com/bbqsrc/comde)
+- Compile time
+  - [reinda: Easily embed and manage assets for your web application to build standalone-executables. Offers filename hashing, templating and more.](https://github.com/lukaskalbertodt/reinda)
+    - Brotli
+    - Designed for multiple files, complex
+  - [include\_assets - crates.io: Rust Package Registry](https://crates.io/crates/include_assets)
+    - Zstandard, LZ4, Deflate
+    - Designed for multiple files
+  - [daac-tools/include-bytes-zstd: Includes a file with zstd compression in Rust](https://github.com/daac-tools/include-bytes-zstd)
+    - Zstandard
+
+    [feat(romaji): `compress-words` feature (#8) - Chaoses-Ib/ib-matcher@6394eb6](https://github.com/Chaoses-Ib/ib-matcher/commit/6394eb680af0841004cffcd688b64dc5c8f98e1f)
+  - [include-flate: A variant of `include_bytes!`/`include_str!` with compile-time deflation and runtime lazy inflation](https://github.com/SOF3/include-flate)
+    - Deflate
+    - [rust-embed](https://crates.io/crates/rust-embed)
+  - [`include_file_compress`: Include file content with compression in compile time in Rust binary](https://github.com/DevNulPavel/include_file_compress)
+    - Deflate
+
+  [how to include compressed assets on a binary : r/rust](https://www.reddit.com/r/rust/comments/riy4ts/how_to_include_compressed_assets_on_a_binary/)
 
 [pure rust decompression libraries? : r/rust](https://www.reddit.com/r/rust/comments/1d8j5br/pure_rust_decompression_libraries/)
 
