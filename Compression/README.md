@@ -52,6 +52,13 @@ Discussions:
 
 - 2024-11 [Announcing Faster, Lighter Firefox Downloads for Linux with .tar.xz Packaging! -- Firefox Nightly News](https://blog.nightly.mozilla.org/2024/11/28/announcing-faster-lighter-firefox-downloads-for-linux-with-tar-xz-packaging/)
 
+## Window size
+[Zstd Window Size](https://www.jefftk.com/p/zstd-window-size)
+
+[Use longer compression window size by default: otherwise compressing Acronis image more than twice the size compared to Winrar - Issue #3159 - facebook/zstd](https://github.com/facebook/zstd/issues/3159)
+
+[python - What is the meaning of window size logarithm in zlib library? - Stack Overflow](https://stackoverflow.com/questions/56706197/what-is-the-meaning-of-window-size-logarithm-in-zlib-library)
+
 ## Dictionary type
 ### Lempel–Ziv (LZ77 and LZ78)
 [Wikipedia](https://en.wikipedia.org/wiki/LZ77_and_LZ78)
@@ -72,6 +79,8 @@ C++:
 
 Rust:
 - [lz4\_flex: Fastest pure Rust implementation of LZ4 compression/decompression.](https://github.com/PSeitz/lz4_flex)
+
+## [→Suffix trees](https://github.com/Chaoses-Ib/ComputationalMathematics/blob/main/Algorithms/Trees/Tries/Suffix/README.md)
 
 ## Hybrid
 > If you want to further reduce space and have some free CPU to use, ... We recommend ZSTD. If it is not available, Zlib is the second choice.
@@ -260,6 +269,7 @@ Rust:
 ## Libraries
 C++:
 - [squash: Compression abstraction library and utilities](https://github.com/quixdb/squash)
+- [heatshrink: data compression library for embedded/real-time systems](https://github.com/atomicobject/heatshrink)
 
 Rust:
 - [async-compression: Adaptors between compression crates and Rust's async IO types](https://github.com/Nullus157/async-compression)
