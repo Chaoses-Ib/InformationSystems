@@ -7,6 +7,7 @@
   - [DDR5 SDRAM](Memory/DDR%20SDRAM/DDR5%20SDRAM.md)
 - [Virtual Memory](Memory/Virtual/README.md)
   - [Swapping](Memory/Virtual/Swapping.md)
+  - [Page Priority](Memory/Virtual/Priority.md)
 - [Manual Memory Management](Memory/Manual/README.md)
   - [CS:APP Malloc Lab](Memory/Manual/Malloc%20Lab.md)
 - [Automatic Memory Management](Memory/Automatic/README.md)
