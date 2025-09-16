@@ -82,6 +82,12 @@ Rust:
 
 ## [→Suffix trees](https://github.com/Chaoses-Ib/ComputationalMathematics/blob/main/Algorithms/Trees/Tries/Suffix/README.md)
 
+## Prediction by partial matching (PPM)
+[Wikipedia](https://en.wikipedia.org/wiki/Prediction_by_partial_matching)
+
+Rust:
+- [ppmd-rust: PPMd compression / decompression](https://github.com/hasenbanck/ppmd-rust)
+
 ## Hybrid
 > If you want to further reduce space and have some free CPU to use, ... We recommend ZSTD. If it is not available, Zlib is the second choice.
 
@@ -179,66 +185,7 @@ JS:
 - Native
   - [mongodb-js/zstd: A Zstd Compression Library](https://github.com/mongodb-js/zstd)
 
-### LZ77 + Range: LZMA
-[Wikipedia](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm)
-
-Lempel–Ziv–Markov chain algorithm
-
-- Even the level 0 has a good compression ratio (> Brotli 5~9, Deflate, Zstd 15, also in compression speed) for highly compressible (30%) data
-
-C++:
-- [XZ Utils](https://github.com/tukaani-project/xz): liblzma
-  - Performance
-    - 9: 5.6~7.7 MB/s
-    - 4: 25.3~28.9 MB/s
-    - 0: 51~55 MB/s
-  
-  Rust:
-  - [xz2-rs: Bindings to liblzma in Rust (xz streams in Rust)](https://github.com/alexcrichton/xz2-rs) (discontinued)
-    - [liblzma-rs: Bindings to liblzma in Rust (xz streams in Rust)](https://github.com/portable-network-archive/liblzma-rs)
-      - Require Clang
-      - [☂️ WebAssembly Support - Issue #15](https://github.com/Portable-Network-Archive/liblzma-rs/issues/15)
-        - Binary size
-          - 97 KiB (`thin-lto` < no lto < `fat-lto`)
-          - Encoder-only: 69 KiB
-          - Decoder-only: 57 KiB
-        - Performance: ~20% of native (x86-64)
-          - Os
-            - 9: 2.6~3.3 MiB/s
-            - 4: 3.9~4.4 MiB/s
-            - 0: 11.9~13.2 MiB/s
-          - O3
-            - 9: 2.5~3.5 MiB/s
-            - 4: 4.4~4.7 MiB/s
-            - 0: 12.5~13.7 MiB/s
-  - [rust-lzma: A Rust crate that provides a simple interface for LZMA compression and decompression.](https://github.com/fpgaminer/rust-lzma)
-- 7-Zip: [LZMA SDK](https://7-zip.org/sdk.html)
-
-Rust:
-- [lzma-rs: An LZMA decoder written in pure Rust](https://github.com/gendx/lzma-rs) (`lzma_rs`)
-- [sevenz-rust2/lzma-rust2](https://github.com/hasenbanck/sevenz-rust2/tree/main/lzma-rust2) (`lzma-rust2`)
-
-  > supports partial decompression and BCJ, and most importantly, it supports compression.
-
-  [Consider using lzma-rust - Issue #200](https://github.com/zip-rs/zip2/issues/200)
-
-JS:
-- [LZMA-JS: A JavaScript implementation of the Lempel-Ziv-Markov (LZMA) chain compression algorithm](https://github.com/LZMA-JS/LZMA-JS)
-  - Performance
-    - 9: 0.24 MiB/s
-    - 4: 3.57 MiB/s
-  - [biw/lzma-web: A JavaScript implementation of the Lempel-Ziv-Markov (LZMA) chain compression algorithm](https://github.com/biw/lzma-web)
-- [Leo4815162342/lzma-purejs: Clean, fast LZMA encoder in Javascript](https://github.com/Leo4815162342/lzma-purejs)
-- [js-lzma: Port of LZMA to JavaScript](https://github.com/Magister/js-lzma)
-
-[LZMA2 format](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm#LZMA2_format):
-> The LZMA2 container supports multiple runs of compressed LZMA data and uncompressed data. Each LZMA compressed run can have a different LZMA configuration and dictionary. This improves the compression of partially or completely incompressible files and allows multithreaded compression and multithreaded decompression by breaking the file into runs that can be compressed or decompressed independently in parallel. Criticism of LZMA2's changes over LZMA include header fields not being covered by CRCs, and parallel decompression not being possible in practice.
-
-- 7-Zip: LZMA2 compression, which is an improved version of LZMA, is now the default compression method for the .7z format, starting with version 9.30 on October 26, 2012.
-- [7-Zip / Discussion / Open Discussion: LZMA vs. LZMA2](https://sourceforge.net/p/sevenzip/discussion/45797/thread/2f6085ba/)
-
-Benchmarks:
-- [7-Zip Compression Benchmark - OpenBenchmarking.org](https://openbenchmarking.org/test/pts/compress-7zip-1.11.0)
+### LZ77 + Range: [→LZMA](LZMA.md)
 
 ### LZ77: [CSC](https://github.com/fusiyuan2010/CSC)
 
