@@ -39,6 +39,13 @@
 
   [Only write cross platform compatible directory separators in Compress-Archive by mryanmurphy - Pull Request #62 - PowerShell/Microsoft.PowerShell.Archive](https://github.com/PowerShell/Microsoft.PowerShell.Archive/pull/62)
 
+## File attributes
+- Internal file attributes
+  - Text
+  - Record length control
+- External file attributes (OS)
+  - [Setting external file attributes - Issue #433 - zip-rs/zip2](https://github.com/zip-rs/zip2/issues/433)
+
 ## Libraries
 [→Archives libraries](README.md#libraries)
 
