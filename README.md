@@ -128,6 +128,7 @@
 - [Streaming Compression](Compression/Streaming.md)
 - [Differential Compression](Compression/Diff/README.md)
 - [Integer Compression](Compression/Integer.md)
+- [String Compression](Compression/String.md)
 - [Homomorphic Compression](Compression/Homomorphic/README.md)
 
 ## [Geographic Information Systems](Geographic/README.md)

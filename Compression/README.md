@@ -35,6 +35,8 @@ ZPAQ > LZMA > Brotli > Zstandard > Deflate > CSC > lzham > LZ4 > lzo > Snappy
 
 [Compression Analysis Tool | Noemax](https://www.noemax.com/free-tools/compression-analysis-tool.asp)
 
+- [pkolaczk/compresto: Command line utility for benchmarking compression algorithms](https://github.com/pkolaczk/compresto)
+
 [Maximum file compression benchmark 7Z ARC ZIPX versus RAR](https://peazip.github.io/maximum-compression-benchmark.html)
 - ZPAQ is clearly the top performing format in this benchmark focused on maximum attainable compression.
 - ZPAQ and ARC are the best compressors, but 7Z and RAR formats has a clear advantage in terms of decompression speed, faster than for any other tested format.
@@ -221,6 +223,7 @@ C++:
 Rust:
 - [async-compression: Adaptors between compression crates and Rust's async IO types](https://github.com/Nullus157/async-compression)
 - [comde: Compression/decompression crate akin to serde](https://github.com/bbqsrc/comde)
+- [rust-compress: Various compression algorithms written in rust.](https://github.com/rusty-shell/rust-compress) (discontinued)
 - Compile time
   - [reinda: Easily embed and manage assets for your web application to build standalone-executables. Offers filename hashing, templating and more.](https://github.com/lukaskalbertodt/reinda)
     - Brotli
