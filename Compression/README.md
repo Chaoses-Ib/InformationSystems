@@ -43,6 +43,8 @@ ZPAQ > LZMA > Brotli > Zstandard > Deflate > CSC > lzham > LZ4 > lzo > Snappy
 - 7Z outperformed RAR in terms of compression ratio at all compression levels, but RAR outperformed 7Z in terms of compression speed.
 - Brotli and Zstd can provide surprisingly good compression ratios, even if they are designed primarily for fast compression tasks, with Zstandard being overall the best choice.
 
+[lzop vs compress vs gzip vs bzip2 vs lzma vs lzma2/xz benchmark, reloaded | Tech Thoughts](https://stephane.lesimple.fr/blog/lzop-vs-compress-vs-gzip-vs-bzip2-vs-lzma-vs-lzma2xz-benchmark-reloaded/)
+
 [Choosing Between gzip, Brotli and zStandard Compression | Paul Calvano](https://paulcalvano.com/2024-03-19-choosing-between-gzip-brotli-and-zstandard-compression/)
 
 Discussions:
@@ -221,6 +223,7 @@ C++:
 - [heatshrink: data compression library for embedded/real-time systems](https://github.com/atomicobject/heatshrink)
 
 Rust:
+- [ib-compress](https://github.com/16Hexa/ib-compress)
 - [async-compression: Adaptors between compression crates and Rust's async IO types](https://github.com/Nullus157/async-compression)
 - [comde: Compression/decompression crate akin to serde](https://github.com/bbqsrc/comde)
 - [rust-compress: Various compression algorithms written in rust.](https://github.com/rusty-shell/rust-compress) (discontinued)
@@ -244,6 +247,11 @@ Rust:
   [how to include compressed assets on a binary : r/rust](https://www.reddit.com/r/rust/comments/riy4ts/how_to_include_compressed_assets_on_a_binary/)
 
 [pure rust decompression libraries? : r/rust](https://www.reddit.com/r/rust/comments/1d8j5br/pure_rust_decompression_libraries/)
+
+JS:
+- [Compression Streams API - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Compression_Streams_API)
+  - Deflate
+- [compressjs: Pure JavaScript de/compression (bzip2, etc) for node.js, volo, and the browser.](https://github.com/cscott/compressjs)
 
 ## Shared dictionaries
 “黑压缩”

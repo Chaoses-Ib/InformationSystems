@@ -19,6 +19,44 @@
 ## Compressing vs transorting
 Compressing can be thought as a side channel for transporting. If $\text{compression speed}\times (1-\text{compression ratio}) > \text{transport speed}$, compressing should be preferred. With streaming this can be further relaxed.
 
+Considering compression algorithms/levels, slower compressors can achieve better compression ratio, but how slow is worth it?
+
+$$t = {b \over\text{compression speed} } + {b\times\text{compression ratio} \over\text{transport speed} }$$
+
+$$\Delta t={b \over T}[ T({1\over C_1} - {1\over C_2}) + R_1 - R_2 ]$$
+
+$\Delta t \lt 0$, i.e. $2$ is better than $1$,  iff:
+
+$$T({1\over C_1} - {1\over C_2}) + R_1 - R_2 < 0$$
+
+```python
+dc = 1/c1 - 1/c2
+dr = r1-r2
+T*dc + dr
+T < -dr/dc
+```
+For example, LZMA on Wasm $c_9=2.5, c_0=12, r_9=0.236, r_0=0.282$:
+```python
+sign = lambda x: -1 if x < 0 else 1
+c9 = 2.5; c0 = 12
+r9 = 0.236; r0 = 0.282
+dc = 1/c9 - 1/c0
+dr = r9 - r0
+-sign(dc)*dr/dc
+# 0.145
+```
+So level 0 is better than level 9 iff $T$ is faster than 0.145 MiB/s times cores.
+
+For LZMA on x86-64:
+```python
+c9 = 6.6; c0 = 53
+dc = 1/c9 - 1/c0
+-sign(dc)*dr/dc
+```
+Iff $T$ is faster than 0.345 MiB/s times cores.
+
+[压缩上传 - Issue #187 - 16Hexa/HAP](https://github.com/16Hexa/HAP/issues/187)
+
 ## gzip
 [Wikipedia](https://en.wikipedia.org/wiki/Gzip)
 

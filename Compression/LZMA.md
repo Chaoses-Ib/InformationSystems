@@ -59,9 +59,15 @@ C++:
           - Encoder-only: 69 KiB
           - Decoder-only: 57 KiB
         - Performance: ~20% of native (x86-64)
+          - The sweet point is 3 instead of 4 in native
           - Os
-            - 9: 2.6~3.3 MiB/s
+            - 9: 2.5, 2.6~3.3 MiB/s
+            - 6: 2.5 MiB/s
+            - 5: 3 MiB/s
             - 4: 3.9~4.4 MiB/s
+            - **3**: 7.4~7.6 MiB/s
+            - 2: 9.3 MiB/s
+            - 1: 11 MiB/s
             - 0: 11.9~13.2 MiB/s
           - O3
             - 9: 2.5~3.5 MiB/s
@@ -81,15 +87,34 @@ Rust:
     > According to @hasenbanck's benchmark, its performance is better or at least on par with `liblzma`. And its unsafe code is optional and has `no_std` support.
 
     - [Use native implementation of LZMA and XZ by hasenbanck - Pull Request #405 - zip-rs/zip2](https://github.com/zip-rs/zip2/pull/405)
+  - [Find a better way to implement multi-threaded decoding & encoding for LZMA2 and XZ - Issue #40](https://github.com/hasenbanck/lzma-rust2/issues/40)
+  - Wasm
+    - Encoder-only: 59.2 KiB
+    - Performance (v0.14.2)
+      - Slower than `liblzma` for levels ≥ 2 (or 4).
+      - Os
+        - 9: 1.8 MiB/s
+        - 6: 2.1 MiB/s
+        - 5: 2.9 MiB/s
+        - 4: 3.4 MiB/s
+        - 3: 7.4 MiB/s
+        - 2: 8.7 MiB/s
+        - 1: 12.3~12.6 MiB/s
+        - 0: 12.8 MiB/s
+    - [Parallel compression on Wasm via web workers - Issue #59](https://github.com/hasenbanck/lzma-rust2/issues/59)
 
 - [lzma-rs: An LZMA decoder written in pure Rust](https://github.com/gendx/lzma-rs) (`lzma_rs`)
 
 JS:
 - [LZMA-JS: A JavaScript implementation of the Lempel-Ziv-Markov (LZMA) chain compression algorithm](https://github.com/LZMA-JS/LZMA-JS)
+  - [Support for .xz files? - Issue #62](https://github.com/LZMA-JS/LZMA-JS/issues/62)
   - Performance
     - 9: 0.24 MiB/s
     - 4: 3.57 MiB/s
   - [biw/lzma-web: A JavaScript implementation of the Lempel-Ziv-Markov (LZMA) chain compression algorithm](https://github.com/biw/lzma-web)
+  - [SortaCore/lzma2-js: JavaScript LZMA2, based on https://github.com/LZMA-JS/LZMA-JS.](https://github.com/SortaCore/lzma2-js)
+- [xzwasm: XZ decompression for the browser via WebAssembly](https://github.com/SteveSanderson/xzwasm)
+  - [httptoolkit/xz-decompress: XZ decompression for the browser & Node without native code, via WebAssembly](https://github.com/httptoolkit/xz-decompress)
 - [Leo4815162342/lzma-purejs: Clean, fast LZMA encoder in Javascript](https://github.com/Leo4815162342/lzma-purejs)
 - [js-lzma: Port of LZMA to JavaScript](https://github.com/Magister/js-lzma)
 
