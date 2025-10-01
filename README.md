@@ -10,6 +10,7 @@
     - [Input-output Memory Management Unit (IOMMU)](Memory/Virtual/MMU/IO/README.md)
   - [Swapping](Memory/Virtual/Swapping.md)
   - [Page Priority](Memory/Virtual/Priority.md)
+  - [Statistics](Memory/Virtual/Statistics.md)
 - [Manual Memory Management](Memory/Manual/README.md)
   - [CS:APP Malloc Lab](Memory/Manual/Malloc%20Lab.md)
 - [Automatic Memory Management](Memory/Automatic/README.md)
