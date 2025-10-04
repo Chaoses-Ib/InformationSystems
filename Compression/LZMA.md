@@ -6,6 +6,25 @@ Lempel–Ziv–Markov chain algorithm
 - LZ77 + Range
 - Even the level 0 has a good compression ratio (> Brotli 5~9, Deflate, Zstd 15, also in compression speed) for highly compressible (30%) data
 
+## Parameters
+- Dictionary size: `1 << [18, 20, 21, 22, 22, 23, 23, 24, 25, 26][level]`
+  - 0.25, 1, 2, 4, 4, 8, 8, 16, 32, 64 MiB
+
+  [[Setup]: LZMADictionarySize - Inno Setup Help](https://jrsoftware.org/ishelp/index.php?topic=setup_lzmadictionarysize)
+
+## Parallel
+- Blocks
+
+  [[Setup]: LZMABlockSize - Inno Setup Help](https://jrsoftware.org/ishelp/index.php?topic=setup_lzmanumblockthreads)
+  > Note that setting this too high can negate the benefits of using multiple block threads. Typically, the block size should be no more than the total size of your data divided by the number of block threads.
+
+  [[Setup]: LZMANumBlockThreads - Inno Setup Help](https://jrsoftware.org/ishelp/index.php?topic=setup_lzmanumblockthreads)
+
+- PLZMA: A Parallel Data Compression Method for Cloud Computing[^wangPLZMAParallelData2018]
+- SW-LZMA: Parallel Implementation of LZMA Based on SW26010 Many-Core Processor[^liSWLZMAParallelImplementation2021]
+
+[Some idea of multithreaded lzma without using blocks and fragmenting dictionary](https://encode.su/threads/3069-Some-idea-of-multithreaded-lzma-without-using-blocks-and-fragmenting-dictionary)
+
 ## Formats
 - LZMA
 - LZMA2
@@ -20,6 +39,8 @@ Lempel–Ziv–Markov chain algorithm
   - Supports both LZMA and LZMA2
   - Streamable
   - Random-access reading
+
+    [Blasted Bioinformatics!?: Random access to blocked XZ format (BXZF)](https://blastedbio.blogspot.com/2013/04/random-access-to-blocked-xz-format-bxzf.html)
   - Multiple filters (algorithms)
 
     > The filters try to improve how repetitive the encoder-input data is, since repetition compresses very well. There’s a Delta(N) encoder, which modifies every input byte by subtracting its from-N-bytes-ago byte.
@@ -105,6 +126,9 @@ Rust:
 
 - [lzma-rs: An LZMA decoder written in pure Rust](https://github.com/gendx/lzma-rs) (`lzma_rs`)
 
+Python:
+- [lzma --- Compression using the LZMA algorithm - Python3 Docs](https://docs.python.org/3/library/lzma.html)
+
 JS:
 - [LZMA-JS: A JavaScript implementation of the Lempel-Ziv-Markov (LZMA) chain compression algorithm](https://github.com/LZMA-JS/LZMA-JS)
   - [Support for .xz files? - Issue #62](https://github.com/LZMA-JS/LZMA-JS/issues/62)
@@ -120,3 +144,7 @@ JS:
 
 Benchmarks:
 - [7-Zip Compression Benchmark - OpenBenchmarking.org](https://openbenchmarking.org/test/pts/compress-7zip-1.11.0)
+
+
+[^wangPLZMAParallelData2018]: Wang, X., Gan, L., Xu, J., Yang, J., Xia, M., Fu, H., Huang, X., & Yang, G. (2018). PLZMA: A Parallel Data Compression Method for Cloud Computing. In J. Vaidya & J. Li (Eds.), Algorithms and Architectures for Parallel Processing (pp. 504–518). Springer International Publishing. https://doi.org/10.1007/978-3-030-05057-3_38
+[^liSWLZMAParallelImplementation2021]: Li, B., Xu, J., & Liu, Z. (2021). SW-LZMA: Parallel Implementation of LZMA Based on SW26010 Many-Core Processor. Wireless Communications and Mobile Computing, 2021(1), 4486494. https://doi.org/10.1155/2021/4486494
