@@ -10,6 +10,14 @@ Discussions:
 - 2025-11 [25年这波涨价还会持续多久？ - 固态硬盘吧](https://tieba.baidu.com/p/10200355433)
 - 2025-11 [【图片】还是固态涨得不多 - 固态硬盘吧](https://tieba.baidu.com/p/10204463724)
 - 2025-11 [硬盘供应告急 数据中心开始囤积SSD - 硬件 - cnBeta.COM](https://www.cnbeta.com.tw/articles/tech/1535620.htm)
+- 2025-11 [达到Gen4之巅:致态TiPlus7100s 2T评测报告 - 哔哩哔哩](https://www.bilibili.com/video/BV1fgCJBbEYo/)
+  > 4. 等一等会不会更便宜
+  > 
+  >    然而很遗憾,不会.至少到2026年Q3,都只会越涨越高  
+  >    泡沫也好、需求也罢,ai直接吃满了所有原厂的所有产能,Solidigm的FG QLC通过P5336已经连续脱销几年,堪称核动力印钞机.而SK MICRON KIOXIA以及SS的所有产能,均被吃满.
+  > 
+  >    从销量的角度而言,ESSD是绝对的大头,大约占70%左右,而CSSD中OEM又占绝大多数,零售产品的量真的特别少.  
+  >    换句话说,你以为是原厂做局消费者,但人家根本不在意这点…..
 
 ## PCIe Gen3
 - Samsung
@@ -54,6 +62,9 @@ Discussions:
 
     [HOMOLAB的动态 - 哔哩哔哩](https://www.bilibili.com/opus/1133495689715646466):
     > Tiplus7100s是目前最佳的、最优秀的、性能最好的Gen4 SSD，也是你可以在市场战买到的最佳硬盘，没有之一
+    - [达到Gen4之巅:致态TiPlus7100s 2T评测报告 - 哔哩哔哩](https://www.bilibili.com/video/BV1fgCJBbEYo/)
+      > PVC10 没有大于 1T 的版本，现在终于有人填上这个空当了  
+      > 不过讲道理 tp71s 的价格咬咬牙上个 MAP1806 方案的无缓 Gen 5 说不定都够了（还是现在也涨价了？）
 
     [致态 TiPlus 7100s 固态硬盘发布：长江存储新一代颗粒，659 元起 - IT之家](https://www.ithome.com/0/896/184.htm)
 

@@ -25,8 +25,11 @@
   - [Hard Disk Drives](Storage/Analog%20Recording/HDD/README.md)
 - [Read-Only Memory](Storage/ROM/README.md)
   - [Solid-State Drives](Storage/ROM/SSD/README.md)
-    - [Brands](Storage/ROM/SSD/Brands.md)
+    - [Brands](Storage/ROM/SSD/Brands/README.md)
+      - [TiPlus7100s](Storage/ROM/SSD/Brands/TiPlus7100s.md)
 - [RAM Drives](Storage/RAM.md)
+- [Benchmarks](Storage/Benchmarks.md)
+- [Tools](Storage/Tools.md)
 
 ## [File Systems](Files/README.md)
 - [Paths](Files/Paths.md)
