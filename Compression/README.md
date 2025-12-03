@@ -225,6 +225,7 @@ C++:
 Rust:
 - [ib-compress](https://github.com/16Hexa/ib-compress)
 - [async-compression: Adaptors between compression crates and Rust's async IO types](https://github.com/Nullus157/async-compression)
+- [libcramjam: Rust crate offering similar API to compression algorithms and a c-compatible library](https://github.com/cramjam/libcramjam)
 - [comde: Compression/decompression crate akin to serde](https://github.com/bbqsrc/comde)
 - [rust-compress: Various compression algorithms written in rust.](https://github.com/rusty-shell/rust-compress) (discontinued)
 - Compile time

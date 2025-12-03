@@ -83,6 +83,7 @@
   - No compression (stored method only).
   - Only files (no directories).
   - No customizable external file attributes.
+- [plrigaux/archflow](https://github.com/plrigaux/archflow)
 - [wasm-zip-stream: A stream style zip compressing tool running in web browsers](https://github.com/LittleSaya/wasm-zip-stream)
 
 - [stream-unzip: A streaming unzip library for rust projects](https://github.com/jsoverson/stream-unzip)

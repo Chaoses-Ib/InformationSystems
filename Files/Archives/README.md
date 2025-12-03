@@ -27,6 +27,14 @@ C++:
   - [libarchive-rust: A Rust crate for interacting with archives using libarchive](https://github.com/fnichol/libarchive-rust) (discontinued)
   - [archivefs: A read-only FUSE filesystem for mounting compressed archives, inspired by archivemount.](https://github.com/bugnano/archivefs)
 
+Rust:
+- [ib-archive](https://github.com/16Hexa/ib-archive)
+- [secana/archive: Rust library to handle multiple-archive types with a common interface](https://github.com/secana/archive)
+  - ZIP, tar, 7z
+  - Extract-only
+- [ahaoboy/easy-archive](https://github.com/ahaoboy/easy-archive)
+  - tar, ZIP
+
 ## Formats
 - [Zap: An extremely fast alternative to zip which is written in rust.](https://github.com/SteveGremory/Zap) (inactive)
   - LZ4
