@@ -44,6 +44,12 @@
   - Text
   - Record length control
 - External file attributes (OS)
+  - Windows support:
+    - libarchive
+      - Windows 11: `A  SHR  I`
+        - `I` only for directories.
+    - 7-Zip: `A  SHR  I`
+      - `C` and `E` will be archived but not set when extract. 
   - [Setting external file attributes - Issue #433 - zip-rs/zip2](https://github.com/zip-rs/zip2/issues/433)
 
 ## Libraries
