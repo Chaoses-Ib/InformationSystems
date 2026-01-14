@@ -1,3 +1,5 @@
+#import "@local/ib:0.1.0": *
+#md(```
 # LZMA
 [Wikipedia](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm)
 
@@ -125,8 +127,11 @@ Rust:
     - [Parallel compression on Wasm via web workers - Issue #59](https://github.com/hasenbanck/lzma-rust2/issues/59)
 
 - [lzma-rs: An LZMA decoder written in pure Rust](https://github.com/gendx/lzma-rs) (`lzma_rs`)
+```)
+- #a[AlexanderSchuetz97/xz4rust: Memory Safe pure Rust no-std & no alloc XZ decoder][https://github.com/AlexanderSchuetz97/xz4rust]
 
 Python:
+#md(`
 - [lzma --- Compression using the LZMA algorithm - Python3 Docs](https://docs.python.org/3/library/lzma.html)
 
 JS:
@@ -148,3 +153,4 @@ Benchmarks:
 
 [^wangPLZMAParallelData2018]: Wang, X., Gan, L., Xu, J., Yang, J., Xia, M., Fu, H., Huang, X., & Yang, G. (2018). PLZMA: A Parallel Data Compression Method for Cloud Computing. In J. Vaidya & J. Li (Eds.), Algorithms and Architectures for Parallel Processing (pp. 504–518). Springer International Publishing. https://doi.org/10.1007/978-3-030-05057-3_38
 [^liSWLZMAParallelImplementation2021]: Li, B., Xu, J., & Liu, Z. (2021). SW-LZMA: Parallel Implementation of LZMA Based on SW26010 Many-Core Processor. Wireless Communications and Mobile Computing, 2021(1), 4486494. https://doi.org/10.1155/2021/4486494
+`)

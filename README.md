@@ -129,7 +129,8 @@
 - [Embedded Databases](Databases/Embedded.md)
 
 ## [Compression](Compression/README.md)
-- [LZMA](Compression/LZMA.md)
+- [Lempel-Ziv (LZ)](Compression/Lempel-Ziv.typ)
+- [LZMA](Compression/LZMA.typ)
 - [Streaming Compression](Compression/Streaming.md)
 - [Differential Compression](Compression/Diff/README.md)
 - [Integer Compression](Compression/Integer.md)

@@ -64,25 +64,14 @@ Discussions:
 [python - What is the meaning of window size logarithm in zlib library? - Stack Overflow](https://stackoverflow.com/questions/56706197/what-is-the-meaning-of-window-size-logarithm-in-zlib-library)
 
 ## Dictionary type
-### Lempel–Ziv (LZ77 and LZ78)
+### [→Lempel–Ziv (LZ77 and LZ78)](Lempel-Ziv.typ)
 [Wikipedia](https://en.wikipedia.org/wiki/LZ77_and_LZ78)
 
 > We believe LZ4 is almost always better than Snappy. LZ4/Snappy is a lightweight compression algorithm so it usually strikes a good balance between space and CPU usage.
 
-#### Snappy
-[Wikipedia](https://en.wikipedia.org/wiki/Snappy_(compression))
+#### [→Snappy](Lempel-Ziv.typ#snappy)
 
-Rust:
-- [rust-snappy: Snappy compression implemented in Rust (including the Snappy frame format).](https://github.com/burntsushi/rust-snappy)
-
-#### LZ4
-C++:
-- [lz4: Extremely Fast Compression algorithm](https://github.com/lz4/lz4)
-
-  Rust: [lz4-rs: Rust LZ4 bindings](https://github.com/10xGenomics/lz4-rs)
-
-Rust:
-- [lz4\_flex: Fastest pure Rust implementation of LZ4 compression/decompression.](https://github.com/PSeitz/lz4_flex)
+#### [→LZ4](Lempel-Ziv.typ#lz4)
 
 ## [→Suffix trees](https://github.com/Chaoses-Ib/ComputationalMathematics/blob/main/Algorithms/Trees/Tries/Suffix/README.md)
 
@@ -189,7 +178,7 @@ JS:
 - Native
   - [mongodb-js/zstd: A Zstd Compression Library](https://github.com/mongodb-js/zstd)
 
-### LZ77 + Range: [→LZMA](LZMA.md)
+### LZ77 + Range: [→LZMA](LZMA.typ)
 
 ### LZ77: [CSC](https://github.com/fusiyuan2010/CSC)
 
