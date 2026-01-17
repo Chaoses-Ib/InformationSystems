@@ -55,6 +55,7 @@
   - [Ceph](Files/Network/Ceph.md)
   - [GlusterFS](Files/Network/Gluster.md)
   - [Garage](Files/Network/Garage/README.typ)
+  - [RustFS](Files/Network/RustFS.typ)
   - [InterPlanetary File System (IPFS)](Files/Network/IPFS.md)
 - [Archives](Files/Archives/README.md)
   - [ZIP](Files/Archives/ZIP.md)

@@ -12,3 +12,4 @@
 ## Deployment
 - [ceph/ceph-ansible: Ansible playbooks to deploy Ceph, the distributed filesystem.](https://github.com/ceph/ceph-ansible)
 - [ceph/ceph-deploy: Deploy Ceph with minimal infrastructure, using just SSH access](https://github.com/ceph/ceph-deploy)
+- [rook: Storage Orchestration for Kubernetes](https://github.com/rook/rook)
