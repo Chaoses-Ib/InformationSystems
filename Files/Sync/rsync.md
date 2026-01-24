@@ -33,35 +33,15 @@ GUI:
 
 [Why no one recommends rsync, rclone, etc? : r/DataHoarder](https://www.reddit.com/r/DataHoarder/comments/1hed3hx/why_no_one_recommends_rsync_rclone_etc/)
 
-## [rclone](https://rclone.org/)
+## [→rclone](../Transfer/rclone.typ)
 [GitHub](https://github.com/rclone/rclone)
 
 > rsync for cloud storage
 
 > Supports over 50 cloud, protocol and virtual backends including S3 buckets, Google Drive, Microsoft OneDrive, and other high-latency file storage. Capabilities include sync, cache, encrypt, compress and mount.
 
-- Protocols
-  - Non-cloud protocols: local, [SFTP](https://rclone.org/sftp/), SMB / CIFS, FTP, WebDAV, [HTTP](https://rclone.org/http/) (readonly), HDFS
-  - [Add support for Syncthing as a backend - Issue #5874](https://github.com/rclone/rclone/issues/5874)
 - MIT
 - 58 MiB
-- [Config](https://rclone.org/commands/rclone_config/)
-  - [rclone obscure](https://rclone.org/commands/rclone_obscure/)
-- CLI
-  - [`sync`](https://rclone.org/commands/rclone_sync/)
-  - [`ls`](https://rclone.org/commands/rclone_ls/)
-    - `--max-depth 1`
-
-      [Is there any way to have "ls" not recurse to all my files? - Help and Support - rclone forum](https://forum.rclone.org/t/is-there-any-way-to-have-ls-not-recurse-to-all-my-files/1457)
-    - `ls` is files only and `lsd` is directories only?
-- Batch sync?
-
-[Unpopular opinion: Rclone is bloated and confusing to use : r/selfhosted](https://www.reddit.com/r/selfhosted/comments/qbtwcg/unpopular_opinion_rclone_is_bloated_and_confusing/)
-
-[any one compare the performance of rclone vs SFTP in term of uploading speed to a server with same file same env. (everything the same except using rclone vs SFTP) : r/sysadmin](https://www.reddit.com/r/sysadmin/comments/1055kv8/any_one_compare_the_performance_of_rclone_vs_sftp/)
-
-### GUI
-- [kapitainsky/RcloneBrowser: Simple cross platform GUI for rclone. Supports macOS, GNU/Linux, BSD family and Windows.](https://github.com/kapitainsky/RcloneBrowser) (discontinued)
 
 ## rsync vs. rclone
 [Rclone - Wikipedia](https://en.wikipedia.org/wiki/Rclone#Rclone_or_rsync)

@@ -53,7 +53,7 @@ Go:
 
   > Distributed peer-to-peer sync with automatic NAT traversal. Custom topology (star, full-mesh, mixed). Encryption.
 
-- [→rclone](rsync.md#rclone)
+- [→rclone](../Transfer/rclone.typ)
   - MIT
   - 58 MiB
 

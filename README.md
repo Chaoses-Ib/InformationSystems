@@ -47,6 +47,7 @@
 - [File Transfer](Files/Transfer/README.md)
   - [Secure Copy Protocol (SCP)](Files/Transfer/SCP.md)
   - [WebDAV](Files/Transfer/WebDAV.md)
+  - [rclone](Files/Transfer/rclone.typ)
 - [File Synchronization](Files/Sync/README.md)
   - [rsync](Files/Sync/rsync.md)
   - [Syncthing](Files/Sync/Syncthing.md)
