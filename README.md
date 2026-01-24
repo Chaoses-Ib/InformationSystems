@@ -43,6 +43,8 @@
     - [Change Journals](Files/Systems/NTFS/Change%20Journals.md)
 - [Windows](Files/Windows/README.md)
   - [User-space File Systems](Files/Windows/User/README.md)
+    - [WinFsp](Files/Windows/User/WinFsp.typ)
+    - [Dokany](Files/Windows/User/Dokany.typ)
 - [File Change Monitoring](Files/Monitoring.md)
 - [File Transfer](Files/Transfer/README.md)
   - [Secure Copy Protocol (SCP)](Files/Transfer/SCP.md)
