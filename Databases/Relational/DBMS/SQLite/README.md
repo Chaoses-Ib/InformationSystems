@@ -348,6 +348,7 @@ Extensions:
 
 [sqlite-package-manager](https://github.com/asg017/sqlite-package-manager)
 
+<!--
 ## Tools
 - Navicat
 
@@ -374,3 +375,4 @@ Servers:
 - [Soul: 🕉 A SQLite REST and realtime server](https://github.com/thevahidal/soul)
 - [tuql: Automatically create a GraphQL server from a SQLite database or a SQL file](https://github.com/bradleyboy/tuql)
 - [Postlite: Postgres wire compatible SQLite proxy.](https://github.com/benbjohnson/postlite) (discontinued)
+-->

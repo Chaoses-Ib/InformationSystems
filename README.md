@@ -109,6 +109,7 @@
       - [Backup](Databases/Relational/DBMS/SQLite/Backup.md)
       - [Full-text Search](Databases/Relational/DBMS/SQLite/FTS/README.md)
       - [.NET](Databases/Relational/DBMS/SQLite/.NET.md)
+      - [Tools](Databases/Relational/DBMS/SQLite/Tools.typ)
       - [Remote](Databases/Relational/DBMS/SQLite/Remote/README.typ)
       - [Distributed SQLite](Databases/Relational/DBMS/SQLite/Distributed.md)
     - [PostgreSQL](Databases/Relational/DBMS/PostgreSQL/README.md)

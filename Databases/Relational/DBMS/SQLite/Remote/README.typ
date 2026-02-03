@@ -44,6 +44,10 @@
     - Export JSON/CSV
   - ```sh SQLITE_WEB_PASSWORD='pass' uvx --from sqlite-web sqlite_web a.db -P -H 127.0.0.1 -p 8080```
 
+- #a[frectonz/sql-studio: SQL Database Explorer \[SQLite, libSQL, PostgreSQL, MySQL/MariaDB, ClickHouse, DuckDB, Microsoft SQL Server\]][https://github.com/frectonz/sql-studio]
+
+  #a[SQLite Studio, a single binary, single command database explorer : r/sqlite][https://www.reddit.com/r/sqlite/comments/1dhjfka/sqlite_studio_a_single_binary_single_command/]
+
 - #a[Navicat for SQLite][https://www.navicat.com/en/products/navicat-for-sqlite]
   - #a[Setting up HTTP Tunnel][https://www.navicat.com/manual/online_manual/en/navicat_datamodeler/linux_manual/index.html#/import_db_http]
     - PHP server:
