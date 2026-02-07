@@ -32,6 +32,29 @@ Capabilities include sync, cache, encrypt, compress and mount.]
 #a[any one compare the performance of rclone vs SFTP in term of uploading speed to a server with same file same env. (everything the same except using rclone vs SFTP) : r/sysadmin][https://www.reddit.com/r/sysadmin/comments/1055kv8/any_one_compare_the_performance_of_rclone_vs_sftp/]
 
 = CLI
+- #a[File metadata][https://rclone.org/docs/#metadata] (permissions and attributes)
+
+  rclone #q[does not currently preserve permissions and attributes].
+  - ```sh --metadata, -M```
+
+    Doesn't work when copying from Windows to Linux.
+  - With SSH.
+  
+  #a[Preservation Of Permissions with Copy/Sync - Feature - rclone forum][https://forum.rclone.org/t/preservation-of-permissions-with-copy-sync/35575]
+
+  #a[Changing the permission of files - Help and Support - rclone forum][https://forum.rclone.org/t/changing-the-permission-of-files/12363]
+
+- Progress / Speed
+  - ```sh --progress, -P```
+  - ```sh --interactive, -i```
+
+  #a[Progress Bar & Stats | Rclone CLI][https://rcloneui.com/docs/cli/tips/progress-bar]
+
+  - #a[Interaction between ```sh --log-file```, ```sh --progress```, and ```sh --stats``` - Feature - rclone forum][https://forum.rclone.org/t/interaction-between-log-file-progress-and-stats/22287]
+  - #a[Get instant transfer speed - Help and Support - rclone forum][https://forum.rclone.org/t/get-instant-transfer-speed/25142]
+  - #a[```sh --progress``` and ```sh --interactive``` are not completely compatible - Feature - rclone forum][https://forum.rclone.org/t/progress-and-interactive-are-not-completely-compatible/28305]
+
+== Commands
 - #a[`sync`][https://rclone.org/commands/rclone_sync/]
 - #a[`ls`][https://rclone.org/commands/rclone_ls/]
   - ```sh --max-depth 1```
