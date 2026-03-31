@@ -54,6 +54,7 @@
   - [rsync](Files/Sync/rsync.md)
   - [Syncthing](Files/Sync/Syncthing.md)
   - [OneDrive](Files/Sync/OneDrive.md)
+- [File Backup](Files/Backup/README.typ)
 - [Network File Systems](Files/Network/README.md)
   - [Ceph](Files/Network/Ceph.md)
   - [GlusterFS](Files/Network/Gluster.md)

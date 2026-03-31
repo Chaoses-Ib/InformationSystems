@@ -108,7 +108,8 @@
 ## CLI
 - `syncthing --no-console` only works with ConHost, not WT
 - `--gui-address` defaults to probe a random port at the first startup
-- Startup: `conhost syncthing --no-console --no-browser --gui-address http://127.0.0.1:8443`
+- Startup:
+  ```cmd conhost syncthing --no-console --no-browser --gui-address http://127.0.0.1:8384```
 - Auth
   - `syncthing generate --gui-password ...`
   - Tunnels
