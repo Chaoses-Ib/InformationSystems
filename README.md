@@ -21,6 +21,7 @@
   - [Working Sets](Memory/Windows/Working%20Sets.md)
 
 ## Storage
+- [Blocks](Storage/Blocks.typ)
 - Analog Recording
   - [Hard Disk Drives](Storage/Analog%20Recording/HDD/README.md)
 - [Read-Only Memory](Storage/ROM/README.md)
@@ -41,6 +42,8 @@
     - [Volumes](Files/Systems/NTFS/Volumes.md)
     - [File Records](Files/Systems/NTFS/Records.md)
     - [Change Journals](Files/Systems/NTFS/Change%20Journals.md)
+  - [SquashFS](Files/Systems/SquashFS/README.typ)
+  - [EROFS](Files/Systems/EROFS/README.typ)
 - [Windows](Files/Windows/README.md)
   - [User-space File Systems](Files/Windows/User/README.md)
     - [WinFsp](Files/Windows/User/WinFsp.typ)
